@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD6AF0852068B8B700547D83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF0842068B8B700547D83 /* AppDelegate.m */; };
+		AD6AF0882068B8B700547D83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF0872068B8B700547D83 /* ViewController.m */; };
+		AD6AF08B2068B8B700547D83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6AF0892068B8B700547D83 /* Main.storyboard */; };
+		AD6AF08E2068B8B700547D83 /* Q_TimerAxis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF08C2068B8B700547D83 /* Q_TimerAxis.xcdatamodeld */; };
+		AD6AF0902068B8B700547D83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD6AF08F2068B8B700547D83 /* Assets.xcassets */; };
+		AD6AF0932068B8B700547D83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6AF0912068B8B700547D83 /* LaunchScreen.storyboard */; };
+		AD6AF0962068B8B800547D83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF0952068B8B800547D83 /* main.m */; };
+		AD6AF0A02068B8B800547D83 /* Q_TimerAxisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF09F2068B8B800547D83 /* Q_TimerAxisTests.m */; };
+		AD6AF0AB2068B8B800547D83 /* Q_TimerAxisUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF0AA2068B8B800547D83 /* Q_TimerAxisUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD6AF09C2068B8B800547D83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD6AF0782068B8B600547D83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD6AF07F2068B8B600547D83;
+			remoteInfo = Q_TimerAxis;
+		};
+		AD6AF0A72068B8B800547D83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD6AF0782068B8B600547D83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD6AF07F2068B8B600547D83;
+			remoteInfo = Q_TimerAxis;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AD6AF0802068B8B600547D83 /* Q_TimerAxis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Q_TimerAxis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD6AF0832068B8B600547D83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AD6AF0842068B8B700547D83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AD6AF0862068B8B700547D83 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AD6AF0872068B8B700547D83 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AD6AF08A2068B8B700547D83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD6AF08D2068B8B700547D83 /* Q_TimerAxis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Q_TimerAxis.xcdatamodel; sourceTree = "<group>"; };
+		AD6AF08F2068B8B700547D83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD6AF0922068B8B700547D83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AD6AF0942068B8B700547D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD6AF0952068B8B800547D83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD6AF09B2068B8B800547D83 /* Q_TimerAxisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Q_TimerAxisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD6AF09F2068B8B800547D83 /* Q_TimerAxisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Q_TimerAxisTests.m; sourceTree = "<group>"; };
+		AD6AF0A12068B8B800547D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD6AF0A62068B8B800547D83 /* Q_TimerAxisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Q_TimerAxisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD6AF0AA2068B8B800547D83 /* Q_TimerAxisUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Q_TimerAxisUITests.m; sourceTree = "<group>"; };
+		AD6AF0AC2068B8B800547D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD6AF07D2068B8B600547D83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD6AF0982068B8B800547D83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD6AF0A32068B8B800547D83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD6AF0772068B8B600547D83 = {
+			isa = PBXGroup;
+			children = (
+				AD6AF0822068B8B600547D83 /* Q_TimerAxis */,
+				AD6AF09E2068B8B800547D83 /* Q_TimerAxisTests */,
+				AD6AF0A92068B8B800547D83 /* Q_TimerAxisUITests */,
+				AD6AF0812068B8B600547D83 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD6AF0812068B8B600547D83 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD6AF0802068B8B600547D83 /* Q_TimerAxis.app */,
+				AD6AF09B2068B8B800547D83 /* Q_TimerAxisTests.xctest */,
+				AD6AF0A62068B8B800547D83 /* Q_TimerAxisUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD6AF0822068B8B600547D83 /* Q_TimerAxis */ = {
+			isa = PBXGroup;
+			children = (
+				AD6AF0832068B8B600547D83 /* AppDelegate.h */,
+				AD6AF0842068B8B700547D83 /* AppDelegate.m */,
+				AD6AF0862068B8B700547D83 /* ViewController.h */,
+				AD6AF0872068B8B700547D83 /* ViewController.m */,
+				AD6AF0892068B8B700547D83 /* Main.storyboard */,
+				AD6AF08F2068B8B700547D83 /* Assets.xcassets */,
+				AD6AF0912068B8B700547D83 /* LaunchScreen.storyboard */,
+				AD6AF0942068B8B700547D83 /* Info.plist */,
+				AD6AF0952068B8B800547D83 /* main.m */,
+				AD6AF08C2068B8B700547D83 /* Q_TimerAxis.xcdatamodeld */,
+			);
+			path = Q_TimerAxis;
+			sourceTree = "<group>";
+		};
+		AD6AF09E2068B8B800547D83 /* Q_TimerAxisTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD6AF09F2068B8B800547D83 /* Q_TimerAxisTests.m */,
+				AD6AF0A12068B8B800547D83 /* Info.plist */,
+			);
+			path = Q_TimerAxisTests;
+			sourceTree = "<group>";
+		};
+		AD6AF0A92068B8B800547D83 /* Q_TimerAxisUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD6AF0AA2068B8B800547D83 /* Q_TimerAxisUITests.m */,
+				AD6AF0AC2068B8B800547D83 /* Info.plist */,
+			);
+			path = Q_TimerAxisUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD6AF07F2068B8B600547D83 /* Q_TimerAxis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD6AF0AF2068B8B800547D83 /* Build configuration list for PBXNativeTarget "Q_TimerAxis" */;
+			buildPhases = (
+				AD6AF07C2068B8B600547D83 /* Sources */,
+				AD6AF07D2068B8B600547D83 /* Frameworks */,
+				AD6AF07E2068B8B600547D83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Q_TimerAxis;
+			productName = Q_TimerAxis;
+			productReference = AD6AF0802068B8B600547D83 /* Q_TimerAxis.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD6AF09A2068B8B800547D83 /* Q_TimerAxisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD6AF0B22068B8B800547D83 /* Build configuration list for PBXNativeTarget "Q_TimerAxisTests" */;
+			buildPhases = (
+				AD6AF0972068B8B800547D83 /* Sources */,
+				AD6AF0982068B8B800547D83 /* Frameworks */,
+				AD6AF0992068B8B800547D83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD6AF09D2068B8B800547D83 /* PBXTargetDependency */,
+			);
+			name = Q_TimerAxisTests;
+			productName = Q_TimerAxisTests;
+			productReference = AD6AF09B2068B8B800547D83 /* Q_TimerAxisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AD6AF0A52068B8B800547D83 /* Q_TimerAxisUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD6AF0B52068B8B800547D83 /* Build configuration list for PBXNativeTarget "Q_TimerAxisUITests" */;
+			buildPhases = (
+				AD6AF0A22068B8B800547D83 /* Sources */,
+				AD6AF0A32068B8B800547D83 /* Frameworks */,
+				AD6AF0A42068B8B800547D83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD6AF0A82068B8B800547D83 /* PBXTargetDependency */,
+			);
+			name = Q_TimerAxisUITests;
+			productName = Q_TimerAxisUITests;
+			productReference = AD6AF0A62068B8B800547D83 /* Q_TimerAxisUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD6AF0782068B8B600547D83 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = jqlv;
+				TargetAttributes = {
+					AD6AF07F2068B8B600547D83 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					AD6AF09A2068B8B800547D83 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AD6AF07F2068B8B600547D83;
+					};
+					AD6AF0A52068B8B800547D83 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AD6AF07F2068B8B600547D83;
+					};
+				};
+			};
+			buildConfigurationList = AD6AF07B2068B8B600547D83 /* Build configuration list for PBXProject "Q_TimerAxis" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD6AF0772068B8B600547D83;
+			productRefGroup = AD6AF0812068B8B600547D83 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD6AF07F2068B8B600547D83 /* Q_TimerAxis */,
+				AD6AF09A2068B8B800547D83 /* Q_TimerAxisTests */,
+				AD6AF0A52068B8B800547D83 /* Q_TimerAxisUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD6AF07E2068B8B600547D83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD6AF0932068B8B700547D83 /* LaunchScreen.storyboard in Resources */,
+				AD6AF0902068B8B700547D83 /* Assets.xcassets in Resources */,
+				AD6AF08B2068B8B700547D83 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD6AF0992068B8B800547D83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD6AF0A42068B8B800547D83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD6AF07C2068B8B600547D83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD6AF0882068B8B700547D83 /* ViewController.m in Sources */,
+				AD6AF0852068B8B700547D83 /* AppDelegate.m in Sources */,
+				AD6AF0962068B8B800547D83 /* main.m in Sources */,
+				AD6AF08E2068B8B700547D83 /* Q_TimerAxis.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD6AF0972068B8B800547D83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD6AF0A02068B8B800547D83 /* Q_TimerAxisTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD6AF0A22068B8B800547D83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD6AF0AB2068B8B800547D83 /* Q_TimerAxisUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD6AF09D2068B8B800547D83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD6AF07F2068B8B600547D83 /* Q_TimerAxis */;
+			targetProxy = AD6AF09C2068B8B800547D83 /* PBXContainerItemProxy */;
+		};
+		AD6AF0A82068B8B800547D83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD6AF07F2068B8B600547D83 /* Q_TimerAxis */;
+			targetProxy = AD6AF0A72068B8B800547D83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AD6AF0892068B8B700547D83 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD6AF08A2068B8B700547D83 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AD6AF0912068B8B700547D83 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD6AF0922068B8B700547D83 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD6AF0AD2068B8B800547D83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AD6AF0AE2068B8B800547D83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD6AF0B02068B8B800547D83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 547ZEB69CW;
+				INFOPLIST_FILE = Q_TimerAxis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jqlv.Q-TimerAxis";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD6AF0B12068B8B800547D83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 547ZEB69CW;
+				INFOPLIST_FILE = Q_TimerAxis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jqlv.Q-TimerAxis";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AD6AF0B32068B8B800547D83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 547ZEB69CW;
+				INFOPLIST_FILE = Q_TimerAxisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jqlv.Q-TimerAxisTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Q_TimerAxis.app/Q_TimerAxis";
+			};
+			name = Debug;
+		};
+		AD6AF0B42068B8B800547D83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 547ZEB69CW;
+				INFOPLIST_FILE = Q_TimerAxisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jqlv.Q-TimerAxisTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Q_TimerAxis.app/Q_TimerAxis";
+			};
+			name = Release;
+		};
+		AD6AF0B62068B8B800547D83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 547ZEB69CW;
+				INFOPLIST_FILE = Q_TimerAxisUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jqlv.Q-TimerAxisUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Q_TimerAxis;
+			};
+			name = Debug;
+		};
+		AD6AF0B72068B8B800547D83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 547ZEB69CW;
+				INFOPLIST_FILE = Q_TimerAxisUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jqlv.Q-TimerAxisUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Q_TimerAxis;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD6AF07B2068B8B600547D83 /* Build configuration list for PBXProject "Q_TimerAxis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD6AF0AD2068B8B800547D83 /* Debug */,
+				AD6AF0AE2068B8B800547D83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD6AF0AF2068B8B800547D83 /* Build configuration list for PBXNativeTarget "Q_TimerAxis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD6AF0B02068B8B800547D83 /* Debug */,
+				AD6AF0B12068B8B800547D83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD6AF0B22068B8B800547D83 /* Build configuration list for PBXNativeTarget "Q_TimerAxisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD6AF0B32068B8B800547D83 /* Debug */,
+				AD6AF0B42068B8B800547D83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD6AF0B52068B8B800547D83 /* Build configuration list for PBXNativeTarget "Q_TimerAxisUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD6AF0B62068B8B800547D83 /* Debug */,
+				AD6AF0B72068B8B800547D83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AD6AF08C2068B8B700547D83 /* Q_TimerAxis.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AD6AF08D2068B8B700547D83 /* Q_TimerAxis.xcdatamodel */,
+			);
+			currentVersion = AD6AF08D2068B8B700547D83 /* Q_TimerAxis.xcdatamodel */;
+			path = Q_TimerAxis.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AD6AF0782068B8B600547D83 /* Project object */;
+}

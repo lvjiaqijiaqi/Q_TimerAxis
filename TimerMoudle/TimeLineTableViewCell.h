@@ -10,4 +10,9 @@
 
 @interface TimeLineTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *processLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastUpdateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet UIView *timeIconView;
+
 @end

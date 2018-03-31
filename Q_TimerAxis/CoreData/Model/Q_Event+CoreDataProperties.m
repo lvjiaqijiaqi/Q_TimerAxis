@@ -21,5 +21,6 @@
 @dynamic deadLine;
 @dynamic lastUpdate;
 @dynamic timeLine;
+@dynamic startDate;
 
 @end

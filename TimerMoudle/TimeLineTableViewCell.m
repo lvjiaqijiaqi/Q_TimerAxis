@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.contentTextView.contentInset = UIEdgeInsetsZero;
+    self.timeIconView.layer.cornerRadius = 8;
+    
     // Initialization code
 }
 

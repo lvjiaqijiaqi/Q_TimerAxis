@@ -10,4 +10,9 @@
 
 @interface EventModel : NSObject
 
+@property(nonatomic,strong) NSDate* startDate;
+@property(nonatomic,strong) NSDate* endDate;
+@property(nonatomic,strong) NSString *title;
+@property(nonatomic,strong) NSString *content;
+
 @end

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
+#import "Q_Event+CoreDataClass.h"
 
-@interface TimerViewController : UITableViewController
+@interface TimerViewController : CoreDataTableViewController
+
+@property(nonatomic,strong) Q_Event *event;
 
 @end

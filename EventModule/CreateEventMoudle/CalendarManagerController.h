@@ -15,6 +15,8 @@
 @property (strong, nonatomic) JTHorizontalCalendarView *calendarContentView;
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
 
+@property (strong, nonatomic) NSDate *dateSelected;
+
 -(void)startWork;
 
 @end

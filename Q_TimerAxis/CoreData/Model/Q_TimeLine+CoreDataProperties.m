@@ -18,5 +18,6 @@
 @dynamic content;
 @dynamic createDate;
 @dynamic event;
+@dynamic progress;
 
 @end

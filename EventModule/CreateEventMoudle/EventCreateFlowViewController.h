@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventModel.h"
 
 @interface EventCreateFlowViewController : UINavigationController
+
+@property(nonatomic,strong) EventModel *model;
+
+-(void)completeEventCreate;
 
 @end

@@ -14,7 +14,6 @@
     NSDate *_minDate;
     NSDate *_maxDate;
     
-    NSDate *_dateSelected;
 }
 
 @end

@@ -8,30 +8,75 @@
 
 #import "Q_navigationController.h"
 
-@interface Q_navigationController ()
+@interface Q_navigationController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
+
+@property (nonatomic,strong) UIBarButtonItem *navBackBtn;
 
 @end
 
 @implementation Q_navigationController
 
+
+-(instancetype)initWithRootViewController:(UIViewController *)rootViewController{
+    self = [super initWithRootViewController:rootViewController];
+    if (self) {
+        
+    }
+    return self;
+}
+
+-(void)configNavBar{
+    [self.navigationBar setShadowImage:[[UIImage alloc] init]];
+    self.navigationBar.translucent = NO;
+    self.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:17],
+                                               NSKernAttributeName:[NSNumber numberWithInteger:2],
+                                               NSForegroundColorAttributeName:[UIColor colorWithRed:18.0/255 green:150.0/255 blue:219.0/255 alpha:1]
+                                               };
+    self.navigationBar.tintColor = [UIColor colorWithRed:18.0/255 green:150.0/255 blue:219.0/255 alpha:1];
+}
+
+-(UIBarButtonItem *)navBackBtn{
+    if(!_navBackBtn){
+        _navBackBtn =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navBacklIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(Navback)];
+    }
+    return _navBackBtn;
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self configNavBar];
+    
+    self.delegate = self;
+    self.interactivePopGestureRecognizer.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (navigationController.viewControllers.count > 1) {
+        viewController.navigationItem.leftBarButtonItem = self.navBackBtn;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (navigationController.viewControllers.count <= 1) {
+        self.interactivePopGestureRecognizer.enabled = NO;
+    }else{
+        self.interactivePopGestureRecognizer.enabled = YES;
+    }
 }
-*/
+-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (self.viewControllers.count > 0) {
+        //self.interactivePopGestureRecognizer.enabled = YES;
+    }
+    [super pushViewController:viewController animated:animated];
+}
 
+-(void)Navback{
+    [self popViewControllerAnimated:YES];
+}
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    return YES;
+}
 @end

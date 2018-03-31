@@ -10,4 +10,6 @@
 
 @interface EventSummaryTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *content;
 @end

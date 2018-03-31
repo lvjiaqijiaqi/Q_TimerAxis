@@ -10,4 +10,6 @@
 
 @interface NSDate (Extension)
 
++(NSString *)dateToString:(NSDate *)date;
+
 @end

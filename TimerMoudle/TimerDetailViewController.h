@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Q_TimeLine+CoreDataProperties.h"
+#import "Q_Event+CoreDataClass.h"
 
 @interface TimerDetailViewController : UIViewController
+
+@property(nonatomic,strong) Q_Event *event;
 
 @end

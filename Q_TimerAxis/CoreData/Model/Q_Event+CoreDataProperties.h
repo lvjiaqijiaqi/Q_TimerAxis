@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) double progress;
 @property (nullable, nonatomic, copy) NSDate *deadLine;
 @property (nullable, nonatomic, copy) NSDate *lastUpdate;
+@property (nullable, nonatomic, copy) NSDate *startDate;
 @property (nullable, nonatomic, retain) NSSet<Q_TimeLine *> *timeLine;
 
 @end

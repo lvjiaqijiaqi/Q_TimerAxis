@@ -6,8 +6,8 @@
 //  Copyright © 2018年 jqlv. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface EventViewController : UITableViewController
+@interface EventViewController : CoreDataTableViewController
 
 @end

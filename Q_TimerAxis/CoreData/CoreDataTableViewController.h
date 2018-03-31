@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Q_coreDataHelper.h"
 
-@interface CoreDataTableViewController : UITableViewController
+@interface CoreDataTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *frc;
+- (void)performFetch;
 
 @end

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="Q_Event" representedClassName="Q_Event" syncable="YES" codeGenerationType="class">
-        <attribute name="lastUpdateDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="schedule" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+    <entity name="Q_Event" representedClassName="Q_Event" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deadLine" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="timeLine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Q_TimeLine" inverseName="event" inverseEntity="Q_TimeLine" syncable="YES"/>
     </entity>
-    <entity name="Q_TimeLine" representedClassName="Q_TimeLine" syncable="YES" codeGenerationType="class">
+    <entity name="Q_TimeLine" representedClassName="Q_TimeLine" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Q_Event" syncable="YES"/>
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Q_Event" inverseName="timeLine" inverseEntity="Q_Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Q_Event" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Q_TimeLine" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Q_Event" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Q_TimeLine" positionX="198" positionY="0" width="128" height="105"/>
     </elements>
 </model>

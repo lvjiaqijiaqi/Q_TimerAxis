@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *content;
 @property (nullable, nonatomic, copy) NSDate *createDate;
 @property (nullable, nonatomic, retain) Q_Event *event;
+@property (nonatomic) double progress;
 
 @end
 

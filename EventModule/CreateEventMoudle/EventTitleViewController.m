@@ -10,18 +10,39 @@
 
 @interface EventTitleViewController ()
 
+@property(nonatomic,strong) UITextField *textField;
+
 @end
 
 @implementation EventTitleViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"计划名称";
+    
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 20, CGRectGetWidth(self.view.frame) - 20, 44)];
+    textField.borderStyle = UITextBorderStyleLine;
+    textField.enabled = YES;
+    textField.placeholder = @"请填写计划名称";
+    self.textField = textField;
+    [self.view addSubview:textField];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.textField becomeFirstResponder];
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [self.textField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self.model.title = self.textField.text;
 }
 
 /*

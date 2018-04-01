@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Q_coreDataHelper.h"
 
-@interface CoreDataTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface CoreDataTableViewController : UIViewController<NSFetchedResultsControllerDelegate,UITableViewDelegate,UITableViewDataSource>
 
+@property (strong,nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSFetchedResultsController *frc;
+
 - (void)performFetch;
 
 @end

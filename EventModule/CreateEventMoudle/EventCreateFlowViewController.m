@@ -10,6 +10,7 @@
 #import "EventCreateStepViewController.h"
 #import "Q_coreDataHelper.h"
 #import "Q_Event+CoreDataClass.h"
+#import "Q_UIConfig.h"
 
 @interface EventCreateFlowViewController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 
@@ -45,9 +46,10 @@
     self.navigationBar.translucent = NO;
     self.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:17],
                                                NSKernAttributeName:[NSNumber numberWithInteger:2],
-                                               NSForegroundColorAttributeName:[UIColor colorWithRed:18.0/255 green:150.0/255 blue:219.0/255 alpha:1]
+                                               NSForegroundColorAttributeName:[UIColor whiteColor]
                                                };
-    self.navigationBar.tintColor = [UIColor colorWithRed:18.0/255 green:150.0/255 blue:219.0/255 alpha:1];
+    self.navigationBar.barTintColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+    self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(EventCreateStepViewController *)viewController animated:(BOOL)animated{
@@ -87,8 +89,12 @@
 -(void)completeEventCreate{
     
     Q_Event *event = [NSEntityDescription insertNewObjectForEntityForName:@"Q_Event" inManagedObjectContext:[Q_coreDataHelper shareInstance].managedContext];
-    NSError *error = nil;
-    
+    event.title = self.model.title;
+    event.startDate = self.model.startDate;
+    event.lastUpdate = self.model.startDate;
+    event.body = self.model.content;
+    //NSError *error = nil;
+    [[Q_coreDataHelper shareInstance] saveContext];
     [self BackEdit];
 }
 

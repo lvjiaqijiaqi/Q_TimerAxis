@@ -7,6 +7,7 @@
 //
 
 #import "CalendarManagerController.h"
+#import "Q_UIConfig.h"
 
 @interface CalendarManagerController()<JTCalendarDelegate>{
     
@@ -25,10 +26,6 @@
 {
     self = [super init];
     if (self) {
-        //self.calendarManager = [JTCalendarManager new];
-        //self.calendarManager.delegate = self;
-        //self.dateSelected = [NSDate date];
-        //self.todayDate = [NSDate date];
     }
     return self;
 }
@@ -54,14 +51,14 @@
     // Today
     if([_calendarManager.dateHelper date:[NSDate date] isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;
-        dayView.circleView.backgroundColor = [UIColor blueColor];
-        dayView.dotView.backgroundColor = [UIColor whiteColor];
+        dayView.circleView.backgroundColor = [Q_UIConfig shareInstance].generalButtonNormalColor;
+        dayView.dotView.backgroundColor = [Q_UIConfig shareInstance].generalButtonNormalColor;
         dayView.textLabel.textColor = [UIColor whiteColor];
     }
     // Selected date
     else if(_dateSelected && [_calendarManager.dateHelper date:_dateSelected isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;
-        dayView.circleView.backgroundColor = [UIColor redColor];
+        dayView.circleView.backgroundColor = [Q_UIConfig shareInstance].generalButtonSelectedColor;
         dayView.dotView.backgroundColor = [UIColor whiteColor];
         dayView.textLabel.textColor = [UIColor whiteColor];
     }
@@ -135,10 +132,8 @@
 - (void)createMinAndMaxDate
 {
     _todayDate = [NSDate date];
-    
     // Min date will be 2 month before today
     _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
-    
     // Max date will be 2 month after today
     _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:2];
 }

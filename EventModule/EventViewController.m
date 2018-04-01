@@ -8,6 +8,7 @@
 
 #import "EventViewController.h"
 #import "EventCreateFlowViewController.h"
+#import "Q_UIConfig.h"
 
 #import "Q_coreDataHelper.h"
 #import "Q_Event+CoreDataClass.h"
@@ -15,13 +16,19 @@
 #import "NSDate+Extension.h"
 #import "TimerViewController.h"
 
-@interface EventViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface EventViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *controllView;
 @property(nonatomic,strong) NSIndexPath *selectIndexPath;
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
 
 @implementation EventViewController
+
+-(UITableView *)tableView{
+    return self.myTableView;
+}
 
 -(void)configureFetch{
     NSFetchRequest *request = [Q_Event fetchRequest];
@@ -29,10 +36,14 @@
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[Q_coreDataHelper shareInstance].managedContext sectionNameKeyPath:nil cacheName:nil];
     self.frc.delegate = self;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
+    self.myTableView.backgroundColor = [UIColor clearColor];
+    self.controllView.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
     self.navigationItem.title = @"我的计划";
+    self.myTableView.delegate = self;
+    self.myTableView.dataSource = self;
     [self configureFetch];
 }
 
@@ -63,7 +74,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Add Event Segue"])
     {
-        EventCreateFlowViewController *eventDetailVC = segue.destinationViewController;
+        //EventCreateFlowViewController *eventDetailVC = segue.destinationViewController;
     }else if([segue.identifier isEqualToString:@"Event Detail Segue"]){//Event Detail Segue
         TimerViewController *timerVC = segue.destinationViewController;
         timerVC.event = [self.frc objectAtIndexPath:self.selectIndexPath];

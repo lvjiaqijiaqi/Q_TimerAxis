@@ -122,7 +122,7 @@
     }
     [dateFormatter setDateFormat:self.dayFormat];
 
-    _textLabel.text = [ dateFormatter stringFromDate:_date];       
+    _textLabel.text = [ dateFormatter stringFromDate:_date];
     [_manager.delegateManager prepareDayView:self];
 }
 

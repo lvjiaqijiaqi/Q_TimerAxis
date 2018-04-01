@@ -9,6 +9,7 @@
 #import "EventCreateStartDateViewController.h"
 #import "JTCalendar.h"
 #import "CalendarManagerController.h"
+#import "Q_UIConfig.h"
 
 @interface EventCreateStartDateViewController ()
 
@@ -23,8 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"开始日期";
-    self.calendarContentView = [[JTHorizontalCalendarView alloc] initWithFrame:CGRectMake(0,60, self.view.frame.size.width,300)];
+    self.calendarContentView = [[JTHorizontalCalendarView alloc] initWithFrame:CGRectMake(0,40, self.view.frame.size.width,350)];
     self.calendarMenuView = [[JTCalendarMenuView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+    self.calendarMenuView.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
     
     [self.view addSubview:self.calendarContentView];
     [self.view addSubview:self.calendarMenuView];

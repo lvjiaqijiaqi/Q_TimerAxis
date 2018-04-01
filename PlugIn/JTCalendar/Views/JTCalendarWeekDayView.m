@@ -6,7 +6,7 @@
 //
 
 #import "JTCalendarWeekDayView.h"
-
+#import "Q_UIConfig.h"
 #import "JTCalendarManager.h"
 
 #define NUMBER_OF_DAY_BY_WEEK 7.
@@ -47,8 +47,8 @@
         [dayViews addObject:label];
         
         label.textAlignment = NSTextAlignmentCenter;
-        label.textColor = [UIColor colorWithRed:152./256. green:147./256. blue:157./256. alpha:1.];
-        label.font = [UIFont systemFontOfSize:11];
+        label.textColor = [Q_UIConfig shareInstance].generalCellTitleFontColor;
+        label.font = [UIFont boldSystemFontOfSize:15];
     }
     
     _dayViews = dayViews;
@@ -92,10 +92,18 @@
             [days addObject:day];
         }
     }
-    
+    /* 修改中文 */
+    NSDictionary *weeksTitlesCN = @{@"SUN":@"日",
+                                    @"MON":@"一",
+                                    @"TUE":@"二",
+                                    @"WED":@"三",
+                                    @"THU":@"四",
+                                    @"FRI":@"五",
+                                    @"SAT":@"六"
+                                    };
     for(int i = 0; i < NUMBER_OF_DAY_BY_WEEK; ++i){
         UILabel *label =  _dayViews[i];
-        label.text = days[i];
+        label.text = weeksTitlesCN[days[i]];
     }
 }
 

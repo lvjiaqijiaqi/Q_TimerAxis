@@ -7,6 +7,7 @@
 //
 
 #import "EventCreateContentViewController.h"
+#import "Q_UIConfig.h"
 
 @interface EventCreateContentViewController ()
 
@@ -19,10 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"计划内容";
-    
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 20, CGRectGetWidth(self.view.frame) - 20, 44)];
-    textView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
+    self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.view.frame) , 200)];
+    textView.contentInset = UIEdgeInsetsMake(5, 5, 0, 0);
+    textView.backgroundColor = [UIColor whiteColor];
+    textView.font = [UIFont systemFontOfSize:14];
     self.textView = textView;
+    
+    self.textView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.textView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.textView.layer.shadowRadius = 1;
+    self.textView.layer.shadowOpacity= 0.4;
+    self.textView.clipsToBounds = NO;
+    
     [self.view addSubview:textView];
     
     // Do any additional setup after loading the view.

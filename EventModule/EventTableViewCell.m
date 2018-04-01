@@ -7,12 +7,27 @@
 //
 
 #import "EventTableViewCell.h"
+#import "Q_UIConfig.h"
 
 @implementation EventTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.containerView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.containerView.layer.shadowOffset = CGSizeMake(2, 2);
+    self.containerView.layer.shadowRadius = 2;
+    self.containerView.layer.shadowOpacity= 0.2;
+    self.containerView.layer.cornerRadius = 4;
+    
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor clearColor];
+    
+    self.titleLabel.textColor = [Q_UIConfig shareInstance].generalCellTitleFontColor;
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    
+    self.bodyLabel.font = [UIFont systemFontOfSize:16];
+    self.bodyLabel.textColor =  [Q_UIConfig shareInstance].generalCellBodyFontColor;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

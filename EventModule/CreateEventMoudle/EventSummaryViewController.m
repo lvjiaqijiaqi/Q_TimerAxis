@@ -11,6 +11,7 @@
 #import "EventCreateFlowViewController.h"
 
 #import "NSDate+Extension.h"
+#import "Q_UIConfig.h"
 
 @interface EventSummaryViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -25,7 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"确认计划";
+    self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     self.titles = @[@"开始时间",@"结束时间",@"标题",@"内容"];
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.contentView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(complete)];
 }
 

@@ -10,6 +10,7 @@
 
 @interface EventTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *processLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdateDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;

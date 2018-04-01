@@ -7,6 +7,7 @@
 //
 
 #import "Q_navigationController.h"
+#import "Q_UIConfig.h"
 
 @interface Q_navigationController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 
@@ -30,9 +31,10 @@
     self.navigationBar.translucent = NO;
     self.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:17],
                                                NSKernAttributeName:[NSNumber numberWithInteger:2],
-                                               NSForegroundColorAttributeName:[UIColor colorWithRed:18.0/255 green:150.0/255 blue:219.0/255 alpha:1]
+                                               NSForegroundColorAttributeName:[UIColor whiteColor]
                                                };
-    self.navigationBar.tintColor = [UIColor colorWithRed:18.0/255 green:150.0/255 blue:219.0/255 alpha:1];
+    self.navigationBar.barTintColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+    self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 -(UIBarButtonItem *)navBackBtn{

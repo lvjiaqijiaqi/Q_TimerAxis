@@ -111,4 +111,25 @@ static Q_UIConfig *defaultConfig = nil;
 -(UIColor *)generalBackgroundColor{
     return [self defaultColor:@"generalBackgroundColor"];
 }
+-(UIFont *)generalTitleFont{
+    return [UIFont boldSystemFontOfSize:16];
+}
+-(UIFont *)generalFont{
+    return [UIFont boldSystemFontOfSize:14];
+}
+-(NSDictionary *)generalEditAttributes{
+    static NSDictionary *attributes;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableParagraphStyle *pStyle = [[NSMutableParagraphStyle alloc] init];
+        pStyle.alignment = NSTextAlignmentLeft;
+        pStyle.lineSpacing = 2;
+        pStyle.paragraphSpacing = 5;
+        attributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:15],
+                       NSForegroundColorAttributeName : self.generalCellBodyFontColor,
+                       NSParagraphStyleAttributeName : pStyle
+                       };
+    });
+    return attributes;
+}
 @end

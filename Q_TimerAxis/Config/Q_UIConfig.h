@@ -19,4 +19,9 @@
 -(UIColor *)generalCellTitleFontColor;
 -(UIColor *)generalButtonSelectedColor;
 -(UIColor *)generalButtonNormalColor;
+
+-(UIFont *)generalTitleFont;
+-(UIFont *)generalFont;
+-(NSDictionary *)generalEditAttributes;
+
 @end

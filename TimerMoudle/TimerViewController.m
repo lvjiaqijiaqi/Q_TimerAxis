@@ -11,12 +11,20 @@
 #import "TimeLineTableViewCell.h"
 #import "NSDate+Extension.h"
 #import "TimerDetailViewController.h"
+#import "Q_UIConfig.h"
 
 @interface TimerViewController ()
+
+@property (weak, nonatomic) IBOutlet UITableView *contentView;
+
 
 @end
 
 @implementation TimerViewController
+
+-(UITableView *)tableView{
+    return self.contentView;
+}
 
 -(void)configureFetch{
     NSFetchRequest *request = [Q_TimeLine fetchRequest];
@@ -29,9 +37,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.separatorColor = [UIColor clearColor];
-    self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.contentView.delegate = self;
+    self.contentView.dataSource = self;
+    
+    self.contentView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.contentView.separatorColor = [UIColor clearColor];
+    self.contentView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
     
     [self configureFetch];
     

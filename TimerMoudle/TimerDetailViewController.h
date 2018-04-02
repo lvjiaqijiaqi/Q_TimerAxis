@@ -13,5 +13,6 @@
 @interface TimerDetailViewController : UIViewController
 
 @property(nonatomic,strong) Q_Event *event;
+@property(nonatomic,strong) Q_TimeLine *timeLine;
 
 @end

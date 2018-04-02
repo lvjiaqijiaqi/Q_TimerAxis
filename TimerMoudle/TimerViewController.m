@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *contentView;
 
-
+@property (strong, nonatomic) NSIndexPath *selectIndexPath;
 @end
 
 @implementation TimerViewController
@@ -80,7 +80,18 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectIndexPath = indexPath;
+}
+
 #pragma mark - Table view data source
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"Modify TimeLine Segue"]) {
+        TimerDetailViewController *timerDetailViewController = segue.destinationViewController;
+        timerDetailViewController.timeLine = [self.frc objectAtIndexPath:self.selectIndexPath];
+    }
+}
 
 #pragma mark - SEGUE
 

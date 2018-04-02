@@ -52,6 +52,8 @@
     
     self.orderSignIndex = [NSMutableArray array];
     self.unOrderSignIndex = [NSMutableArray array];
+    
+     [self initDefaultConfigration];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -64,15 +66,36 @@
     self.processLabel.text = [NSString stringWithFormat:@"%.0f%%", slider.value * 100];
 }
 
+-(void)initDefaultConfigration{
+    if (self.timeLine) {
+        self.contentView.text = self.timeLine.content;
+        self.processSlider.value = self.timeLine.progress;
+    }
+}
+
 -(void)cancel{
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)complete{
-    Q_TimeLine *timeLine = [NSEntityDescription insertNewObjectForEntityForName:@"Q_TimeLine" inManagedObjectContext:[Q_coreDataHelper shareInstance].managedContext];
-    timeLine.event = self.event;
-    timeLine.content = self.contentView.text;
-    timeLine.createDate = [NSDate date];
-    [[Q_coreDataHelper shareInstance] saveContext];
+    if (self.timeLine) {
+        self.timeLine.progress = self.processSlider.value;
+        self.timeLine.content = self.contentView.text;
+        
+        self.event.lastUpdate = [NSDate date];
+        self.event.progress = self.timeLine.progress;
+        
+    }else{
+        Q_TimeLine *timeLine = [NSEntityDescription insertNewObjectForEntityForName:@"Q_TimeLine" inManagedObjectContext:[Q_coreDataHelper shareInstance].managedContext];
+        timeLine.progress = self.processSlider.value;
+        timeLine.event = self.event;
+        timeLine.content = self.contentView.text;
+        timeLine.createDate = [NSDate date];
+        
+        self.event.lastUpdate = timeLine.createDate;
+        self.event.progress = timeLine.progress;
+        
+        [[Q_coreDataHelper shareInstance] saveContext];
+    }
     
     [self.navigationController popViewControllerAnimated:YES];
 }

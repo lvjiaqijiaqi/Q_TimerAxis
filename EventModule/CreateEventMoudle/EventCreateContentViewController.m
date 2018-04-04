@@ -8,6 +8,7 @@
 
 #import "EventCreateContentViewController.h"
 #import "Q_UIConfig.h"
+#import "UIAlertController+Q_Alert.h"
 
 @interface EventCreateContentViewController ()
 
@@ -54,7 +55,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     self.model.content = self.textView.text;
 }
-
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if (self.textView.text.length == 0) {
+        UIAlertController *alert = [UIAlertController createAlertWithTitle:@"错误" massage:@"内容不能为空" ok:^{
+            
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+        return NO;
+    }
+    return YES;
+}
 
 /*
 #pragma mark - Navigation

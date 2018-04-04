@@ -48,7 +48,7 @@
     [self configureFetch];
     
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewTimeLine)];
-    UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"editIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewTimeLine)];
+    UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"editIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(enterEdit)];
     
     self.navigationItem.rightBarButtonItems = @[addItem,editItem];
     self.navigationItem.title = @"计划时间轴";
@@ -76,7 +76,7 @@
     Q_TimeLine *timeLine = [self.frc objectAtIndexPath:indexPath];
     cell.contentTextView.text =  timeLine.content;
     cell.lastUpdateLabel.text = [NSDate dateToString:[timeLine createDate]];
-    cell.processLabel.text = [NSString stringWithFormat:@"%.1f%%",timeLine.progress];
+    cell.processLabel.text = [NSString stringWithFormat:@"%.0f%%",timeLine.progress * 100];
     return cell;
 }
 
@@ -102,4 +102,25 @@
     return 100.f;
 }
 
+-(void)enterEdit{
+    [self.contentView setEditing:!self.contentView.isEditing animated:YES];
+}
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return UITableViewCellEditingStyleDelete;//删除模式
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewRowAction *rowAction =  [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        Q_TimeLine *timeLine = [self.frc objectAtIndexPath:indexPath];
+        [[Q_coreDataHelper shareInstance].managedContext deleteObject:timeLine];
+    }];
+    rowAction.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+    return @[rowAction];
+}
 @end

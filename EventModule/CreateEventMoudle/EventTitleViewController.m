@@ -8,7 +8,7 @@
 
 #import "EventTitleViewController.h"
 #import "Q_UIConfig.h"
-
+#import "UIAlertController+Q_Alert.h"
 @interface EventTitleViewController ()
 
 @property(nonatomic,strong) UITextField *textField;
@@ -54,6 +54,16 @@
     self.model.title = self.textField.text;
 }
 
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if (self.textField.text.length == 0) {
+        UIAlertController *alert = [UIAlertController createAlertWithTitle:@"错误" massage:@"标题不能为空" ok:^{
+            
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+        return NO;
+    }
+    return YES;
+}
 /*
 #pragma mark - Navigation
 

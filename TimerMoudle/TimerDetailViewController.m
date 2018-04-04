@@ -48,12 +48,13 @@
     [self.processSlider addTarget:self action:@selector(eventProcessChange:) forControlEvents:UIControlEventValueChanged];// 针对值变化添加响应方法
     
     [self.unOrderSignBtn addTarget:self action:@selector(insertUnOrderSign) forControlEvents:UIControlEventTouchDown];
-   [self.orderSignBtn addTarget:self action:@selector(insertOrderSign) forControlEvents:UIControlEventTouchDown];
+  // [self.orderSignBtn addTarget:self action:@selector(insertOrderSign) forControlEvents:UIControlEventTouchDown];
     
     self.orderSignIndex = [NSMutableArray array];
     self.unOrderSignIndex = [NSMutableArray array];
     
      [self initDefaultConfigration];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -67,9 +68,10 @@
 }
 
 -(void)initDefaultConfigration{
+    self.processSlider.value = self.event.progress;
+    self.processLabel.text = [NSString stringWithFormat:@"%.0f%%",self.event.progress * 100];
     if (self.timeLine) {
         self.contentView.text = self.timeLine.content;
-        self.processSlider.value = self.timeLine.progress;
     }
 }
 
@@ -129,19 +131,18 @@
     [self.orderSignIndex insertObject:[NSValue valueWithRange:NSMakeRange(signRange.location, signRange.length)] atIndex:currentIndex];
     
     [self adjustSignInTextFroRange:NSMakeRange(signRange.location, signRange.length)];
-    
     self.contentView.selectedRange = NSMakeRange(signRange.location + signRange.length, 0);
     
 }
 -(void)insertUnOrderSign{
-    NSString *OrderSign = @"\n*";
+    NSString *OrderSign = @"\n#.";
     NSRange signRange = self.contentView.selectedRange;
     [self.contentView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:OrderSign attributes:[Q_UIConfig shareInstance].generalEditAttributes] atIndex:signRange.location];
 
-    [self.unOrderSignIndex addObject:[NSValue valueWithRange:NSMakeRange(signRange.location, signRange.length)]];
-    [self adjustSignInTextFroRange:NSMakeRange(signRange.location, signRange.length)];
+    //[self.unOrderSignIndex addObject:[NSValue valueWithRange:NSMakeRange(signRange.location, signRange.length)]];
+    //[self adjustSignInTextFroRange:NSMakeRange(signRange.location, signRange.length)];
     
-    self.contentView.selectedRange = NSMakeRange(signRange.location + signRange.length, 0);
+    self.contentView.selectedRange = NSMakeRange(signRange.location + OrderSign.length, 0);
 }
 
 -(void)adjustSignInTextFroRange:(NSRange)range{

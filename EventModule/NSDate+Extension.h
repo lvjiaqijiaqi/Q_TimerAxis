@@ -11,5 +11,7 @@
 @interface NSDate (Extension)
 
 +(NSString *)dateToString:(NSDate *)date;
+-(BOOL)laterThanDate:(NSDate *)date;
++(int)compareOneDay:(NSDate *)oneDay withAnotherDay:(NSDate *)anotherDay;
 
 @end

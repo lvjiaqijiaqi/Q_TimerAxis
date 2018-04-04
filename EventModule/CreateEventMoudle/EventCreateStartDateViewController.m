@@ -10,6 +10,8 @@
 #import "JTCalendar.h"
 #import "CalendarManagerController.h"
 #import "Q_UIConfig.h"
+#import "UIAlertController+Q_Alert.h"
+#import "NSDate+Extension.h"
 
 @interface EventCreateStartDateViewController ()
 
@@ -44,10 +46,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     self.model.startDate = self.calendarManagerController.dateSelected;
 }
 
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if (![self.calendarManagerController.dateSelected laterThanDate:[NSDate date]]) {
+        UIAlertController *alert = [UIAlertController createAlertWithTitle:@"提示" massage:@"创建的时间比当前时间早，是否继续" ok:^{
+            
+        } cancel:^{
+            
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    return YES;
+}
 /*
 #pragma mark - Navigation
 

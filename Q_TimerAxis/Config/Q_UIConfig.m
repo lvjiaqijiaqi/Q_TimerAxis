@@ -70,12 +70,12 @@ static Q_UIConfig *defaultConfig = nil;
                @"#87CEEB" : [UIColor colorWithR:135 G:206 B:235],
                @"SkyBlue" : [UIColor colorWithR:135 G:206 B:235],//天蓝色
                @"#f4f4f4" : [UIColor colorWithR:225 G:245 B:254],
-               @"generalBackgroundColor" : [UIColor colorWithR:240 G:255 B:255],//天蓝色
+               @"generalBackgroundColor" : [UIColor colorWithR:245 G:245 B:245],//天蓝色
                @"#B3E5FC" : [UIColor colorWithR:179 G:229 B:252],
                @"generalCellBackgroundColor" : [UIColor colorWithR:179 G:229 B:252],//天蓝色
                @"#1E90FF" : [UIColor colorWithR:30 G:144 B:255],
-               @"generalNavgroundColor" : [UIColor colorWithR:0 G:191 B:255],
-               @"generalCellTitleColor" : [UIColor colorWithR:0 G:191 B:255],
+               @"generalNavgroundColor" : [UIColor colorWithR:152 G:204 B:255],
+               @"generalCellTitleColor" : [UIColor colorWithR:0 G:0 B:0],
                @"generalCellBodyColor" : [UIColor colorWithR:128 G:128 B:128],
                @"generalCellSubTitleFont" : [UIColor colorWithR:169 G:169 B:169],
                @"generalNavTitleFontColor" : [UIColor whiteColor],

@@ -6,7 +6,7 @@
 //  Copyright © 2018年 jqlv. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, WD_QTableCellType) {
     WD_QTableCellTypeCellUnknown,

@@ -85,7 +85,7 @@
     EditTableCell* _cell = (EditTableCell *)cell;
     _cell.backgroundColor  =  [Q_UIConfig shareInstance].generalBackgroundColor;
     _cell.mainLabel.font = [UIFont systemFontOfSize:14];;
-    _cell.mainLabel.textColor = [UIColor whiteColor];
+    _cell.mainLabel.textColor = [UIColor blackColor];
     _cell.mainLabel.text = model.title;
 }
 -(void)constructSectionSupplementary:(UICollectionReusableView *)cell By:(WD_QTableModel *)model

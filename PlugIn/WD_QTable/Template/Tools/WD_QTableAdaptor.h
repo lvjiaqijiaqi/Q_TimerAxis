@@ -9,34 +9,26 @@
 #import <UIKit/UIKit.h>
 #import "WD_QTableDefaultStyleConstructor.h"
 #import "WD_QTableAutoLayoutConstructor.h"
-#import "WD_QViewModel.h"
+#import "WD_QTableChangeDelegate.h"
 
 typedef NS_ENUM(NSUInteger, WD_QTableCellIdx) {
     WD_QTableCellIdxItem,
     WD_QTableCellIdxLeading,
     WD_QTableCellIdxHeading,
 };
-
-
-@protocol WD_QTableAdaptorDelegate<NSObject>
-
--(void)commitChange:(WD_QViewModel *)models FromIndex:(NSInteger)index;
-
-@end
-
 @class WD_QTableDefaultViewCell;
 
-@interface WD_QTableAdaptor : NSObject<WD_QTableAdaptorDelegate>
+@interface WD_QTableAdaptor : NSObject<WD_QTableChangeDelegate>
 
-@property (nonatomic, strong) id<WD_QTableDefaultStyleConstructorDelegate> styleConstructor;
+@property (nonatomic, strong) id<WD_QTableStyleConstructorDelegate> styleConstructor;
 @property (nonatomic, strong) WD_QTableAutoLayoutConstructor* layoutConstructor;
 
 @property (nonatomic, assign) CGFloat MaxRowW;
-@property (nonatomic, assign) CGFloat MinxRowW;
+@property (nonatomic, assign) CGFloat MinRowW;
 @property (nonatomic, assign) CGFloat defaultRowH;
 
 
--(instancetype)initWithTableStyle:(id<WD_QTableDefaultStyleConstructorDelegate>)style ToLayout:(WD_QTableAutoLayoutConstructor *)layout;
+-(instancetype)initWithTableStyle:(id<WD_QTableStyleConstructorDelegate>)style ToLayout:(WD_QTableAutoLayoutConstructor *)layout;
 
 -(CGFloat)adjustWidthForOriginWidth:(CGFloat)originWidth ByExtraWidth:(CGFloat)extraWidth;
 -(CGFloat)fitRowHeightToColsWidth:(NSMutableArray<NSNumber *> *)adjustFitWidths ByRowModel:(NSArray<WD_QTableModel *> *)models ForType:(NSInteger)type AtRowId:(NSInteger)rowId FromCol:(NSInteger)colId;

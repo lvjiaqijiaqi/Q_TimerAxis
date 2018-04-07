@@ -13,11 +13,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.containerView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.containerView.layer.shadowOffset = CGSizeMake(2, 2);
-    self.containerView.layer.shadowRadius = 2;
-    self.containerView.layer.shadowOpacity= 0.2;
-    self.containerView.layer.cornerRadius = 4;
+    /*self.containerView.layer.shadowColor = [Q_UIConfig shareInstance].generalNavgroundColor.CGColor;
+    self.containerView.layer.shadowOffset = CGSizeMake(0, 0.5);
+    self.containerView.layer.shadowRadius = 1;
+    self.containerView.layer.shadowOpacity= 1;
+    self.containerView.layer.cornerRadius = 4;*/
     
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor clearColor];

@@ -73,6 +73,9 @@ titleForHeaderInSection:(NSInteger)section {
     return [self.frc sectionIndexTitles];
 }
 
+
+
+
 #pragma mark - DELEGATE: NSFetchedResultsController
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     if (debug) {
@@ -102,6 +105,12 @@ titleForHeaderInSection:(NSInteger)section {
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
                           withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeMove:
+            
+            break;
+        case NSFetchedResultsChangeUpdate:
+            
             break;
     }
 }
@@ -143,4 +152,6 @@ titleForHeaderInSection:(NSInteger)section {
             break;
     }
 }
+
+
 @end

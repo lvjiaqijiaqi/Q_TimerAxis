@@ -10,21 +10,27 @@
 #import "WD_QTableHeader.h"
 #import "EditTableStyleConstructor.h"
 #import "Q_UIConfig.h"
+#import "PlanEditViewController.h"
 
 @interface PlanDetailViewController ()
 
-@property(nonatomic,strong) WD_QFitTable *table;
+@property(nonatomic,strong) WD_QTable *table;
 
 @end
 
 @implementation PlanDetailViewController
 
--(WD_QFitTable *)table{
+-(WD_QTable *)table{
     if (!_table) {
-        WD_QTableDefaultLayoutConstructor *config =  [[WD_QTableDefaultLayoutConstructor alloc] init];
+        WD_QTableAutoLayoutConstructor *config =  [[WD_QTableAutoLayoutConstructor alloc] init];
         EditTableStyleConstructor *style = [[EditTableStyleConstructor alloc] init];
-        _table = [[WD_QFitTable alloc] initWithLayoutConfig:config StyleConstructor:style];
-        config.inset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _table = [[WD_QTable alloc] initWithLayoutConfig:config StyleConstructor:style];
+        WD_QTableAdaptor *adaptor = [[WD_QTableAdaptor alloc] initWithTableStyle:style ToLayout:config];
+        adaptor.MinRowW = 100.f;
+        adaptor.MaxRowW = 150.f;
+        adaptor.defaultRowH = 60.f;
+        _table.autoLayoutHandle = adaptor;
+        config.inset = UIEdgeInsetsMake(50, 0 , 0, 0);
         _table.needTranspostionForModel = YES;
     }
     return _table;
@@ -40,8 +46,21 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     
+    UILabel *tipsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width, 20)];
+    tipsLabel.textColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+    tipsLabel.text = @"Tips:长按表头可编辑行列(增删)，点击表格可修改内容";
+    tipsLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:tipsLabel];
+    
+    UITextField *titleLabel = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    titleLabel.textColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+    titleLabel.text = @"";
+    titleLabel.placeholder = @"请输入计划表名称";
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    
     [self.view addSubview:self.table.view];
-    self.table.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.table.view.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+    [self.table setHeadView:titleLabel];
     __weak typeof(self) weakSelf = self;
     
     /*self.table.didLongPressItemBlock = ^(NSInteger row, NSInteger col, WD_QTableModel *model) {
@@ -55,44 +74,52 @@
     self.table.didLongPressHeadingBlock = ^(NSIndexPath *indexPath) {
         [weakSelf createRowEnumAtCol:indexPath.item];
     };
-    
+    self.table.didSelectItemBlock = ^(NSInteger row, NSInteger col, WD_QTableModel *model) {
+        PlanEditViewController *planEditViewController = [[PlanEditViewController alloc] init];
+        planEditViewController.editModel = model;
+        planEditViewController.editSuccess = ^(WD_QTableModel *editModel) {
+            [weakSelf.table updateItem:editModel AtCol:col InRow:row];
+        };
+        [weakSelf showViewController:planEditViewController sender:nil];
+    };
     [self loadData];
     
-    UIBarButtonItem *addRowBtn = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(insertRowNew:)];
-    UIBarButtonItem *addColBtn = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(insertColNew:)];
-    
-    self.navigationItem.rightBarButtonItems = @[addRowBtn,addColBtn];
+    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePlan:)];
+    self.navigationItem.rightBarButtonItems = @[saveBtn];
     
 }
-
+-(void)savePlan:(id)sender{
+    
+}
+/*
 -(void)insertRowNew:(id)sender{
     [self.table insertEmptyRowAtRow:0];
 }
 -(void)insertColNew:(id)sender{
     [self.table insertEmptyColAtCol:0];
 }
-
+*/
 -(void)loadData{
     
-    NSInteger rowNum = 1;
-    NSInteger colNum = 1;
+    NSInteger rowNum = 2;
+    NSInteger colNum = 2;
     
     WD_QTableModel *mainModel = [[WD_QTableModel alloc] init];
-    mainModel.title = @"Main";
+    mainModel.title = @"";
     
     NSMutableArray<WD_QTableModel *> *leadings = [NSMutableArray array];
     for (NSInteger i = 0; i < rowNum; i++) {
         WD_QTableModel *model = [[WD_QTableModel alloc] init];
-        model.title = @"Leading";
+        model.title = @"";
         [leadings addObject:model];
     }
     WD_QTableModel *sectionModel = [[WD_QTableModel alloc] init];
-    sectionModel.title = @"Section";
+    sectionModel.title = @"";
     
     NSMutableArray<WD_QTableModel *> *headings = [NSMutableArray array];
     for (NSInteger i = 0; i < colNum; i++) {
         WD_QTableModel *model = [[WD_QTableModel alloc] init];
-        model.title = @"Heading";
+        model.title = @"";
         [headings addObject:model];
     }
     
@@ -101,7 +128,7 @@
         NSMutableArray *rowArr = [NSMutableArray array];
         for (NSInteger col = 0; col < colNum; col++) {
             WD_QTableModel *model = [[WD_QTableModel alloc] init];
-            model.title = @"Item";
+            model.title = @"";
             [rowArr addObject:model];
         }
         [data addObject:rowArr];
@@ -124,7 +151,7 @@
         [weakSelf.table insertEmptyRowAtRow:rowId + 1];
     }];
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [weakSelf.table deleteRowAtRow:rowId];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
@@ -149,7 +176,7 @@
         [weakSelf.table insertEmptyColAtCol:colId + 1];
     }];
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [weakSelf.table deleteColAtCol:colId];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         

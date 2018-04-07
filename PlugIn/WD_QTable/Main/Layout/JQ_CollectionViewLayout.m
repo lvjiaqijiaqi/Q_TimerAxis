@@ -98,6 +98,11 @@ typedef NS_ENUM(NSInteger, CellzIndexLevel) {
     
 }
 
+-(void)updateLayout{
+    self.invalidContext = [[JQ_CollectionViewLayoutInvalidationContext alloc] init];
+    [self invalidateLayout];
+}
+
 -(void)invalidLayoutAtRow:(NSInteger)rowIdx InCol:(NSInteger)colIdx{
     
     NSInteger rows = self.rowsPosition.count;
@@ -267,6 +272,7 @@ typedef NS_ENUM(NSInteger, CellzIndexLevel) {
 -(void)prepareLayout{
     [super prepareLayout];
     self.boundSize = CGSizeMake([self ContentSizeWidth], [self ContentSizeHeight]);
+    self.invalidContext = [[JQ_CollectionViewLayoutInvalidationContext alloc] init];
 }
 -(CGSize)collectionViewContentSize{
     if (!CGSizeEqualToSize(CGSizeZero, self.boundSize)) {
@@ -276,24 +282,22 @@ typedef NS_ENUM(NSInteger, CellzIndexLevel) {
 }
 -(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
     if (!CGSizeEqualToSize(newBounds.size, self.boundSize)) {
-        
         /* 计算固定在顶部的Section */
         self.invalidContext.currentSection = [self.sectionIndexs indexLessThanOrEqualToIndex:[self rowIndexFromYCoordinate:newBounds.origin.y  + self.headingMarginToItem]];
-        
-        [self invalidateLayoutWithContext:[self invalidationContextForBoundsChange:newBounds]];
+        [self invalidateLayoutWithContext:self.invalidContext];
         return NO;
     }
     return YES;
 }
 -(UICollectionViewLayoutInvalidationContext *)invalidationContextForBoundsChange:(CGRect)newBounds{
-    if (!CGRectEqualToRect(newBounds, CGRectZero)){
+    /*if (!CGRectEqualToRect(newBounds, CGRectZero)){
         return self.invalidContext;
-    }
+    }*/
     return [super invalidationContextForBoundsChange:newBounds];
 }
 -(void)invalidateLayoutWithContext:(UICollectionViewLayoutInvalidationContext *)context{
     /* iphoneX 这个地方有问题 */
-    [super invalidateLayoutWithContext:[self invalidationContextForBoundsChange:self.collectionView.bounds]];
+    [super invalidateLayoutWithContext:context];
 }
 /*
 -(BOOL)shouldInvalidateLayoutForPreferredLayoutAttributes:(UICollectionViewLayoutAttributes *)preferredAttributes withOriginalAttributes:(UICollectionViewLayoutAttributes *)originalAttributes{

@@ -6,8 +6,8 @@
 //  Copyright © 2018年 jqlv. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "WD_QTableStyleConstructorDelegate.h"
 
-@interface EditTableStyleConstructor : NSObject
+@interface EditTableStyleConstructor : NSObject<WD_QTableStyleConstructorDelegate>
 
 @end

@@ -26,13 +26,13 @@
     self = [super init];
     if (self) {
         _MaxRowW = 150.f;
-        _MinxRowW = 60.f;
+        _MinRowW = 60.f;
         _defaultRowH = 40.f;
     }
     return self;
 }
 
--(instancetype)initWithTableStyle:(id<WD_QTableDefaultStyleConstructorDelegate>)style ToLayout:(WD_QTableAutoLayoutConstructor *)layout;
+-(instancetype)initWithTableStyle:(id<WD_QTableStyleConstructorDelegate>)style ToLayout:(WD_QTableAutoLayoutConstructor *)layout;
 {
     self = [self init];
     if (self) {
@@ -42,37 +42,33 @@
     }
     return self;
 }
-
--(void)commitChange:(WD_QViewModel *)models FromIndex:(NSInteger)index{
-    if (models.headings.count) {
-        [self commitHeadingChange:models.headings FromIndex:index];
-    }
-    if (models.leadings.count) {
-        [self commitLeadingChange:models.leadings FromIndex:index];
-    }
-    if (models.datas.count) {
-        [self commitDataChange:models.datas FromIndex:index];
-    }
-    /*表头和数据布局合并*/
-    self.layoutConstructor.colsW = [self mergeMaxValueToArr:self.layoutConstructor.colsW FromArr:self.layoutConstructor.HeadingsW];
-    self.layoutConstructor.RowsH = [self mergeMaxValueToArr:self.layoutConstructor.RowsH FromArr:self.layoutConstructor.LeadingsH];
-    
-    /* 贴边处理 */
-    __block CGFloat leadingsW = 0.f;
-    [self.layoutConstructor.LeadingsW enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        leadingsW += obj.floatValue;
-    }];
-    self.layoutConstructor.optmizeColsW = [self optimizeWidth:self.layoutConstructor.colsW ByContainerWidth:CGRectGetWidth(models.frame) - leadingsW];
-    
-    [self.reuseDic removeAllObjects];
-    
+-(void)commitChange{
+    // 表头和数据布局合并
+     self.layoutConstructor.colsW = [self mergeMaxValueToArr:self.layoutConstructor.colsW FromArr:self.layoutConstructor.HeadingsW];
+     self.layoutConstructor.RowsH = [self mergeMaxValueToArr:self.layoutConstructor.RowsH FromArr:self.layoutConstructor.LeadingsH];
+     
+     // 贴边处理
+     __block CGFloat leadingsW = 0.f;
+     [self.layoutConstructor.LeadingsW enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+     leadingsW += obj.floatValue;
+     }];
+    self.layoutConstructor.optmizeColsW = self.layoutConstructor.colsW;
+     //self.layoutConstructor.optmizeColsW = [self optimizeWidth:self.layoutConstructor.colsW ByContainerWidth:CGRectGetWidth(models.frame) - leadingsW];
+     //[self.reuseDic removeAllObjects];
 }
--(void)commitHeadingChange:(NSArray<NSArray<WD_QTableModel *> *> *)Headings FromIndex:(NSInteger)index{
-    if (Headings.count == 0) return;
+
+-(void)addHeadingChange:(NSArray<NSArray<WD_QTableModel *> *> *)Headings AtRange:(NSRange)range{
+    NSInteger index = range.location;
+    if (Headings.count == 0) {
+        [self.layoutConstructor.HeadingsH removeObjectAtIndex:index];
+        return;
+    }
     NSMutableArray<NSNumber *> *fitWidths = [NSMutableArray array];
     NSMutableArray<NSNumber *> *fitHeights = [NSMutableArray array];
-    if (index) {
+    if (self.layoutConstructor.HeadingsW.count) {
         fitWidths = [NSMutableArray arrayWithArray:self.layoutConstructor.HeadingsW];
+    }
+    if (self.layoutConstructor.HeadingsH.count) {
         fitHeights = [NSMutableArray arrayWithArray:self.layoutConstructor.HeadingsH];
     }
     NSInteger colsNum = [Headings lastObject].count;
@@ -80,8 +76,9 @@
     for (NSInteger i = fitHeights.count; i < level; i++) {
         [fitHeights addObject:[NSNumber numberWithFloat:self.defaultRowH]]; //预设
     }
+    [fitWidths removeObjectsInRange:range];
     for (NSInteger i = 0; i < colsNum ; i++) {
-        [fitWidths addObject:[NSNumber numberWithFloat:self.MinxRowW]]; //预设
+        [fitWidths insertObject:[NSNumber numberWithFloat:self.MinRowW] atIndex:i+index];
     }
     [Headings enumerateObjectsUsingBlock:^(NSArray<WD_QTableModel *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat height = [self fitRowHeightToColsWidth:fitWidths ByRowModel:obj ForType:WD_QTableCellIdxHeading AtRowId:idx FromCol:index];
@@ -90,20 +87,28 @@
     self.layoutConstructor.HeadingsW = fitWidths;
     self.layoutConstructor.HeadingsH = fitHeights;
 }
--(void)commitLeadingChange:(NSArray<NSArray<WD_QTableModel *> *> *)leadings FromIndex:(NSInteger)index{
+-(void)addLeadingChange:(NSArray<NSArray<WD_QTableModel *> *> *)leadings AtRange:(NSRange)range{
+    NSInteger index = range.location;
+    if (leadings.count == 0) {
+        [self.layoutConstructor.LeadingsW removeObjectAtIndex:index];
+        return;
+    }
     NSMutableArray<NSNumber *> *fitWidths = [NSMutableArray array];
     NSMutableArray<NSNumber *> *fitHeights = [NSMutableArray array];
-    if (index) {
+    if (self.layoutConstructor.LeadingsW.count) {
         fitWidths = [NSMutableArray arrayWithArray:self.layoutConstructor.LeadingsW];
+    }
+    if (self.layoutConstructor.LeadingsH.count) {
         fitHeights = [NSMutableArray arrayWithArray:self.layoutConstructor.LeadingsH];
     }
     NSInteger rowNum = [leadings lastObject].count;
     NSInteger level = leadings.count;
     for (NSInteger i = fitWidths.count; i < level; i++) {
-        [fitWidths addObject:[NSNumber numberWithFloat:self.MinxRowW]]; //预设
+        [fitWidths addObject:[NSNumber numberWithFloat:self.MinRowW]]; //预设
     }
+    [fitHeights removeObjectsInRange:range];
     for (NSInteger i = 0; i < rowNum ; i++) {
-        [fitHeights addObject:[NSNumber numberWithFloat:self.defaultRowH]]; //预设
+        [fitHeights insertObject:[NSNumber numberWithFloat:self.defaultRowH] atIndex:i+index];
     }
     [leadings enumerateObjectsUsingBlock:^(NSArray<WD_QTableModel *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat width = [self fitColWidthToRowHeights:fitHeights ByRowModel:obj ForType:WD_QTableCellIdxLeading AtCol:idx FromRow:index];
@@ -113,22 +118,31 @@
     self.layoutConstructor.LeadingsW = fitWidths;
 }
 /*  data处理 */
--(void)commitDataChange:(NSArray<NSArray<WD_QTableModel *> *> *)models FromIndex:(NSInteger)index{
-    if (models.count == 0) return;
+-(void)addDataChange:(NSArray<NSArray<WD_QTableModel *> *> *)models AtRowRange:(NSRange)range{
+    NSInteger index = range.location;
+    if (models.count == 0) {
+        [self.layoutConstructor.RowsH removeObjectAtIndex:index];
+        return;
+    }
     const NSInteger colsNum = models[0].count;
     const NSInteger rowsNum = models.count;
     /* 预设 */
     NSMutableArray<NSNumber *> *fitWidths = [NSMutableArray array];
     NSMutableArray<NSNumber *> *fitHeights = [NSMutableArray array];
-    if (index) {
+    if (self.layoutConstructor.colsW.count) {
         fitWidths = [NSMutableArray arrayWithArray:self.layoutConstructor.colsW];
+    }
+    if (self.layoutConstructor.RowsH) {
         fitHeights = [NSMutableArray arrayWithArray:self.layoutConstructor.RowsH];
     }
-    for (NSInteger i = fitWidths.count ; i < colsNum ; i++) {
-        [fitWidths addObject:[NSNumber numberWithFloat:self.MinxRowW]]; //预设
+    for (NSInteger i = 1 ; i <= colsNum ; i++) {
+        if (i > self.layoutConstructor.colsW.count) {
+            [fitWidths addObject:[NSNumber numberWithFloat:self.MinRowW]]; //预设
+        }
     }
+    [fitHeights removeObjectsInRange:range];
     for (NSInteger i = 0; i < rowsNum ; i++) {
-        [fitHeights addObject:[NSNumber numberWithFloat:self.defaultRowH]]; //预设
+        [fitHeights insertObject:[NSNumber numberWithFloat:self.defaultRowH] atIndex:i + index];
     }
     [models enumerateObjectsUsingBlock:^(NSArray<WD_QTableModel *> * _Nonnull rows, NSUInteger rowIdx, BOOL * _Nonnull stop) {
         CGFloat fitHeight = [self fitRowHeightToColsWidth:fitWidths ByRowModel:rows ForType:WD_QTableCellIdxItem AtRowId:rowIdx + index FromCol:0];
@@ -140,8 +154,61 @@
     self.layoutConstructor.colsW = fitWidths;
 }
 
-#pragma mark - 适配行高
+-(void)addDataChange:(NSArray<NSArray<WD_QTableModel *> *> *)models AtColRange:(NSRange)range{
+    NSInteger index = range.location;
+    if (models.count == 0){
+        [self.layoutConstructor.colsW removeObjectAtIndex:index];
+        return;
+    }
+    const NSInteger colsNum = models.count;
+    const NSInteger rowsNum = models[0].count;
+    /* 预设 */
+    NSMutableArray<NSNumber *> *fitWidths = [NSMutableArray array];
+    NSMutableArray<NSNumber *> *fitHeights = [NSMutableArray array];
+    if (self.layoutConstructor.colsW.count) {
+        fitWidths = [NSMutableArray arrayWithArray:self.layoutConstructor.colsW];
+    }
+    if (self.layoutConstructor.RowsH) {
+        fitHeights = [NSMutableArray arrayWithArray:self.layoutConstructor.RowsH];
+    }
+    for (NSInteger i = 1 ; i <= rowsNum ; i++) {
+        if (i > self.layoutConstructor.RowsH.count) {
+            [fitHeights addObject:[NSNumber numberWithFloat:self.defaultRowH]]; //预设
+        }
+    }
+    [fitWidths removeObjectsInRange:range];
+    for (NSInteger i = 0; i < colsNum ; i++) {
+        [fitWidths insertObject:[NSNumber numberWithFloat:self.MinRowW] atIndex:i + index];
+    }
+    [models enumerateObjectsUsingBlock:^(NSArray<WD_QTableModel *> * _Nonnull cols, NSUInteger colIdx, BOOL * _Nonnull stop) {
+        CGFloat fitWidth = [self fitColWidthToRowHeights:fitHeights ByRowModel:cols ForType:WD_QTableCellIdxItem AtCol:colIdx + index FromRow:0];
+        if ([fitWidths[colIdx + index] floatValue] < fitWidth) {
+            fitWidths[colIdx + index] = [NSNumber numberWithFloat:fitWidth];
+        }
+    }];
+    self.layoutConstructor.RowsH = fitHeights;
+    self.layoutConstructor.colsW = fitWidths;
+}
 
+-(void)addDataUpdate:(WD_QTableModel *)model AtRow:(NSInteger)rowId InCol:(NSInteger)colId{
+    CGFloat width = [self fitWidthOf:WD_QTableCellIdxItem ForHeight:self.defaultRowH * model.collapseRow  ByModel:model AtIndex:[NSIndexPath indexPathForRow:rowId inSection:colId]];
+    width = width - self.MinRowW * (model.collapseCol - 1);
+    CGFloat height = self.defaultRowH;
+    if (width > self.MaxRowW) { //大于max，需要fit高度
+        width = self.MaxRowW;
+        height = [self fitHeightOf:WD_QTableCellIdxItem ForWidth:self.MaxRowW * model.collapseCol ByModel:model AtIndex:[NSIndexPath indexPathForRow:rowId inSection:colId]];
+    }else if(width < self.MinRowW){
+        width = self.MinRowW;
+    }
+    if (self.layoutConstructor.colsW[colId].floatValue < width) {
+        self.layoutConstructor.colsW[colId] = [NSNumber numberWithFloat:width];
+    }
+    if (self.layoutConstructor.RowsH[rowId].floatValue < height) {
+        self.layoutConstructor.RowsH[rowId] = [NSNumber numberWithFloat:height];
+    }
+}
+
+#pragma mark - 适配行高
 /*  取最大宽度 并且用min max去限制 */
 -(CGFloat)adjustWidthForOriginWidth:(CGFloat)originWidth ByExtraWidth:(CGFloat)extraWidth{
     CGFloat resWidth = extraWidth;
@@ -184,10 +251,10 @@
 #pragma mark - 适配列宽
 -(CGFloat)fitColWidthToRowHeights:(NSMutableArray<NSNumber *> *)adjustFitHeigths ByRowModel:(NSArray<WD_QTableModel *> *)models ForType:(NSInteger)type AtCol:(NSInteger)colId FromRow:(NSInteger)rowId{
     //const maxW =
-    __block CGFloat optmizeWidth = self.MinxRowW;
+    __block CGFloat optmizeWidth = self.MinRowW;
     [models enumerateObjectsUsingBlock:^(WD_QTableModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat width = [self fitWidthOf:type ForHeight:self.defaultRowH * obj.collapseRow  ByModel:obj AtIndex:[NSIndexPath indexPathForRow:idx + rowId inSection:colId]];
-        width = width - self.MinxRowW * (obj.collapseCol - 1);
+        width = width - self.MinRowW * (obj.collapseCol - 1);
         if (width > self.MaxRowW) { //大于max，需要fit高度
             width = self.MaxRowW;
         }else if(width < optmizeWidth){
@@ -200,7 +267,7 @@
     }];
     //宽度溢出的，拉升行高
     [models enumerateObjectsUsingBlock:^(WD_QTableModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGFloat height = [self fitHeightOf:type ForWidth:optmizeWidth + (self.MinxRowW * (obj.collapseCol - 1)) ByModel:models[idx] AtIndex:[NSIndexPath indexPathForRow:idx + rowId inSection:colId]] / obj.collapseRow;
+        CGFloat height = [self fitHeightOf:type ForWidth:optmizeWidth + (self.MinRowW * (obj.collapseCol - 1)) ByModel:models[idx] AtIndex:[NSIndexPath indexPathForRow:idx + rowId inSection:colId]] / obj.collapseRow;
         if (height > self.defaultRowH) {
             for (NSInteger i = 0; i < obj.collapseRow; i++) {
                  adjustFitHeigths[idx + i] = [NSNumber numberWithFloat:height];
@@ -213,7 +280,6 @@
 #pragma mark - 计算宽度
 -(CGFloat)fitWidthOf:(NSInteger)type ForHeight:(CGFloat)height ByModel:(WD_QTableModel *)model AtIndex:(NSIndexPath *)indexPath{
     __block CGFloat resValue = 0.f;
-    dispatch_sync(dispatch_get_main_queue(), ^{
         if (type == WD_QTableCellIdxItem) {
             NSString *className = [self.styleConstructor itemCollectionViewCellIdentifier:indexPath];
             WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
@@ -243,13 +309,11 @@
             [self.styleConstructor constructHeadingSupplementary:reuseCell By:model];
             resValue = [reuseCell sizeThatFitWidthByHeight:height];
         }
-    });
     return resValue;
 }
 #pragma mark - 计算高度
 -(CGFloat)fitHeightOf:(NSInteger)type ForWidth:(CGFloat)width ByModel:(WD_QTableModel *)model AtIndex:(NSIndexPath *)indexPath{
     __block CGFloat resValue = 0.f;
-    dispatch_sync(dispatch_get_main_queue(), ^{
         if (type == WD_QTableCellIdxItem) {
             NSString *className = [self.styleConstructor itemCollectionViewCellIdentifier:indexPath];
             WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
@@ -279,7 +343,6 @@
             [self.styleConstructor constructHeadingSupplementary:reuseCell By:model];
             resValue = [reuseCell sizeThatFitHeighByWidth:width];
         }
-    });
     return resValue;
 }
 

@@ -36,7 +36,7 @@
 -(void)layoutSubviews{
     if (!CGSizeEqualToSize(self.frame.size, CGSizeZero)) {
         self.mainLabel.frame = CGRectMake(LabelEdge, LabelEdge, CGRectGetWidth(self.frame) - 2 * LabelEdge, CGRectGetHeight(self.frame) - 2 * LabelEdge);
-        self.editBtn.frame = CGRectMake(CGRectGetWidth(self.frame) - LabelEdge - 30, CGRectGetHeight(self.frame) / 2 - 15 , 30 , 30);
+        //self.editBtn.frame = CGRectMake(CGRectGetWidth(self.frame) - LabelEdge - 30, CGRectGetHeight(self.frame) / 2 - 15 , 30 , 30);
         self.editBtn.tintColor = [UIColor whiteColor];
         self.leftLine.frame = CGRectMake(0, 0, 1, CGRectGetHeight(self.frame));
         self.rightLine.frame = CGRectMake(CGRectGetWidth(self.frame) - 1, 0, 1, CGRectGetHeight(self.frame));
@@ -66,7 +66,7 @@
     self.editBtn.frame = CGRectMake(0, 0, 30, 30);
     self.editBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.editBtn setImage:[UIImage imageNamed:@"editIcon"] forState:UIControlStateNormal];
-    [self addSubview:self.editBtn];
+    //[self addSubview:self.editBtn];
     
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self addSubview:self.mainLabel];

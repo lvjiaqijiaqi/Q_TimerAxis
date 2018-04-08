@@ -69,13 +69,13 @@
         model.title = @"123";
         [weakSelf.table updateItem:model AtCol:col InRow:row];
     };*/
-    self.table.didLongPressLeadingBlock = ^(NSIndexPath *indexPath) {
+    self.table.didLongPressLeadingBlock = ^(NSIndexPath *indexPath,WD_QTableModel *model,WD_QTableBaseReusableView *cell) {
         [weakSelf createRowEnumAtRow:indexPath.item];
     };
-    self.table.didLongPressHeadingBlock = ^(NSIndexPath *indexPath) {
+    self.table.didLongPressHeadingBlock = ^(NSIndexPath *indexPath,WD_QTableModel *model,WD_QTableBaseReusableView *cell) {
         [weakSelf createRowEnumAtCol:indexPath.item];
     };
-    self.table.didSelectItemBlock = ^(NSInteger row, NSInteger col, WD_QTableModel *model) {
+    self.table.didSelectItemBlock = ^(NSInteger row, NSInteger col, WD_QTableModel *model,WD_QTableBaseViewCell *cell) {
         PlanEditViewController *planEditViewController = [[PlanEditViewController alloc] init];
         planEditViewController.editModel = model;
         planEditViewController.editSuccess = ^(WD_QTableModel *editModel) {
@@ -83,8 +83,13 @@
         };
         [weakSelf showViewController:planEditViewController sender:nil];
     };
-    self.table.didSelectHeadingBlock = ^(NSIndexPath *indexPath) {
-        
+    self.table.didSelectHeadingBlock = ^(NSIndexPath *indexPath,WD_QTableModel *model,WD_QTableBaseReusableView *cell) {
+        PlanEditViewController *planEditViewController = [[PlanEditViewController alloc] init];
+        planEditViewController.editModel = model;
+        planEditViewController.editSuccess = ^(WD_QTableModel *editModel) {
+            [weakSelf.table updateHeading:editModel AtCol:indexPath.item InLevel:indexPath.row];
+        };
+        [weakSelf showViewController:planEditViewController sender:nil];
     };
     [self loadData];
     

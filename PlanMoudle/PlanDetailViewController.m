@@ -11,6 +11,7 @@
 #import "EditTableStyleConstructor.h"
 #import "Q_UIConfig.h"
 #import "PlanEditViewController.h"
+#import "WD_QTableParse.h"
 
 @interface PlanDetailViewController ()
 
@@ -82,6 +83,9 @@
         };
         [weakSelf showViewController:planEditViewController sender:nil];
     };
+    self.table.didSelectHeadingBlock = ^(NSIndexPath *indexPath) {
+        
+    };
     [self loadData];
     
     UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePlan:)];
@@ -89,8 +93,9 @@
     
 }
 -(void)savePlan:(id)sender{
-    
+    [WD_QTableParse parseOut:self.table];
 }
+
 /*
 -(void)insertRowNew:(id)sender{
     [self.table insertEmptyRowAtRow:0];

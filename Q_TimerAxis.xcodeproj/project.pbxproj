@@ -25,7 +25,7 @@
 		ABB5AAC920775A0900B5D66B /* WD_QBaseTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AAAC20775A0900B5D66B /* WD_QBaseTable.m */; };
 		ABB5AACA20775A0900B5D66B /* WD_QTableBaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AAB020775A0900B5D66B /* WD_QTableBaseViewCell.m */; };
 		ABB5AACB20775A0900B5D66B /* WD_QTableBaseReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AAB120775A0900B5D66B /* WD_QTableBaseReusableView.m */; };
-		ABB5AACE2077648B00B5D66B /* PlanEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AACD2077648B00B5D66B /* PlanEditViewController.m */; };
+		ABF3E7B1207A60FC00587957 /* PlanEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF3E7B0207A60FB00587957 /* PlanEditViewController.m */; };
 		AD135D24206E08A50069BEEB /* EventCreateFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD135D23206E08A50069BEEB /* EventCreateFlowViewController.m */; };
 		AD135D27206E0A0C0069BEEB /* EventCreateStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD135D26206E0A0C0069BEEB /* EventCreateStepViewController.m */; };
 		AD135D2A206E0A280069BEEB /* EventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD135D29206E0A280069BEEB /* EventModel.m */; };
@@ -140,8 +140,8 @@
 		ABB5AAB720775A0900B5D66B /* WD_QTableLayoutConstructorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WD_QTableLayoutConstructorDelegate.h; sourceTree = "<group>"; };
 		ABB5AAB820775A0900B5D66B /* JQ_CollectionViewLayoutDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQ_CollectionViewLayoutDelegate.h; sourceTree = "<group>"; };
 		ABB5AAB920775A0900B5D66B /* WD_QTableStyleConstructorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WD_QTableStyleConstructorDelegate.h; sourceTree = "<group>"; };
-		ABB5AACC2077648B00B5D66B /* PlanEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlanEditViewController.h; path = ../../../Documents/PlanEditViewController.h; sourceTree = "<group>"; };
-		ABB5AACD2077648B00B5D66B /* PlanEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PlanEditViewController.m; path = ../../../Documents/PlanEditViewController.m; sourceTree = "<group>"; };
+		ABF3E7AF207A60FB00587957 /* PlanEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlanEditViewController.h; path = PlanMoudle/PlanEditViewController.h; sourceTree = SOURCE_ROOT; };
+		ABF3E7B0207A60FB00587957 /* PlanEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlanEditViewController.m; path = PlanMoudle/PlanEditViewController.m; sourceTree = SOURCE_ROOT; };
 		AD135D22206E08A50069BEEB /* EventCreateFlowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventCreateFlowViewController.h; sourceTree = "<group>"; };
 		AD135D23206E08A50069BEEB /* EventCreateFlowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventCreateFlowViewController.m; sourceTree = "<group>"; };
 		AD135D25206E0A0B0069BEEB /* EventCreateStepViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventCreateStepViewController.h; sourceTree = "<group>"; };
@@ -555,8 +555,6 @@
 				ADCDD69E2074DEFB003C8D65 /* EditTable */,
 				ADCDD69B2074DEC6003C8D65 /* PlanDetailViewController.h */,
 				ADCDD69C2074DEC6003C8D65 /* PlanDetailViewController.m */,
-				ABB5AACC2077648B00B5D66B /* PlanEditViewController.h */,
-				ABB5AACD2077648B00B5D66B /* PlanEditViewController.m */,
 			);
 			path = PlanMoudle;
 			sourceTree = "<group>";
@@ -564,6 +562,8 @@
 		ADCDD69E2074DEFB003C8D65 /* EditTable */ = {
 			isa = PBXGroup;
 			children = (
+				ABF3E7AF207A60FB00587957 /* PlanEditViewController.h */,
+				ABF3E7B0207A60FB00587957 /* PlanEditViewController.m */,
 				ADCDD69F2074DEFB003C8D65 /* EditTableStyleConstructor.h */,
 				ADCDD6A02074DEFB003C8D65 /* EditTableStyleConstructor.m */,
 				ADCDD6A12074DEFB003C8D65 /* Views */,
@@ -814,7 +814,7 @@
 				ADECD085206A140100C2F3AB /* JTCalendarDayView.m in Sources */,
 				ADCDD6A62074DEFB003C8D65 /* EditTableStyleConstructor.m in Sources */,
 				ADECD092206A66C500C2F3AB /* TimeLineTableViewCell.m in Sources */,
-				ABB5AACE2077648B00B5D66B /* PlanEditViewController.m in Sources */,
+				ABF3E7B1207A60FC00587957 /* PlanEditViewController.m in Sources */,
 				ABB5AACB20775A0900B5D66B /* WD_QTableBaseReusableView.m in Sources */,
 				ADECD04C2069E22000C2F3AB /* Q_Event+CoreDataClass.m in Sources */,
 				ADECD080206A140100C2F3AB /* JTCalendarManager.m in Sources */,

@@ -61,7 +61,7 @@
     [self addSubview:self.rightLine];
     [self addSubview:self.topLine];
     [self addSubview:self.bottomLine];
-    
+    self.backgroundColor = [UIColor whiteColor];
     self.editBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.editBtn.frame = CGRectMake(0, 0, 30, 30);
     self.editBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;

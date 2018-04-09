@@ -40,7 +40,7 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     self.contentView.delegate = self;
     self.contentView.dataSource = self;
-    
+    self.contentView.bounces = NO;
     self.contentView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.contentView.separatorColor = [UIColor clearColor];
     self.contentView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
@@ -50,7 +50,7 @@
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewTimeLine)];
     UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"editIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(enterEdit)];
     
-    self.navigationItem.rightBarButtonItems = @[addItem,editItem];
+    self.navigationItem.rightBarButtonItems = @[addItem];
     self.navigationItem.title = @"计划时间轴";
     
 }
@@ -77,6 +77,7 @@
     cell.contentTextView.text =  timeLine.content;
     cell.lastUpdateLabel.text = [NSDate dateToString:[timeLine createDate]];
     cell.processLabel.text = [NSString stringWithFormat:@"%.0f%%",timeLine.progress * 100];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -102,9 +103,11 @@
     return 100.f;
 }
 
+/*
 -(void)enterEdit{
     [self.contentView setEditing:!self.contentView.isEditing animated:YES];
-}
+}*/
+
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   return UITableViewCellEditingStyleDelete;//删除模式

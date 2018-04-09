@@ -12,16 +12,25 @@
 
 +(instancetype)shareInstance;
 
+-(UIColor *)mainColor;
+-(UIColor *)SupplementaryColor;
+
 -(UIColor *)generalBackgroundColor;
 -(UIColor *)generalCellBackgroundColor;
 -(UIColor *)generalNavgroundColor;
--(UIColor *)generalCellBodyFontColor;
--(UIColor *)generalCellTitleFontColor;
 -(UIColor *)generalButtonSelectedColor;
 -(UIColor *)generalButtonNormalColor;
 
+-(UIColor *)generalCellTitleFontColor;
+-(UIColor *)generalCellSubTitleFontColor;
+-(UIColor *)generalCellBodyFontColor;
+-(UIColor *)generalCellSeparatorColor;
+
 -(UIFont *)generalTitleFont;
--(UIFont *)generalFont;
+-(UIFont *)generalSubTitleFont;
+-(UIFont *)generalBodyFont;
+-(UIFont *)generalHeadLineFont;
+
 -(NSDictionary *)generalEditAttributes;
 
 @end

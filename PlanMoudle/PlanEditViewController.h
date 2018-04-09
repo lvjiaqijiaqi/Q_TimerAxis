@@ -11,7 +11,8 @@
 
 @interface PlanEditViewController : UIViewController
 
+@property(nonatomic,strong) NSIndexPath *indexPath;
 @property(nonatomic,strong) WD_QTableModel *editModel;
-@property(nonatomic,copy) void(^editSuccess)(WD_QTableModel *editModel);
+@property(nonatomic,copy) void(^editSuccess)(WD_QTableModel *editModel,NSIndexPath *indexPath);
 
 @end

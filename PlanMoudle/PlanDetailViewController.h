@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Q_Plan;
+
 @interface PlanDetailViewController : UIViewController
 
+@property(nonatomic,strong) Q_Plan *plan;
 
 @end

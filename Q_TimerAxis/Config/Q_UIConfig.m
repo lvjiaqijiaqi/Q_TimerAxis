@@ -47,6 +47,17 @@ static Q_UIConfig *defaultConfig = nil;
 
 -(UIColor *)defaultColor:(NSString *)colorStr{
     colors = @{
+               @"Main": [UIColor colorWithR:152 G:204 B:255],
+               @"Supplementary": [UIColor colorWithR:255 G:182 B:185],
+               @"Grounding": [UIColor colorWithR:245 G:245 B:245],
+               @"Black": [UIColor colorWithR:0 G:0 B:0],
+               @"Half-Black": [UIColor colorWithR:128 G:128 B:128],
+               @"Tiny-Black": [UIColor colorWithR:245 G:245 B:245],
+               @"Weak-Black": [UIColor colorWithR:192 G:192 B:192],
+               @"Strong-Black": [UIColor colorWithR:64 G:64 B:64],
+               @"White": [UIColor colorWithR:256 G:256 B:256],
+               };
+    /*colors = @{
                @"#000000" : [UIColor colorWithR:0 G:0 B:0],
                @"Black" : [UIColor colorWithR:0 G:0 B:0],//纯黑
                @"#FFFFFF" : [UIColor colorWithR:255 G:255 B:255],
@@ -77,46 +88,67 @@ static Q_UIConfig *defaultConfig = nil;
                @"generalNavgroundColor" : [UIColor colorWithR:152 G:204 B:255],
                @"generalCellTitleColor" : [UIColor colorWithR:0 G:0 B:0],
                @"generalCellBodyColor" : [UIColor colorWithR:128 G:128 B:128],
-               @"generalCellSubTitleFont" : [UIColor colorWithR:169 G:169 B:169],
+               @"generalCellSubTitleFontColor" : [UIColor colorWithR:169 G:169 B:169],
                @"generalNavTitleFontColor" : [UIColor whiteColor],
                @"generalButtonNormalColor" : [UIColor colorWithR:0 G:191 B:255],
                @"generalButtonSelectedColor" : [UIColor colorWithR:255 G:105 B:180],
-               };
+               };*/
     return colors[colorStr];
 }
+
+-(UIColor *)mainColor{
+    return [self defaultColor:@"Main"];
+}
+-(UIColor *)SupplementaryColor{
+    return [self defaultColor:@"Supplementary"];
+}
+
 -(UIColor *)generalButtonSelectedColor{
-    return [self defaultColor:@"generalButtonSelectedColor"];
+    return [self defaultColor:@"Supplementary"];
 }
 -(UIColor *)generalButtonNormalColor{
-    return [self defaultColor:@"generalButtonNormalColor"];
+    return [self defaultColor:@"Main"];
 }
 -(UIColor *)generalNavTitleFontColor{
-    return [self defaultColor:@"generalNavTitleFontColor"];
+    return [self defaultColor:@"White"];
 }
--(UIColor *)generalCellSubTitleFont{
-    return [self defaultColor:@"generalCellSubTitleFont"];
-}
--(UIColor *)generalCellBodyFontColor{
-    return [self defaultColor:@"generalCellBodyColor"];
-}
--(UIColor *)generalCellTitleFontColor{
-    return [self defaultColor:@"generalCellTitleColor"];
-}
+
 -(UIColor *)generalNavgroundColor{
-    return [self defaultColor:@"generalNavgroundColor"];
+    return [self defaultColor:@"Main"];
 }
 -(UIColor *)generalCellBackgroundColor{
-    return [self defaultColor:@"generalCellBackgroundColor"];
+    return [self defaultColor:@"Main"];
 }
 -(UIColor *)generalBackgroundColor{
-    return [self defaultColor:@"generalBackgroundColor"];
+    return [self defaultColor:@"Tiny-Black"];
 }
+
+-(UIColor *)generalCellTitleFontColor{
+    return [self defaultColor:@"Main"];
+}
+-(UIColor *)generalCellSubTitleFontColor{
+    return [self defaultColor:@"Half-Black"];
+}
+-(UIColor *)generalCellSeparatorColor{
+    return [self defaultColor:@"Weak-Black"];
+}
+-(UIColor *)generalCellBodyFontColor{
+    return [self defaultColor:@"Strong-Black"];
+}
+
 -(UIFont *)generalTitleFont{
     return [UIFont boldSystemFontOfSize:16];
 }
--(UIFont *)generalFont{
+-(UIFont *)generalSubTitleFont{
     return [UIFont boldSystemFontOfSize:14];
 }
+-(UIFont *)generalBodyFont{
+    return [UIFont systemFontOfSize:16];
+}
+-(UIFont *)generalHeadLineFont{
+    return [UIFont boldSystemFontOfSize:20];
+}
+
 -(NSDictionary *)generalEditAttributes{
     static NSDictionary *attributes;
     static dispatch_once_t onceToken;

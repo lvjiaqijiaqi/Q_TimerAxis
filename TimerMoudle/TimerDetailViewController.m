@@ -35,7 +35,7 @@
     self.contentView.delegate = self;
     [self.inputView removeFromSuperview];
     self.contentView.inputAccessoryView = self.inputView;
-    self.contentView.font = [Q_UIConfig shareInstance].generalFont;
+    self.contentView.font = [Q_UIConfig shareInstance].generalBodyFont;
     self.contentView.typingAttributes = [Q_UIConfig shareInstance].generalEditAttributes;
     self.navigationItem.title = @"编辑时间轴";
     
@@ -48,6 +48,8 @@
     [self.processSlider addTarget:self action:@selector(eventProcessChange:) forControlEvents:UIControlEventValueChanged];// 针对值变化添加响应方法
     
     [self.unOrderSignBtn addTarget:self action:@selector(insertUnOrderSign) forControlEvents:UIControlEventTouchDown];
+    [self.unOrderSignBtn setTintColor:[Q_UIConfig shareInstance].mainColor];
+    [self.orderSignBtn setTintColor:[Q_UIConfig shareInstance].mainColor];
   // [self.orderSignBtn addTarget:self action:@selector(insertOrderSign) forControlEvents:UIControlEventTouchDown];
     
     self.orderSignIndex = [NSMutableArray array];

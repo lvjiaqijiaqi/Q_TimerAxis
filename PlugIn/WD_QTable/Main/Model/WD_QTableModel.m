@@ -50,13 +50,13 @@
 }
 
 +(WD_QTableModel *)placeModel{
-    WD_QTableModel * placeModel = [[self alloc] init];
+    WD_QTableModel * placeModel = [[WD_QTableModel alloc] init];
     placeModel.collapseRow = 0;
     placeModel.collapseCol = 0;
     placeModel.isPlace = YES;
     return placeModel;
 }
 +(WD_QTableModel *)emptyModel{
-    return [[self alloc] init];
+    return [[WD_QTableModel alloc] init];
 }
 @end

@@ -55,7 +55,7 @@
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
     [table resetHeadingModelWithArr:jsonDic[@"Headings"]];
     [table resetLeadingModelWithArr:jsonDic[@"Leadings"]];
-    [table resetItemModel:[self parseItems:jsonDic[@"Items"]]];
+    [table resetItemModel:[self parseItems:jsonDic[@"datas"]]];
     
 }
 

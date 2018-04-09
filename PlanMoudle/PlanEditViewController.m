@@ -43,7 +43,7 @@
     if (self.editSuccess) {
         self.editModel.title = self.textView.text;
         [self.navigationController popViewControllerAnimated:YES];
-        self.editSuccess(self.editModel);
+        self.editSuccess(self.editModel,self.indexPath);
     }
 }
 

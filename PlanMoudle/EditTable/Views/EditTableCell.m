@@ -57,7 +57,7 @@
     [self addSubview:self.rightLine];
     [self addSubview:self.topLine];
     [self addSubview:self.bottomLine];
-    
+    self.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.mainLabel.numberOfLines = 0;
     [self addSubview:self.mainLabel];

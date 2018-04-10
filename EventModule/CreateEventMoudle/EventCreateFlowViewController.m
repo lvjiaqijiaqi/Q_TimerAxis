@@ -36,7 +36,7 @@
 
 -(UIBarButtonItem *)navBackBtn{
     if(!_navBackBtn){
-        _navBackBtn =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navBacklIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(Navback)];
+        _navBackBtn =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_BackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(Navback)];
     }
     return _navBackBtn;
 }
@@ -56,7 +56,7 @@
     if (navigationController.viewControllers.count > 1) {
         viewController.navigationItem.leftBarButtonItem = self.navBackBtn;
     }else{
-        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navBacklIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(BackEdit)];
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_BackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(BackEdit)];
     }
     viewController.model = self.model;
 }

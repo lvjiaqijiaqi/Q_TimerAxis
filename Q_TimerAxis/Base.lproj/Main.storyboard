@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mJz-e6-YDK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mJz-e6-YDK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -144,8 +144,8 @@
                                                         <constraint firstItem="PcI-jf-73P" firstAttribute="centerY" secondItem="fdf-pW-6bV" secondAttribute="centerY" id="jd2-nX-VQf"/>
                                                         <constraint firstItem="8JJ-aZ-vjp" firstAttribute="leading" secondItem="ask-A9-0VN" secondAttribute="leading" id="qjp-7b-uky"/>
                                                         <constraint firstItem="8JJ-aZ-vjp" firstAttribute="top" secondItem="Lou-Za-xtf" secondAttribute="bottom" constant="5" id="rCE-oZ-313"/>
-                                                        <constraint firstItem="4cq-9j-lSx" firstAttribute="top" secondItem="bVy-AO-BP4" secondAttribute="top" constant="10" id="rmC-7T-dFI"/>
                                                         <constraint firstItem="ask-A9-0VN" firstAttribute="top" secondItem="bVy-AO-BP4" secondAttribute="top" constant="10" id="uiX-Lh-08Q"/>
+                                                        <constraint firstItem="4cq-9j-lSx" firstAttribute="centerY" secondItem="ask-A9-0VN" secondAttribute="centerY" id="vRd-Q4-jbS"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -188,7 +188,8 @@
                     <navigationItem key="navigationItem" id="mdo-Cm-jF2">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="KVd-2o-hFw"/>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="g0J-aV-rbu">
+                            <barButtonItem image="MainNavBar_AddIcon" id="g0J-aV-rbu">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="d0r-nV-Rhe" kind="show" id="e2V-6h-Beq"/>
                                 </connections>
@@ -702,7 +703,7 @@
                     <navigationItem key="navigationItem" title="我的计划表" id="uYC-QO-Alq">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="joz-tx-g2p">
                             <connections>
-                                <segue destination="CPo-hz-sqn" kind="show" id="wDh-uu-f7e"/>
+                                <segue destination="8Zj-xj-gOH" kind="show" id="GVa-Dr-jpf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -713,6 +714,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K4j-5l-zHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2754" y="-917"/>
+        </scene>
+        <!--选择表模板-->
+        <scene sceneID="BGM-ea-WfF">
+            <objects>
+                <viewController id="8Zj-xj-gOH" customClass="PlanTemplateViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NK1-Yi-rBL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ncg-D5-W23">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="templateCell" textLabel="pCz-cg-8Sg" rowHeight="84" style="IBUITableViewCellStyleDefault" id="F4v-Fb-iwF">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F4v-Fb-iwF" id="zAo-iW-Xu5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pCz-cg-8Sg">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="83.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kkf-Cq-aJi" firstAttribute="trailing" secondItem="Ncg-D5-W23" secondAttribute="trailing" id="8vp-Jk-z0u"/>
+                            <constraint firstItem="Ncg-D5-W23" firstAttribute="leading" secondItem="Kkf-Cq-aJi" secondAttribute="leading" id="DW1-Lu-grP"/>
+                            <constraint firstItem="Ncg-D5-W23" firstAttribute="top" secondItem="Kkf-Cq-aJi" secondAttribute="top" id="WNZ-FL-Tao"/>
+                            <constraint firstItem="Kkf-Cq-aJi" firstAttribute="bottom" secondItem="Ncg-D5-W23" secondAttribute="bottom" id="XQD-hP-pNW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kkf-Cq-aJi"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择表模板" id="k1z-Fw-hTn"/>
+                    <connections>
+                        <outlet property="tableView" destination="Ncg-D5-W23" id="87Y-Vv-Bb5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H1V-4d-z1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2031.2" y="-917.09145427286364"/>
         </scene>
         <!--Plan Detail View Controller-->
         <scene sceneID="PZa-Fd-mtl">
@@ -727,7 +778,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6t-Uv-Tvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2026" y="-917"/>
+            <point key="canvasLocation" x="-1306" y="-917"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ND4-Yw-R1s">
@@ -784,6 +835,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MainNavBar_AddIcon" width="24" height="24"/>
         <image name="MainTabBar_PlanIcon" width="24" height="24"/>
         <image name="MainTabBar_TaskIcon" width="24" height="24"/>
         <image name="MainTabBar_UserIcon" width="24" height="24"/>

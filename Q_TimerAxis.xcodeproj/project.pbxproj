@@ -40,6 +40,8 @@
 		AD1E62EF206B88DF004C792B /* Q_navigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1E62EE206B88DF004C792B /* Q_navigationController.m */; };
 		AD3A8E9820706E4F000CD3A4 /* Q_UIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3A8E9720706E4F000CD3A4 /* Q_UIConfig.m */; };
 		AD3A8E9B20706EA3000CD3A4 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3A8E9A20706EA3000CD3A4 /* UIColor+Extension.m */; };
+		AD52364B207C9A7D002F4037 /* PlanTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = AD52364A207C9A7D002F4037 /* PlanTemplate.json */; };
+		AD52364E207CA4D7002F4037 /* PlanTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD52364D207CA4D7002F4037 /* PlanTemplateViewController.m */; };
 		AD6AF0852068B8B700547D83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF0842068B8B700547D83 /* AppDelegate.m */; };
 		AD6AF08B2068B8B700547D83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6AF0892068B8B700547D83 /* Main.storyboard */; };
 		AD6AF08E2068B8B700547D83 /* Q_TimerAxis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF08C2068B8B700547D83 /* Q_TimerAxis.xcdatamodeld */; };
@@ -175,6 +177,9 @@
 		AD3A8E9720706E4F000CD3A4 /* Q_UIConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Q_UIConfig.m; sourceTree = "<group>"; };
 		AD3A8E9920706EA3000CD3A4 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
 		AD3A8E9A20706EA3000CD3A4 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		AD52364A207C9A7D002F4037 /* PlanTemplate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlanTemplate.json; sourceTree = "<group>"; };
+		AD52364C207CA4D7002F4037 /* PlanTemplateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanTemplateViewController.h; sourceTree = "<group>"; };
+		AD52364D207CA4D7002F4037 /* PlanTemplateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanTemplateViewController.m; sourceTree = "<group>"; };
 		AD6AF0802068B8B600547D83 /* Q_TimerAxis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Q_TimerAxis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD6AF0832068B8B600547D83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD6AF0842068B8B700547D83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -580,6 +585,11 @@
 				ADAB7885207B21D900F219A5 /* PlanViewController.m */,
 				ADAB7896207B4C3F00F219A5 /* PlanTableViewCell.h */,
 				ADAB7897207B4C3F00F219A5 /* PlanTableViewCell.m */,
+				ABF3E7AF207A60FB00587957 /* PlanEditViewController.h */,
+				ABF3E7B0207A60FB00587957 /* PlanEditViewController.m */,
+				AD52364C207CA4D7002F4037 /* PlanTemplateViewController.h */,
+				AD52364D207CA4D7002F4037 /* PlanTemplateViewController.m */,
+				AD52364A207C9A7D002F4037 /* PlanTemplate.json */,
 			);
 			path = PlanMoudle;
 			sourceTree = "<group>";
@@ -587,8 +597,6 @@
 		ADCDD69E2074DEFB003C8D65 /* EditTable */ = {
 			isa = PBXGroup;
 			children = (
-				ABF3E7AF207A60FB00587957 /* PlanEditViewController.h */,
-				ABF3E7B0207A60FB00587957 /* PlanEditViewController.m */,
 				ADCDD69F2074DEFB003C8D65 /* EditTableStyleConstructor.h */,
 				ADCDD6A02074DEFB003C8D65 /* EditTableStyleConstructor.m */,
 				ADCDD6A12074DEFB003C8D65 /* Views */,
@@ -812,6 +820,7 @@
 				AD6AF0932068B8B700547D83 /* LaunchScreen.storyboard in Resources */,
 				AD6AF0902068B8B700547D83 /* Assets.xcassets in Resources */,
 				AD6AF08B2068B8B700547D83 /* Main.storyboard in Resources */,
+				AD52364B207C9A7D002F4037 /* PlanTemplate.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,6 +870,7 @@
 				ADECD084206A140100C2F3AB /* JTCalendarScrollManager.m in Sources */,
 				AD6AF0D32068E7B400547D83 /* Q_TimeLine+CoreDataProperties.m in Sources */,
 				ABB5AAC420775A0900B5D66B /* JQ_CollectionViewLayout.m in Sources */,
+				AD52364E207CA4D7002F4037 /* PlanTemplateViewController.m in Sources */,
 				AD135D2A206E0A280069BEEB /* EventModel.m in Sources */,
 				AD6AF0D22068E7B400547D83 /* Q_TimeLine+CoreDataClass.m in Sources */,
 				ADAB7898207B4C3F00F219A5 /* PlanTableViewCell.m in Sources */,

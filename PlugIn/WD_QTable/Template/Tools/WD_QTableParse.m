@@ -35,7 +35,7 @@
     
     NSDictionary *dic = @{@"Leadings":leadingArr,
                           @"Headings":headingArr,
-                          @"datas":datas
+                          @"Items":datas
                           };
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
@@ -53,11 +53,31 @@
     NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error = nil;
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-    [table resetHeadingModelWithArr:jsonDic[@"Headings"]];
-    [table resetLeadingModelWithArr:jsonDic[@"Leadings"]];
-    [table resetItemModel:[self parseItems:jsonDic[@"datas"]]];
+    NSArray *leadingArr = jsonDic[@"Leadings"];
+    NSArray *headingArr = jsonDic[@"Headings"];
+    [table resetHeadingModelWithArr:headingArr];
+    [table resetLeadingModelWithArr:leadingArr];
+    NSArray<NSArray<NSString *> *> *arr = jsonDic[@"Items"];
+    if (arr.count) {
+        [table resetItemModel:[self parseItems:arr]];
+    }else{
+        [table resetItemModel:[self fullEmptyDataRow:leadingArr.count AndCol:headingArr.count]];
+    }
     
 }
+
++(NSArray<NSArray<WD_QTableModel *> *> *)fullEmptyDataRow:(NSInteger)row AndCol:(NSInteger)col{
+    NSMutableArray<NSMutableArray<WD_QTableModel *> *> *datas = [NSMutableArray array];
+    for (; row > 0; row--) {
+        NSMutableArray<WD_QTableModel *> *rows =  [NSMutableArray array];
+        for (NSInteger j = col ; j > 0; j--) {
+            [rows addObject:[WD_QTableModel emptyModel]];
+        }
+        [datas addObject:rows];
+    }
+    return datas;
+}
+
 
 +(NSArray<NSArray<WD_QTableModel *> *> *)parseItems:(NSArray<NSArray *> *)jsonArr{
     NSMutableArray<NSMutableArray<WD_QTableModel *> *> *resArr = [NSMutableArray array];

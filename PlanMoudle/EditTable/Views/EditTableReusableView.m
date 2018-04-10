@@ -59,6 +59,7 @@
     [self addSubview:self.bottomLine];
     self.backgroundColor = [UIColor whiteColor];
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.mainLabel.numberOfLines = 0;
     self.mainLabel.textColor = [Q_UIConfig shareInstance].generalNavFontColor;
     self.mainLabel.font = [Q_UIConfig shareInstance].generalNavFont;
     [self addSubview:self.mainLabel];
@@ -68,7 +69,7 @@
     return CGSizeZero;
 }
 -(CGFloat)sizeThatFitHeighByWidth:(CGFloat)width{
-    return [self.mainLabel sizeThatFits:CGSizeMake(width, MAXFLOAT)].height + 10;
+    return [self.mainLabel sizeThatFits:CGSizeMake(width - 10 , MAXFLOAT)].height + 10;
 }
 -(CGFloat)sizeThatFitWidthByHeight:(CGFloat)height{
     return [self.mainLabel sizeThatFits:CGSizeMake(MAXFLOAT, height)].width + 10;

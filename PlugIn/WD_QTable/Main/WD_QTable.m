@@ -211,6 +211,8 @@
     NSInteger validIndex = [self indexLeadingAtIdx:row InLevel:level];
     if (validIndex < self.leadings.count) {
         self.leadings[validIndex] = updateModel;
+        [self.autoLayoutHandle addLeadingUpdate:updateModel AtRow:row InLevel:level];
+        [self.autoLayoutHandle commitChange];
         [self.layout invalidLayoutAtRow:row InCol:0];
         [self.collectionView reloadData];
     }
@@ -219,6 +221,8 @@
     NSInteger validIndex = [self indexHeadingAtIdx:col InLevel:level];
     if (validIndex < self.headings.count) {
         self.headings[validIndex] = updateModel;
+        [self.autoLayoutHandle addHeadingUpdate:updateModel AtCol:col InLevel:level];
+        [self.autoLayoutHandle commitChange];
         [self.layout invalidLayoutAtRow:0 InCol:col];
         [self.collectionView reloadData];
     }

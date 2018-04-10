@@ -90,7 +90,7 @@
 -(void)addLeadingChange:(NSArray<NSArray<WD_QTableModel *> *> *)leadings AtRange:(NSRange)range{
     NSInteger index = range.location;
     if (leadings.count == 0) {
-        [self.layoutConstructor.LeadingsW removeObjectAtIndex:index];
+        [self.layoutConstructor.LeadingsW removeObjectsInRange:range];
         return;
     }
     NSMutableArray<NSNumber *> *fitWidths = [NSMutableArray array];
@@ -121,7 +121,9 @@
 -(void)addDataChange:(NSArray<NSArray<WD_QTableModel *> *> *)models AtRowRange:(NSRange)range{
     NSInteger index = range.location;
     if (models.count == 0) {
-        [self.layoutConstructor.RowsH removeObjectAtIndex:index];
+        if (index < self.layoutConstructor.RowsH.count) {
+            [self.layoutConstructor.RowsH removeObjectAtIndex:index];
+        }
         return;
     }
     const NSInteger colsNum = models[0].count;
@@ -197,6 +199,7 @@
     if (width > self.MaxRowW) { //大于max，需要fit高度
         width = self.MaxRowW;
         height = [self fitHeightOf:WD_QTableCellIdxItem ForWidth:self.MaxRowW * model.collapseCol ByModel:model AtIndex:[NSIndexPath indexPathForRow:rowId inSection:colId]];
+        height = height - (model.collapseRow - 1) * self.defaultRowH;
     }else if(width < self.MinRowW){
         width = self.MinRowW;
     }
@@ -208,9 +211,46 @@
     }
 }
 
+-(void)addLeadingUpdate:(WD_QTableModel *)model AtRow:(NSInteger)rowId InLevel:(NSInteger)levelId{
+    CGFloat width = [self fitWidthOf:WD_QTableCellIdxLeading ForHeight:self.defaultRowH * model.collapseRow  ByModel:model AtIndex:[NSIndexPath indexPathForRow:rowId inSection:levelId]];
+    width = width - self.MinRowW * (model.collapseCol - 1);
+    CGFloat height = self.defaultRowH;
+    if (width > self.MaxRowW) { //大于max，需要fit高度
+        width = self.MaxRowW;
+        height = [self fitHeightOf:WD_QTableCellIdxItem ForWidth:self.MaxRowW * model.collapseCol ByModel:model AtIndex:[NSIndexPath indexPathForRow:rowId inSection:levelId]];
+        height = height - (model.collapseRow - 1) * self.defaultRowH;
+    }else if(width < self.MinRowW){
+        width = self.MinRowW;
+    }
+    if (self.layoutConstructor.LeadingsW[levelId].floatValue < width) {
+        self.layoutConstructor.LeadingsW[levelId] = [NSNumber numberWithFloat:width];
+    }
+    if (self.layoutConstructor.LeadingsH[rowId].floatValue < height) {
+        self.layoutConstructor.LeadingsH[rowId] = [NSNumber numberWithFloat:height];
+    }
+}
+-(void)addHeadingUpdate:(WD_QTableModel *)model AtCol:(NSInteger)colId InLevel:(NSInteger)levelId{
+    CGFloat width = [self fitWidthOf:WD_QTableCellIdxHeading ForHeight:self.defaultRowH * model.collapseRow  ByModel:model AtIndex:[NSIndexPath indexPathForRow:colId inSection:levelId]];
+    width = width - self.MinRowW * (model.collapseCol - 1);
+    CGFloat height = self.defaultRowH;
+    if (width > self.MaxRowW) { //大于max，需要fit高度
+        width = self.MaxRowW;
+        height = [self fitHeightOf:WD_QTableCellIdxHeading ForWidth:self.MaxRowW * model.collapseCol ByModel:model AtIndex:[NSIndexPath indexPathForRow:colId inSection:levelId]];
+        height = height - (model.collapseRow - 1) * self.defaultRowH;
+    }else if(width < self.MinRowW){
+        width = self.MinRowW;
+    }
+    if (self.layoutConstructor.HeadingsW[levelId].floatValue < width) {
+        self.layoutConstructor.HeadingsW[levelId] = [NSNumber numberWithFloat:width];
+    }
+    if (self.layoutConstructor.HeadingsH[colId].floatValue < height) {
+        self.layoutConstructor.HeadingsH[colId] = [NSNumber numberWithFloat:height];
+    }
+}
+
 #pragma mark - 适配行高
 /*  取最大宽度 并且用min max去限制 */
--(CGFloat)adjustWidthForOriginWidth:(CGFloat)originWidth ByExtraWidth:(CGFloat)extraWidth{
+/*-(CGFloat)adjustWidthForOriginWidth:(CGFloat)originWidth ByExtraWidth:(CGFloat)extraWidth{
     CGFloat resWidth = extraWidth;
     if (resWidth > self.MaxRowW) { //大于max，需要fit高度
         resWidth = self.MaxRowW;
@@ -218,11 +258,26 @@
         resWidth = originWidth;
     }
     return resWidth;
-}
+}*/
 
 -(CGFloat)fitRowHeightToColsWidth:(NSMutableArray<NSNumber *> *)adjustFitWidths ByRowModel:(NSArray<WD_QTableModel *> *)models ForType:(NSInteger)type AtRowId:(NSInteger)rowId FromCol:(NSInteger)colId{
     NSMutableIndexSet *overMaxWCellIndexs =  [[NSMutableIndexSet alloc] init];
-    NSInteger idx = 0;
+    [models enumerateObjectsUsingBlock:^(WD_QTableModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (!obj.isPlace && obj.collapseCol) {
+            CGFloat width = [self fitWidthOf:type ForHeight:self.defaultRowH * obj.collapseRow ByModel:obj AtIndex:[NSIndexPath indexPathForRow:rowId inSection:idx + colId]];
+            CGFloat finalWidth = width - (obj.collapseCol - 1) * self.MinRowW;
+            if(finalWidth > self.MaxRowW) {
+                [overMaxWCellIndexs addIndex:idx];
+                adjustFitWidths[idx + colId] = [NSNumber numberWithFloat:self.MaxRowW];
+            }else{
+                if (finalWidth < self.MinRowW) {
+                    finalWidth = self.MinRowW;
+                }
+                adjustFitWidths[idx + colId] = [NSNumber numberWithFloat:finalWidth];
+            }
+        }
+    }];
+    /*NSInteger idx = 0;
     while (idx < models.count) {
         WD_QTableModel * _Nonnull obj = models[idx];
         if (!obj.isPlace) {
@@ -237,12 +292,14 @@
         }else{
             idx++;
         }
-    }
+    }*/
     //宽度溢出的，计算行高
     __block CGFloat fitHeight = self.defaultRowH;
     [overMaxWCellIndexs enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-        CGFloat height = [self fitHeightOf:type ForWidth:self.MaxRowW * models[idx].collapseCol ByModel:models[idx] AtIndex:[NSIndexPath indexPathForRow:rowId inSection:idx + colId]];
-        if (fitHeight * models[idx].collapseRow < height) {
+        CGFloat allWidth = self.MinRowW * (models[idx].collapseCol - 1) + adjustFitWidths[idx + colId].floatValue;
+        CGFloat height = [self fitHeightOf:type ForWidth:allWidth ByModel:models[idx] AtIndex:[NSIndexPath indexPathForRow:rowId inSection:idx + colId]];
+        height = height - models[idx].collapseRow * self.defaultRowH;
+        if (fitHeight < height) {
             fitHeight = height;
         }
     }];
@@ -250,7 +307,6 @@
 }
 #pragma mark - 适配列宽
 -(CGFloat)fitColWidthToRowHeights:(NSMutableArray<NSNumber *> *)adjustFitHeigths ByRowModel:(NSArray<WD_QTableModel *> *)models ForType:(NSInteger)type AtCol:(NSInteger)colId FromRow:(NSInteger)rowId{
-    //const maxW =
     __block CGFloat optmizeWidth = self.MinRowW;
     [models enumerateObjectsUsingBlock:^(WD_QTableModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat width = [self fitWidthOf:type ForHeight:self.defaultRowH * obj.collapseRow  ByModel:obj AtIndex:[NSIndexPath indexPathForRow:idx + rowId inSection:colId]];
@@ -269,13 +325,14 @@
     [models enumerateObjectsUsingBlock:^(WD_QTableModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat height = [self fitHeightOf:type ForWidth:optmizeWidth + (self.MinRowW * (obj.collapseCol - 1)) ByModel:models[idx] AtIndex:[NSIndexPath indexPathForRow:idx + rowId inSection:colId]] / obj.collapseRow;
         if (height > self.defaultRowH) {
-            for (NSInteger i = 0; i < obj.collapseRow; i++) {
-                 adjustFitHeigths[idx + i] = [NSNumber numberWithFloat:height];
-            }
+            adjustFitHeigths[idx + rowId] = [NSNumber numberWithFloat:height];
+            /*for (NSInteger i = 0; i < obj.collapseRow; i++) {
+                 adjustFitHeigths[idx + i + rowId] = [NSNumber numberWithFloat:height];
+            }*/
         }
     }];
     return optmizeWidth;
-    
+
 }
 #pragma mark - 计算宽度
 -(CGFloat)fitWidthOf:(NSInteger)type ForHeight:(CGFloat)height ByModel:(WD_QTableModel *)model AtIndex:(NSIndexPath *)indexPath{

@@ -18,7 +18,7 @@
 @interface PlanDetailViewController ()
 
 @property(nonatomic,strong) WD_QTable *table;
-@property(nonatomic,strong) UITextField *titleLabel;
+@property(nonatomic,strong) UITextField *titleTextField;
 
 @end
 
@@ -29,60 +29,41 @@
         WD_QTableAutoLayoutConstructor *config =  [[WD_QTableAutoLayoutConstructor alloc] init];
         EditTableStyleConstructor *style = [[EditTableStyleConstructor alloc] init];
         _table = [[WD_QTable alloc] initWithLayoutConfig:config StyleConstructor:style];
-        //_table.view.backgroundColor = [UIColor whiteColor];
         WD_QTableAdaptor *adaptor = [[WD_QTableAdaptor alloc] initWithTableStyle:style ToLayout:config];
         adaptor.MinRowW = 100.f;
         adaptor.MaxRowW = 150.f;
         adaptor.defaultRowH = 60.f;
         _table.autoLayoutHandle = adaptor;
-        config.inset = UIEdgeInsetsMake(0, 0 , 0, 0);
+        config.inset = UIEdgeInsetsZero;
         _table.needTranspostionForModel = YES;
     }
     return _table;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)loadData{
-    if (self.plan) {
-        self.titleLabel.text =  self.plan.title;
-        [WD_QTableParse parseIn:self.table ByJsonStr:self.plan.content];
-    }else{
-        [self loadDefaultData];
+-(UITextField *)titleTextField{
+    if (!_titleTextField) {
+        UITextField *titleLabel = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+        titleLabel.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
+        titleLabel.textColor = [Q_UIConfig shareInstance].generalCellTitleFontColor;
+        titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        titleLabel.text = @"";
+        titleLabel.placeholder = @"请输入计划表名称";
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleTextField = titleLabel;
     }
+    return _titleTextField;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+-(void)configureVC{
     self.edgesForExtendedLayout = UIRectEdgeBottom;
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"编辑计划表";
+    [self.view addSubview:self.titleTextField];
     
-    UILabel *tipsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width, 20)];
-    tipsLabel.textColor = [Q_UIConfig shareInstance].generalNavgroundColor;
-    tipsLabel.text = @"Tips:长按表头可编辑行列(增删)，点击表格可修改内容";
-    tipsLabel.font = [UIFont systemFontOfSize:14];
-    //[self.view addSubview:tipsLabel];
-    
-    UITextField *titleLabel = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
-    titleLabel.textColor = [Q_UIConfig shareInstance].generalCellTitleFontColor;
-    //titleLabel.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
-    titleLabel.font = [UIFont boldSystemFontOfSize:20];
-    titleLabel.text = @"";
-    titleLabel.placeholder = @"请输入计划表名称";
-    //titleLabel.font = [UIFont systemFontOfSize:14];
-    //titleLabel.backgroundColor = [UIColor whiteColor];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel = titleLabel;
-    [self.view addSubview:titleLabel];
-    //self.table.view.frame =  CGRectMake(0, 0, <#CGFloat width#>, <#CGFloat height#>);
-    
-    [self.view addSubview:self.table.view];
     self.table.view.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 60);
-    __weak typeof(self) weakSelf = self;
+    [self.view addSubview:self.table.view];
     
+    __weak typeof(self) weakSelf = self;
     self.table.didLongPressLeadingBlock = ^(NSIndexPath *indexPath,WD_QTableModel *model,WD_QTableBaseReusableView *cell) {
         [weakSelf createRowEnumAtRow:indexPath.item];
     };
@@ -117,37 +98,53 @@
         [weakSelf showViewController:planEditViewController sender:nil];
     };
     
-    [self loadData];
-    
-    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePlan:)];
-    self.navigationItem.rightBarButtonItems = @[saveBtn];
+    UIBarButtonItem *issueBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_IssueIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(savePlan:)];
+    UIBarButtonItem *helpBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_HelpIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(helpHandle:)];
+    self.navigationItem.rightBarButtonItems = @[issueBtn,helpBtn];
     
     if (@available(iOS 11.0, *)) {
         self.table.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }else{
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    /* 加载数据 */
+   self.titleTextField.text =  self.plan.title;
+   [WD_QTableParse parseIn:self.table ByJsonStr:self.plan.content];
     
-}
--(void)savePlan:(id)sender{
-    Q_Plan *newPlan = nil;
-    if (self.plan) {
-        newPlan = self.plan;
-    }else{
-        newPlan = [NSEntityDescription insertNewObjectForEntityForName:@"Q_Plan" inManagedObjectContext:[Q_coreDataHelper shareInstance].managedContext];
-    }
-    newPlan.title = self.titleLabel.text;
-    newPlan.content = [WD_QTableParse parseOut:self.table];
-    newPlan.editDate = [NSDate date];
-    [[Q_coreDataHelper shareInstance] saveContext];
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self configureVC];
+}
+
+#pragma mark - 控制函数
+
+-(void)helpHandle:(id)sender{
+    [self createHelpMenu];
+}
+
+-(void)savePlan:(id)sender{
+    if (self.titleTextField.text.length) {
+        Q_Plan *newPlan = self.plan;
+        newPlan.title = self.titleTextField.text;
+        newPlan.content = [WD_QTableParse parseOut:self.table];
+        newPlan.editDate = [NSDate date];
+        [[Q_coreDataHelper shareInstance] saveContext];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        [self createNotice];
+    }
+}
+
+#pragma mark - 加载默认数据
+
+/*
 -(void)loadDefaultData{
     
-    NSInteger rowNum = 2;
-    NSInteger colNum = 2;
+    NSInteger rowNum = 3;
+    NSInteger colNum = 3;
     
     WD_QTableModel *mainModel = [[WD_QTableModel alloc] init];
     mainModel.title = @"";
@@ -184,7 +181,9 @@
     [self.table resetLeadingModel:leadings];
     [self.table reloadData];
 }
+*/
 
+#pragma mark - 选择框
 
 - (void)createRowEnumAtRow:(NSInteger)rowId{
     UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"表格编辑" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -236,6 +235,20 @@
     
 }
 
+- (void)createHelpMenu{
+    UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"提示" message:@"1.长按深色表头可编辑行列(增删)\n2.点击表格可修改内容" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [sheet addAction:okBtn];
+    [self presentViewController:sheet animated:YES completion:nil];
+}
 
+- (void)createNotice{
+    UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"提示" message:@"请填写计划表标题" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [sheet addAction:okBtn];
+    [self presentViewController:sheet animated:YES completion:nil];
+}
 
 @end

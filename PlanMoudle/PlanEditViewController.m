@@ -30,13 +30,13 @@
     self.textView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.textView.layer.shadowOffset = CGSizeMake(0, 0);
     self.textView.layer.shadowRadius = 1;
-    self.textView.layer.shadowOpacity= 0.4;
+    self.textView.layer.shadowOpacity = 0.4;
     self.textView.clipsToBounds = NO;
     
     [self.view addSubview:textView];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(editSuccess:)];
-    // Do any additional setup after loading the view.
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_ConfirmIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(editSuccess:)];
+    
 }
 
 -(void)editSuccess:(id)sender{
@@ -47,19 +47,5 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"affirmIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(complete)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_IssueIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(complete)];
     self.contentView.delegate = self;
     [self.inputView removeFromSuperview];
     self.contentView.inputAccessoryView = self.inputView;

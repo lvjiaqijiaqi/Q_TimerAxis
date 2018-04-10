@@ -47,7 +47,7 @@
     
     [self configureFetch];
     
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewTimeLine)];
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_AddIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewTimeLine)];
     UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"editIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(enterEdit)];
     
     self.navigationItem.rightBarButtonItems = @[addItem];

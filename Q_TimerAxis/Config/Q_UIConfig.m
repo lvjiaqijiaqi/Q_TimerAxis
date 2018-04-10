@@ -135,6 +135,9 @@ static Q_UIConfig *defaultConfig = nil;
 -(UIColor *)generalCellBodyFontColor{
     return [self defaultColor:@"Strong-Black"];
 }
+-(UIColor *)generalNavFontColor{
+    return [self defaultColor:@"White"];
+}
 
 -(UIFont *)generalTitleFont{
     return [UIFont boldSystemFontOfSize:16];
@@ -147,6 +150,9 @@ static Q_UIConfig *defaultConfig = nil;
 }
 -(UIFont *)generalHeadLineFont{
     return [UIFont boldSystemFontOfSize:20];
+}
+-(UIFont *)generalNavFont{
+    return [UIFont boldSystemFontOfSize:18];
 }
 
 -(NSDictionary *)generalEditAttributes{

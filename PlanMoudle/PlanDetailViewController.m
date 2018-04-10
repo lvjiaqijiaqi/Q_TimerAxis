@@ -57,7 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.edgesForExtendedLayout = UIRectEdgeBottom;
     self.view.backgroundColor = [UIColor whiteColor];
     
     UILabel *tipsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width, 20)];
@@ -66,7 +66,7 @@
     tipsLabel.font = [UIFont systemFontOfSize:14];
     //[self.view addSubview:tipsLabel];
     
-    UITextField *titleLabel = [[UITextField alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 80)];
+    UITextField *titleLabel = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
     titleLabel.textColor = [Q_UIConfig shareInstance].generalCellTitleFontColor;
     //titleLabel.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
     titleLabel.font = [UIFont boldSystemFontOfSize:20];
@@ -80,7 +80,7 @@
     //self.table.view.frame =  CGRectMake(0, 0, <#CGFloat width#>, <#CGFloat height#>);
     
     [self.view addSubview:self.table.view];
-    self.table.view.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 150);
+    self.table.view.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 60);
     __weak typeof(self) weakSelf = self;
     
     self.table.didLongPressLeadingBlock = ^(NSIndexPath *indexPath,WD_QTableModel *model,WD_QTableBaseReusableView *cell) {

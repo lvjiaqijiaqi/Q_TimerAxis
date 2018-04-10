@@ -27,7 +27,7 @@
 
 -(UIColor *)WD_QTableBackgroundColor
 {
-    return [Q_UIConfig shareInstance].generalBackgroundColor;
+    return [UIColor whiteColor];
 }
 -(NSString *)WD_QTableReuseCellPrefix
 {
@@ -84,8 +84,6 @@
 {
     EditTableCell* _cell = (EditTableCell *)cell;
     _cell.backgroundColor  =  [Q_UIConfig shareInstance].generalBackgroundColor;
-    _cell.mainLabel.font = [UIFont systemFontOfSize:14];;
-    _cell.mainLabel.textColor = [UIColor blackColor];
     _cell.mainLabel.text = model.title;
 }
 -(void)constructSectionSupplementary:(UICollectionReusableView *)cell By:(WD_QTableModel *)model
@@ -96,24 +94,18 @@
 {
     EditTableReusableView* _cell = (EditTableReusableView *)cell;
     _cell.backgroundColor  = [Q_UIConfig shareInstance].generalNavgroundColor;;
-    _cell.mainLabel.font = [UIFont systemFontOfSize:14];;
-    _cell.mainLabel.textColor = [UIColor whiteColor];
     _cell.mainLabel.text = model.title;
 }
 -(void)constructMainSupplementary:(UICollectionReusableView *)cell By:(WD_QTableModel *)model
 {
     EditTableReusableView* _cell = (EditTableReusableView *)cell;
     _cell.backgroundColor  = [Q_UIConfig shareInstance].generalNavgroundColor;
-    _cell.mainLabel.font = [UIFont systemFontOfSize:14];;
-    _cell.mainLabel.textColor = [UIColor whiteColor];
     _cell.mainLabel.text = model.title;
 }
 -(void)constructHeadingSupplementary:(UICollectionReusableView *)cell By:(WD_QTableModel *)model
 {
     EditTableReusableView* _cell = (EditTableReusableView *)cell;
     _cell.backgroundColor  = [Q_UIConfig shareInstance].generalNavgroundColor;
-    _cell.mainLabel.font = [UIFont systemFontOfSize:14];;
-    _cell.mainLabel.textColor = [UIColor whiteColor];
     _cell.mainLabel.text = model.title;
 }
 

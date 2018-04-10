@@ -18,8 +18,6 @@
 @property (strong, nonatomic)  UIView *topLine;
 @property (strong, nonatomic)  UIView *bottomLine;
 
-@property (strong, nonatomic) UIButton *editBtn;
-
 @end
 
 @implementation EditTableReusableView
@@ -36,8 +34,6 @@
 -(void)layoutSubviews{
     if (!CGSizeEqualToSize(self.frame.size, CGSizeZero)) {
         self.mainLabel.frame = CGRectMake(LabelEdge, LabelEdge, CGRectGetWidth(self.frame) - 2 * LabelEdge, CGRectGetHeight(self.frame) - 2 * LabelEdge);
-        //self.editBtn.frame = CGRectMake(CGRectGetWidth(self.frame) - LabelEdge - 30, CGRectGetHeight(self.frame) / 2 - 15 , 30 , 30);
-        self.editBtn.tintColor = [UIColor whiteColor];
         self.leftLine.frame = CGRectMake(0, 0, 1, CGRectGetHeight(self.frame));
         self.rightLine.frame = CGRectMake(CGRectGetWidth(self.frame) - 1, 0, 1, CGRectGetHeight(self.frame));
         self.topLine.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 1);
@@ -62,13 +58,9 @@
     [self addSubview:self.topLine];
     [self addSubview:self.bottomLine];
     self.backgroundColor = [UIColor whiteColor];
-    self.editBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.editBtn.frame = CGRectMake(0, 0, 30, 30);
-    self.editBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.editBtn setImage:[UIImage imageNamed:@"editIcon"] forState:UIControlStateNormal];
-    //[self addSubview:self.editBtn];
-    
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.mainLabel.textColor = [Q_UIConfig shareInstance].generalNavFontColor;
+    self.mainLabel.font = [Q_UIConfig shareInstance].generalNavFont;
     [self addSubview:self.mainLabel];
 }
 

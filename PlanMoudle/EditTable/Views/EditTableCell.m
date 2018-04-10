@@ -59,6 +59,8 @@
     [self addSubview:self.bottomLine];
     self.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.mainLabel.textColor = [Q_UIConfig shareInstance].generalCellBodyFontColor;
+    self.mainLabel.font = [Q_UIConfig shareInstance].generalBodyFont;
     self.mainLabel.numberOfLines = 0;
     [self addSubview:self.mainLabel];
 }

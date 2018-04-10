@@ -25,11 +25,13 @@
 -(UIColor *)generalCellSubTitleFontColor;
 -(UIColor *)generalCellBodyFontColor;
 -(UIColor *)generalCellSeparatorColor;
+-(UIColor *)generalNavFontColor;
 
 -(UIFont *)generalTitleFont;
 -(UIFont *)generalSubTitleFont;
 -(UIFont *)generalBodyFont;
 -(UIFont *)generalHeadLineFont;
+-(UIFont *)generalNavFont;
 
 -(NSDictionary *)generalEditAttributes;
 

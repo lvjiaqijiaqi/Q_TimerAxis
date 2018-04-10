@@ -60,6 +60,7 @@
     PlanDetailViewController *PlanDetailVC =  [storyBoard instantiateViewControllerWithIdentifier:@"PlanDetailViewController"];
     Q_Plan* newPlan = [NSEntityDescription insertNewObjectForEntityForName:@"Q_Plan" inManagedObjectContext:[Q_coreDataHelper shareInstance].managedContext];
     newPlan.content = content;
+    newPlan.editDate = [NSDate date];
     PlanDetailVC.plan = newPlan;
     [self showViewController:PlanDetailVC sender:nil];
 }

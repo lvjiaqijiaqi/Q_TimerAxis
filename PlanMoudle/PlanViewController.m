@@ -58,6 +58,7 @@
 -(void)configureFetch{
     NSFetchRequest *request = [Q_Plan fetchRequest];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"editDate" ascending:NO]];
+    request.predicate = [NSPredicate predicateWithFormat:@"isEditing = NO "];
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[Q_coreDataHelper shareInstance].managedContext sectionNameKeyPath:nil cacheName:nil];
     self.frc.delegate = self;
 }

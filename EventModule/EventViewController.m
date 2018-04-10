@@ -22,6 +22,10 @@
 @property(nonatomic,strong) NSIndexPath *selectIndexPath;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
+@property (weak, nonatomic) IBOutlet UIButton *leftBtn;
+@property (weak, nonatomic) IBOutlet UIButton *middleBtn;
+@property (weak, nonatomic) IBOutlet UIButton *rightBtn;
+
 @end
 
 @implementation EventViewController
@@ -37,15 +41,27 @@
     self.frc.delegate = self;
 }
 
+-(void)configureControllView{
+    self.controllView.backgroundColor = [UIColor whiteColor];
+    [self.leftBtn setTitleColor:[Q_UIConfig shareInstance].generalCellSubTitleFontColor forState:UIControlStateNormal];
+    [self.rightBtn setTitleColor:[Q_UIConfig shareInstance].generalCellSubTitleFontColor forState:UIControlStateNormal];
+    [self.middleBtn setTitleColor:[Q_UIConfig shareInstance].generalCellSubTitleFontColor forState:UIControlStateNormal];
+    
+    [self.leftBtn setTitleColor:[Q_UIConfig shareInstance].mainColor forState:UIControlStateSelected];
+    [self.rightBtn setTitleColor:[Q_UIConfig shareInstance].mainColor forState:UIControlStateSelected];
+    [self.middleBtn setTitleColor:[Q_UIConfig shareInstance].mainColor forState:UIControlStateSelected];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     self.myTableView.backgroundColor = [UIColor clearColor];
     self.myTableView.bounces = NO;
-    self.controllView.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
     self.navigationItem.title = @"我的计划";
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
+    [self configureControllView];
     [self configureFetch];
 }
 

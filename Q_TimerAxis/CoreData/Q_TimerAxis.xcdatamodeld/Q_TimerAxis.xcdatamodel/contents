@@ -12,7 +12,9 @@
     <entity name="Q_Plan" representedClassName="Q_Plan" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="editDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isEditing" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tmpContent" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Q_TimeLine" representedClassName="Q_TimeLine" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,7 +24,7 @@
     </entity>
     <elements>
         <element name="Q_Event" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Q_Plan" positionX="72" positionY="45" width="128" height="90"/>
+        <element name="Q_Plan" positionX="72" positionY="45" width="128" height="120"/>
         <element name="Q_TimeLine" positionX="198" positionY="0" width="128" height="105"/>
     </elements>
 </model>

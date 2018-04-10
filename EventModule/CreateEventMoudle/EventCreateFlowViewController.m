@@ -10,6 +10,7 @@
 #import "EventCreateStepViewController.h"
 #import "Q_coreDataHelper.h"
 #import "Q_Event+CoreDataClass.h"
+#import "Q_TimeLine+CoreDataClass.h"
 #import "Q_UIConfig.h"
 
 @interface EventCreateFlowViewController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
@@ -93,7 +94,7 @@
     event.startDate = self.model.startDate;
     event.lastUpdate = self.model.startDate;
     event.body = self.model.content;
-    //NSError *error = nil;
+    [Q_TimeLine createFirstTimerLineAtContext:[Q_coreDataHelper shareInstance].managedContext InEvent:event];
     [[Q_coreDataHelper shareInstance] saveContext];
     [self BackEdit];
 }

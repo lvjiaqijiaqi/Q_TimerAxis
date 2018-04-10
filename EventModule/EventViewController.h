@@ -8,6 +8,8 @@
 
 #import "CoreDataTableViewController.h"
 
+
 @interface EventViewController : CoreDataTableViewController
+
 
 @end

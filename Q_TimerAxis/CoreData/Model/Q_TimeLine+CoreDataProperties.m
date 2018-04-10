@@ -8,11 +8,20 @@
 //
 
 #import "Q_TimeLine+CoreDataProperties.h"
+#import "Q_Event+CoreDataClass.h"
 
 @implementation Q_TimeLine (CoreDataProperties)
 
 + (NSFetchRequest<Q_TimeLine *> *)fetchRequest {
 	return [[NSFetchRequest alloc] initWithEntityName:@"Q_TimeLine"];
+}
+
++(void)createFirstTimerLineAtContext:(NSManagedObjectContext *)context InEvent:(Q_Event *)event{
+    Q_TimeLine *firstLine = [NSEntityDescription insertNewObjectForEntityForName:@"Q_TimeLine" inManagedObjectContext:context];
+    firstLine.createDate = [NSDate date];
+    firstLine.progress = 0.f;
+    firstLine.event = event;
+    firstLine.content = @"创建任务";
 }
 
 @dynamic content;

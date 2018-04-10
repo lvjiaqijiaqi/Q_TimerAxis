@@ -2,7 +2,7 @@
 //  Q_Plan+CoreDataProperties.h
 //  Q_TimerAxis
 //
-//  Created by jqlv on 2018/4/9.
+//  Created by jqlv on 2018/4/10.
 //  Copyright © 2018年 jqlv. All rights reserved.
 //
 //
@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *content;
 @property (nullable, nonatomic, copy) NSDate *editDate;
 @property (nullable, nonatomic, copy) NSString *title;
+@property (nullable, nonatomic, copy) NSString *tmpContent;
+@property (nonatomic) BOOL isEditing;
 
 @end
 

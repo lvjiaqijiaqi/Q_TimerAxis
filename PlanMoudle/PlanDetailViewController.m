@@ -131,6 +131,7 @@
         newPlan.title = self.titleTextField.text;
         newPlan.content = [WD_QTableParse parseOut:self.table];
         newPlan.editDate = [NSDate date];
+        newPlan.isEditing = NO;
         [[Q_coreDataHelper shareInstance] saveContext];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{

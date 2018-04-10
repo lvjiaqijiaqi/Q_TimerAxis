@@ -53,9 +53,9 @@
 		AD6AF0BB2068B99400547D83 /* Q_coreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF0BA2068B99400547D83 /* Q_coreDataHelper.m */; };
 		AD6AF0D22068E7B400547D83 /* Q_TimeLine+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF0CB2068E7B400547D83 /* Q_TimeLine+CoreDataClass.m */; };
 		AD6AF0D32068E7B400547D83 /* Q_TimeLine+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF0CD2068E7B400547D83 /* Q_TimeLine+CoreDataProperties.m */; };
+		AD70BB8C207CD5F60058EB61 /* Q_Plan+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD70BB89207CD5F60058EB61 /* Q_Plan+CoreDataClass.m */; };
+		AD70BB8D207CD5F60058EB61 /* Q_Plan+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD70BB8B207CD5F60058EB61 /* Q_Plan+CoreDataProperties.m */; };
 		ADAB7886207B21D900F219A5 /* PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAB7885207B21D900F219A5 /* PlanViewController.m */; };
-		ADAB7891207B2AEA00F219A5 /* Q_Plan+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAB788E207B2AEA00F219A5 /* Q_Plan+CoreDataProperties.m */; };
-		ADAB7892207B2AEA00F219A5 /* Q_Plan+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAB788F207B2AEA00F219A5 /* Q_Plan+CoreDataClass.m */; };
 		ADAB7895207B3FA500F219A5 /* Q_TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAB7894207B3FA500F219A5 /* Q_TabBarController.m */; };
 		ADAB7898207B4C3F00F219A5 /* PlanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAB7897207B4C3F00F219A5 /* PlanTableViewCell.m */; };
 		ADC30DD3207387E8002AE183 /* UIAlertController+Q_Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC30DD2207387E8002AE183 /* UIAlertController+Q_Alert.m */; };
@@ -201,12 +201,12 @@
 		AD6AF0CB2068E7B400547D83 /* Q_TimeLine+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Q_TimeLine+CoreDataClass.m"; sourceTree = "<group>"; };
 		AD6AF0CC2068E7B400547D83 /* Q_TimeLine+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Q_TimeLine+CoreDataProperties.h"; sourceTree = "<group>"; };
 		AD6AF0CD2068E7B400547D83 /* Q_TimeLine+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Q_TimeLine+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AD70BB88207CD5F60058EB61 /* Q_Plan+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Q_Plan+CoreDataClass.h"; sourceTree = "<group>"; };
+		AD70BB89207CD5F60058EB61 /* Q_Plan+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Q_Plan+CoreDataClass.m"; sourceTree = "<group>"; };
+		AD70BB8A207CD5F60058EB61 /* Q_Plan+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Q_Plan+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AD70BB8B207CD5F60058EB61 /* Q_Plan+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Q_Plan+CoreDataProperties.m"; sourceTree = "<group>"; };
 		ADAB7884207B21D900F219A5 /* PlanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanViewController.h; sourceTree = "<group>"; };
 		ADAB7885207B21D900F219A5 /* PlanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanViewController.m; sourceTree = "<group>"; };
-		ADAB788D207B2AEA00F219A5 /* Q_Plan+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Q_Plan+CoreDataClass.h"; sourceTree = "<group>"; };
-		ADAB788E207B2AEA00F219A5 /* Q_Plan+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Q_Plan+CoreDataProperties.m"; sourceTree = "<group>"; };
-		ADAB788F207B2AEA00F219A5 /* Q_Plan+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Q_Plan+CoreDataClass.m"; sourceTree = "<group>"; };
-		ADAB7890207B2AEA00F219A5 /* Q_Plan+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Q_Plan+CoreDataProperties.h"; sourceTree = "<group>"; };
 		ADAB7893207B3FA500F219A5 /* Q_TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Q_TabBarController.h; sourceTree = "<group>"; };
 		ADAB7894207B3FA500F219A5 /* Q_TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Q_TabBarController.m; sourceTree = "<group>"; };
 		ADAB7896207B4C3F00F219A5 /* PlanTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanTableViewCell.h; sourceTree = "<group>"; };
@@ -559,10 +559,10 @@
 		AD6AF0BC2068BC5C00547D83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ADAB788D207B2AEA00F219A5 /* Q_Plan+CoreDataClass.h */,
-				ADAB788F207B2AEA00F219A5 /* Q_Plan+CoreDataClass.m */,
-				ADAB7890207B2AEA00F219A5 /* Q_Plan+CoreDataProperties.h */,
-				ADAB788E207B2AEA00F219A5 /* Q_Plan+CoreDataProperties.m */,
+				AD70BB88207CD5F60058EB61 /* Q_Plan+CoreDataClass.h */,
+				AD70BB89207CD5F60058EB61 /* Q_Plan+CoreDataClass.m */,
+				AD70BB8A207CD5F60058EB61 /* Q_Plan+CoreDataProperties.h */,
+				AD70BB8B207CD5F60058EB61 /* Q_Plan+CoreDataProperties.m */,
 				ADECD0482069E22000C2F3AB /* Q_Event+CoreDataClass.h */,
 				ADECD0492069E22000C2F3AB /* Q_Event+CoreDataClass.m */,
 				ADECD04A2069E22000C2F3AB /* Q_Event+CoreDataProperties.h */,
@@ -877,8 +877,8 @@
 				ABB5AAC920775A0900B5D66B /* WD_QBaseTable.m in Sources */,
 				ADCDD6A72074DEFB003C8D65 /* EditTableCell.m in Sources */,
 				ADAB7886207B21D900F219A5 /* PlanViewController.m in Sources */,
+				AD70BB8C207CD5F60058EB61 /* Q_Plan+CoreDataClass.m in Sources */,
 				ADECD056206A0A3200C2F3AB /* EventTableViewCell.m in Sources */,
-				ADAB7891207B2AEA00F219A5 /* Q_Plan+CoreDataProperties.m in Sources */,
 				ADECD082206A140100C2F3AB /* JTDateHelper.m in Sources */,
 				AD135D3A206E1D870069BEEB /* EventCreateContentViewController.m in Sources */,
 				AD135D34206E17390069BEEB /* EventCreateEndDateViewController.m in Sources */,
@@ -906,10 +906,10 @@
 				AD135D37206E1BF90069BEEB /* EventTitleViewController.m in Sources */,
 				ADECD08B206A140100C2F3AB /* JTVerticalCalendarView.m in Sources */,
 				ABB5AAC820775A0900B5D66B /* WD_QTableModel.m in Sources */,
-				ADAB7892207B2AEA00F219A5 /* Q_Plan+CoreDataClass.m in Sources */,
 				ADECD04D2069E22000C2F3AB /* Q_Event+CoreDataProperties.m in Sources */,
 				ABB5AAC020775A0900B5D66B /* WD_QViewModel.m in Sources */,
 				ADC30DD3207387E8002AE183 /* UIAlertController+Q_Alert.m in Sources */,
+				AD70BB8D207CD5F60058EB61 /* Q_Plan+CoreDataProperties.m in Sources */,
 				AD135D31206E16BD0069BEEB /* EventCreateStartDateViewController.m in Sources */,
 				AD135D2E206E0D860069BEEB /* CalendarManagerController.m in Sources */,
 				AD1E62EF206B88DF004C792B /* Q_navigationController.m in Sources */,

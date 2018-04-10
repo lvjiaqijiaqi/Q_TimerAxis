@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) Q_Event *event;
 @property (nonatomic) double progress;
 
++(void)createFirstTimerLineAtContext:(NSManagedObjectContext *)context InEvent:(Q_Event *)event;
+
 @end
 
 NS_ASSUME_NONNULL_END

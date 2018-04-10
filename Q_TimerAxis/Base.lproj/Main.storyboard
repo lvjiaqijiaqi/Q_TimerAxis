@@ -199,7 +199,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="controllView" destination="fTO-zq-qOo" id="ETp-h8-jYs"/>
+                        <outlet property="leftBtn" destination="nWZ-Fv-sAk" id="b9Y-0F-zGv"/>
+                        <outlet property="middleBtn" destination="E7x-U4-eZl" id="Ig2-Vg-84e"/>
                         <outlet property="myTableView" destination="Rmi-h5-gqA" id="hf3-d2-gnY"/>
+                        <outlet property="rightBtn" destination="XbK-AT-ZXV" id="gGt-lZ-BPP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6E-3P-xRe" userLabel="First Responder" sceneMemberID="firstResponder"/>

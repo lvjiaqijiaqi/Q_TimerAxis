@@ -72,7 +72,9 @@ titleForHeaderInSection:(NSInteger)section {
     }
     return [self.frc sectionIndexTitles];
 }
-
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
+}
 
 
 

@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"计划内容";
+    self.title = @"任务内容";
     self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.view.frame) , 200)];
     textView.contentInset = UIEdgeInsetsMake(5, 5, 0, 0);
@@ -57,7 +57,7 @@
 }
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if (self.textView.text.length == 0) {
-        UIAlertController *alert = [UIAlertController createAlertWithTitle:@"错误" massage:@"内容不能为空" ok:^{
+        UIAlertController *alert = [UIAlertController createAlertWithTitle:@"提示" massage:@"任务内容不能为空" ok:^{
             
         }];
         [self presentViewController:alert animated:YES completion:nil];

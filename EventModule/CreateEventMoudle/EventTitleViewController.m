@@ -19,12 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"计划名称";
+    self.title = @"任务名称";
     self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.view.frame), 44)];
     textField.borderStyle = UITextBorderStyleNone;
     textField.enabled = YES;
-    textField.placeholder = @"请填写计划名称";
+    textField.placeholder = @"请填写任务名称";
     textField.backgroundColor = [UIColor whiteColor];
     textField.font = [UIFont systemFontOfSize:14];
     self.textField = textField;
@@ -56,7 +56,7 @@
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if (self.textField.text.length == 0) {
-        UIAlertController *alert = [UIAlertController createAlertWithTitle:@"错误" massage:@"标题不能为空" ok:^{
+        UIAlertController *alert = [UIAlertController createAlertWithTitle:@"提示" massage:@"任务标题不能为空" ok:^{
             
         }];
         [self presentViewController:alert animated:YES completion:nil];

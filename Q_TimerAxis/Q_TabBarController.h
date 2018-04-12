@@ -10,4 +10,6 @@
 
 @interface Q_TabBarController : UITabBarController
 
+@property(nonatomic,assign) BOOL allowRotation;
+
 @end

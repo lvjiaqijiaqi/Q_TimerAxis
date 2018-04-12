@@ -40,7 +40,7 @@
 		AD1E62EF206B88DF004C792B /* Q_navigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1E62EE206B88DF004C792B /* Q_navigationController.m */; };
 		AD22D6FF207DF72100BBCC71 /* HomeTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD22D6FE207DF72100BBCC71 /* HomeTitleTableViewCell.m */; };
 		AD22D702207DF7C800BBCC71 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD22D701207DF7C800BBCC71 /* HomeViewController.m */; };
-		AD22D705207E12F400BBCC71 /* EventSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD22D704207E12F400BBCC71 /* EventSearchViewController.m */; };
+		AD22D705207E12F400BBCC71 /* EventSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD22D704207E12F400BBCC71 /* EventSearchResultViewController.m */; };
 		AD3A8E9820706E4F000CD3A4 /* Q_UIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3A8E9720706E4F000CD3A4 /* Q_UIConfig.m */; };
 		AD3A8E9B20706EA3000CD3A4 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3A8E9A20706EA3000CD3A4 /* UIColor+Extension.m */; };
 		AD52364B207C9A7D002F4037 /* PlanTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = AD52364A207C9A7D002F4037 /* PlanTemplate.json */; };
@@ -180,8 +180,8 @@
 		AD22D6FE207DF72100BBCC71 /* HomeTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTitleTableViewCell.m; sourceTree = "<group>"; };
 		AD22D700207DF7C800BBCC71 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		AD22D701207DF7C800BBCC71 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		AD22D703207E12F400BBCC71 /* EventSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventSearchViewController.h; sourceTree = "<group>"; };
-		AD22D704207E12F400BBCC71 /* EventSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventSearchViewController.m; sourceTree = "<group>"; };
+		AD22D703207E12F400BBCC71 /* EventSearchResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventSearchResultViewController.h; sourceTree = "<group>"; };
+		AD22D704207E12F400BBCC71 /* EventSearchResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventSearchResultViewController.m; sourceTree = "<group>"; };
 		AD3A8E9620706E4F000CD3A4 /* Q_UIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Q_UIConfig.h; sourceTree = "<group>"; };
 		AD3A8E9720706E4F000CD3A4 /* Q_UIConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Q_UIConfig.m; sourceTree = "<group>"; };
 		AD3A8E9920706EA3000CD3A4 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
@@ -655,8 +655,8 @@
 				AD135D2B206E0CBE0069BEEB /* CreateEventMoudle */,
 				ADECD057206A105600C2F3AB /* NSDate+Extension.h */,
 				ADECD058206A105600C2F3AB /* NSDate+Extension.m */,
-				AD22D703207E12F400BBCC71 /* EventSearchViewController.h */,
-				AD22D704207E12F400BBCC71 /* EventSearchViewController.m */,
+				AD22D703207E12F400BBCC71 /* EventSearchResultViewController.h */,
+				AD22D704207E12F400BBCC71 /* EventSearchResultViewController.m */,
 				ADECD0422069DB9D00C2F3AB /* EventViewController.h */,
 				ADECD0432069DB9D00C2F3AB /* EventViewController.m */,
 				ADECD054206A0A3200C2F3AB /* EventTableViewCell.h */,
@@ -891,7 +891,7 @@
 				ADECD08A206A140100C2F3AB /* JTHorizontalCalendarView.m in Sources */,
 				ABB5AAC620775A0900B5D66B /* WD_QRefreshTable.m in Sources */,
 				ADECD084206A140100C2F3AB /* JTCalendarScrollManager.m in Sources */,
-				AD22D705207E12F400BBCC71 /* EventSearchViewController.m in Sources */,
+				AD22D705207E12F400BBCC71 /* EventSearchResultViewController.m in Sources */,
 				AD22D702207DF7C800BBCC71 /* HomeViewController.m in Sources */,
 				AD6AF0D32068E7B400547D83 /* Q_TimeLine+CoreDataProperties.m in Sources */,
 				ABB5AAC420775A0900B5D66B /* JQ_CollectionViewLayout.m in Sources */,

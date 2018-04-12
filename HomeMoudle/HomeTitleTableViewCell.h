@@ -10,8 +10,9 @@
 
 @interface HomeTitleTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headPortrait;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subLeftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subRightLabel;
+@property (weak, nonatomic) IBOutlet UIView *seprateLine;
 
 @end

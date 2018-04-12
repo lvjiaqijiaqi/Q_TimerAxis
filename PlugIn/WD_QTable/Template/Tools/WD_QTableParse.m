@@ -45,7 +45,7 @@
     }else{
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
-    NSLog(@"%@",jsonString);
+    //NSLog(@"%@",jsonString);
     return jsonString;
 }
 

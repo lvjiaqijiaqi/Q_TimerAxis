@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.allowRotation = NO;
     //[self.tabBar setShadowImage:[[UIImage alloc] init]];
     //self.tabBar.translucent = YES;
     //self.tabBar.barTintColor = [Q_UIConfig shareInstance].generalNavgroundColor;
@@ -29,6 +29,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+//返回支持的方向
+
 
 /*
 #pragma mark - Navigation

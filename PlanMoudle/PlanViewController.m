@@ -33,7 +33,7 @@
     self.contentView.delegate = self;
     self.contentView.dataSource = self;
     self.contentView.contentInset = UIEdgeInsetsZero;
-    
+    self.contentView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     if (@available(iOS 11.0, *)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }else{
@@ -88,14 +88,14 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60.f;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewRowAction *rowAction =  [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        Q_Plan *plan = [self.frc objectAtIndexPath:indexPath];
+        [[Q_coreDataHelper shareInstance].managedContext deleteObject:plan];
+    }];
+    rowAction.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+    return @[rowAction];
 }
-*/
 
 @end

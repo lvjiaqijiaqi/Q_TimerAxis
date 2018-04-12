@@ -30,7 +30,8 @@
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = 50.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"PlanTemplate" ofType:@"json"];
     NSString *content = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [content dataUsingEncoding:NSUTF8StringEncoding];

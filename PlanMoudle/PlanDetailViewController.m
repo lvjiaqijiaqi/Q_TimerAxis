@@ -14,8 +14,9 @@
 #import "WD_QTableParse.h"
 #import "Q_Plan+CoreDataClass.h"
 #import "Q_coreDataHelper.h"
+#import "AppDelegate.h"
 
-@interface PlanDetailViewController ()
+@interface PlanDetailViewController ()<UITextFieldDelegate>
 
 @property(nonatomic,strong) WD_QTable *table;
 @property(nonatomic,strong) UITextField *titleTextField;
@@ -32,7 +33,7 @@
         WD_QTableAdaptor *adaptor = [[WD_QTableAdaptor alloc] initWithTableStyle:style ToLayout:config];
         adaptor.MinRowW = 100.f;
         adaptor.MaxRowW = 150.f;
-        adaptor.defaultRowH = 60.f;
+        adaptor.defaultRowH = 50.f;
         _table.autoLayoutHandle = adaptor;
         config.inset = UIEdgeInsetsZero;
         _table.needTranspostionForModel = YES;
@@ -42,25 +43,27 @@
 
 -(UITextField *)titleTextField{
     if (!_titleTextField) {
-        UITextField *titleLabel = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
-        titleLabel.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
-        titleLabel.textColor = [Q_UIConfig shareInstance].generalCellTitleFontColor;
-        titleLabel.font = [UIFont boldSystemFontOfSize:20];
-        titleLabel.text = @"";
-        titleLabel.placeholder = @"请输入计划表名称";
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleTextField = titleLabel;
+        UITextField *titleField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+        titleField.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
+        titleField.textColor = [Q_UIConfig shareInstance].generalCellTitleFontColor;
+        titleField.font = [UIFont boldSystemFontOfSize:20];
+        titleField.text = @"";
+        titleField.returnKeyType = UIReturnKeyDone;
+        titleField.delegate = self;
+        titleField.placeholder = @"请输入计划表名称";
+        titleField.textAlignment = NSTextAlignmentCenter;
+        _titleTextField = titleField;
     }
     return _titleTextField;
 }
 
 -(void)configureVC{
-    self.edgesForExtendedLayout = UIRectEdgeBottom;
+    //self.edgesForExtendedLayout = UIRectEdgeBottom;
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"编辑计划表";
     [self.view addSubview:self.titleTextField];
     
-    self.table.view.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 60);
+    self.table.view.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 60 - 44);
     [self.view addSubview:self.table.view];
     
     __weak typeof(self) weakSelf = self;
@@ -115,16 +118,39 @@
 
 
 - (void)viewDidLoad {
+    /* 横屏设置 */
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = YES;
     [super viewDidLoad];
     [self configureVC];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = NO;
+    [self.titleTextField resignFirstResponder];
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val = UIInterfaceOrientationPortrait;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+}
 #pragma mark - 控制函数
 
 -(void)helpHandle:(id)sender{
     [self createHelpMenu];
 }
-
+/* 保存计划 */
 -(void)savePlan:(id)sender{
     if (self.titleTextField.text.length) {
         Q_Plan *newPlan = self.plan;
@@ -138,7 +164,6 @@
         [self createNotice];
     }
 }
-
 #pragma mark - 加载默认数据
 
 /*
@@ -186,6 +211,7 @@
 
 #pragma mark - 选择框
 
+/*  行编辑  */
 - (void)createRowEnumAtRow:(NSInteger)rowId{
     UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"表格编辑" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     __weak typeof(self) weakSelf = self;
@@ -211,6 +237,7 @@
     
 }
 
+/*  列编辑  */
 - (void)createRowEnumAtCol:(NSInteger)colId{
     UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"表格编辑" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     __weak typeof(self) weakSelf = self;
@@ -235,7 +262,7 @@
     }];
     
 }
-
+/*  帮助  */
 - (void)createHelpMenu{
     UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"提示" message:@"1.长按深色表头可编辑行列(增删)\n2.点击表格可修改内容" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -244,12 +271,18 @@
     [self presentViewController:sheet animated:YES completion:nil];
 }
 
+/*  提示 */
 - (void)createNotice{
     UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"提示" message:@"请填写计划表标题" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];
     [sheet addAction:okBtn];
     [self presentViewController:sheet animated:YES completion:nil];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.titleTextField resignFirstResponder];
+    return YES;
 }
 
 @end

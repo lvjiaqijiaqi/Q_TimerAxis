@@ -9,6 +9,7 @@
 #import "EventViewController.h"
 #import "EventCreateFlowViewController.h"
 #import "Q_UIConfig.h"
+#import "EventSearchResultViewController.h"
 
 #import "Q_coreDataHelper.h"
 #import "Q_Event+CoreDataClass.h"
@@ -16,7 +17,7 @@
 #import "NSDate+Extension.h"
 #import "TimerViewController.h"
 
-@interface EventViewController ()
+@interface EventViewController ()<UISearchBarDelegate,UISearchControllerDelegate,EventSearchResultDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *controllView;
 @property(nonatomic,strong) NSIndexPath *selectIndexPath;
@@ -32,12 +33,47 @@
 @property (weak, nonatomic) IBOutlet UIButton *sortBtn;
 @property (strong, nonatomic) NSArray *sortTitles;
 @property (assign, nonatomic) NSInteger sortIdx;
+
+@property (strong, nonatomic) UISearchController *eventSearchVC;
+@property (strong, nonatomic) EventSearchResultViewController *eventResSearchVC;
+
 @end
 
 @implementation EventViewController
 
 -(UITableView *)tableView{
     return self.myTableView;
+}
+
+- (IBAction)startSearch:(id)sender {
+    self.eventSearchVC.active = YES;
+}
+
+-(UISearchController *)eventSearchVC{
+    if (!_eventSearchVC) {
+        self.eventResSearchVC = [[EventSearchResultViewController alloc] init];
+        self.eventResSearchVC.delegate = self;
+        _eventSearchVC = [[UISearchController alloc] initWithSearchResultsController:self.eventResSearchVC];
+        _eventSearchVC.searchResultsUpdater = self.eventResSearchVC;
+        _eventSearchVC.delegate = self;
+        _eventSearchVC.dimsBackgroundDuringPresentation = YES;
+        _eventSearchVC.searchBar.barTintColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+        //_eventSearchVC.searchBar.tintColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+        _eventSearchVC.searchBar.placeholder = @"";
+        self.definesPresentationContext = YES;
+        _eventSearchVC.hidesNavigationBarDuringPresentation = YES;
+        _eventSearchVC.searchBar.delegate = self;
+        
+        /*UIButton *cancel = [_eventSearchVC.searchBar valueForKey:@"_cancelButton"];
+        [cancel setTitle:@"取消" forState:UIControlStateNormal];
+        [cancel setTitle:@"取消" forState:UIControlStateDisabled];
+        [cancel setTintColor:[UIColor whiteColor]];
+        [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+        cancel.titleLabel.font = [UIFont systemFontOfSize:14];*/
+        
+    }
+    return _eventSearchVC;
 }
 
 -(void)configureFetch{
@@ -115,8 +151,13 @@
     self.myTableView.dataSource = self;
     [self configureControllView];
     [self configureFetch];
+    
+    self.eventSearchVC.searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 64);
+    [self.view addSubview:self.eventSearchVC.searchBar];
+    //[self.myTableView setTableHeaderView:self.eventSearchVC.searchBar];
+    self.eventSearchVC.searchBar.hidden = YES;
+    
 }
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self performFetch];
@@ -126,6 +167,10 @@
     [super viewDidAppear:animated];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.eventSearchVC.active = NO;
+}
 #pragma mark - Table view data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -179,5 +224,28 @@
     
 }
 
+-(void)willDismissSearchController:(UISearchController *)searchController{
+    searchController.searchBar.hidden = YES;
+}
+-(void)didPresentSearchController:(UISearchController *)searchController{
+    searchController.searchBar.hidden = NO;
+    [searchController.searchBar becomeFirstResponder];
+}
+
+-(void)eventSearchResultDidSelectEvent:(Q_Event *)event{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    TimerViewController *timerVC =  [storyBoard instantiateViewControllerWithIdentifier:@"TimerViewController"];
+    timerVC.event = event;
+    [self showViewController:timerVC sender:nil];
+}
+
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewRowAction *rowAction =  [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        Q_Event *event = [self.frc objectAtIndexPath:indexPath];
+        [[Q_coreDataHelper shareInstance].managedContext deleteObject:event];
+    }];
+    rowAction.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
+    return @[rowAction];
+}
 
 @end

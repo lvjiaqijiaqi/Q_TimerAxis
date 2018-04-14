@@ -13,5 +13,11 @@
 +(NSString *)dateToString:(NSDate *)date;
 -(BOOL)laterThanDate:(NSDate *)date;
 +(int)compareOneDay:(NSDate *)oneDay withAnotherDay:(NSDate *)anotherDay;
++(NSDate *)localDate;
++(NSDate *)transDateFormGMT:(NSDate *)GMTDate;
++(NSInteger)diffSecondForm:(NSDate *)fromDate To:(NSDate *)toDate;
++(NSDate *)dateTimeInterval:(NSTimeInterval)secsToBeAdded sinceDate:(NSDate *)date;
++(NSInteger)diffSecondFormNowDayTo:(NSDate *)toDate;
++(NSString *)intervalFormatStringToDate:(NSInteger)interval;
 
 @end

@@ -35,19 +35,26 @@
     self.textField.layer.shadowOpacity= 0.4;
     
     [self.view addSubview:textField];
-    // Do any additional setup after loading the view.
 }
 
+-(void)updateViewFromModel{
+    [super updateViewFromModel];
+    if (self.model.title) {
+        self.textField.text = self.model.title;
+    }
+}
+-(void)storeModelFromView{
+    [super storeModelFromView];
+    if (self.textField.text) {
+        self.model.title = self.textField.text;
+    }
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.textField becomeFirstResponder];
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [self.textField resignFirstResponder];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

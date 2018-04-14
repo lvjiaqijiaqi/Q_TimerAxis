@@ -27,12 +27,6 @@
     self.delegate = self;
     self.model = [[EventModel alloc] init];
     self.interactivePopGestureRecognizer.delegate = self;
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(UIBarButtonItem *)navBackBtn{
@@ -54,12 +48,14 @@
 }
 
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(EventCreateStepViewController *)viewController animated:(BOOL)animated{
+    
     if (navigationController.viewControllers.count > 1) {
         viewController.navigationItem.leftBarButtonItem = self.navBackBtn;
     }else{
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_BackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(BackEdit)];
     }
     viewController.model = self.model;
+    [viewController updateViewFromModel];
 }
 
 -(void)navigationController:(UINavigationController *)navigationController didShowViewController:(EventCreateStepViewController *)viewController animated:(BOOL)animated{
@@ -79,24 +75,26 @@
 -(void)BackEdit{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 -(void)Navback{
     [self popViewControllerAnimated:YES];
 }
-
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     return YES;
 }
 -(void)completeEventCreate{
-    
     Q_Event *event = [NSEntityDescription insertNewObjectForEntityForName:@"Q_Event" inManagedObjectContext:[Q_coreDataHelper shareInstance].managedContext];
     event.title = self.model.title;
     event.startDate = self.model.startDate;
     event.lastUpdate = self.model.startDate;
+    event.deadLine = self.model.endDate;
     event.body = self.model.content;
     [Q_TimeLine createFirstTimerLineAtContext:[Q_coreDataHelper shareInstance].managedContext InEvent:event];
     [[Q_coreDataHelper shareInstance] saveContext];
     [self BackEdit];
 }
-
+-(UIViewController *)popViewControllerAnimated:(BOOL)animated{
+    EventCreateStepViewController *preVC = (EventCreateStepViewController *)[self visibleViewController];
+    [preVC storeModelFromView];
+    return [super popViewControllerAnimated:animated];
+}
 @end

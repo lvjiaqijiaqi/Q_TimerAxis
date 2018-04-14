@@ -25,12 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"确认计划";
+    self.title = @"确认你的任务";
     self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     self.titles = @[@"开始时间",@"结束时间",@"标题",@"内容"];
     self.contentView.backgroundColor = [UIColor clearColor];
     self.contentView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(complete)];
+    self.navigationItem.rightBarButtonItem = [self.navigationItem.rightBarButtonItem = [UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_IssueIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(complete)];
 }
 
 -(void)complete{
@@ -42,12 +42,6 @@
     [super viewWillAppear:animated];
     [self.contentView reloadData];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.titles.count;
 }

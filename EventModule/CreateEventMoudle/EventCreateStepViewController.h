@@ -13,4 +13,7 @@
 
 @property(nonatomic,strong) EventModel *model;
 
+-(void)updateViewFromModel;
+-(void)storeModelFromView;
+
 @end

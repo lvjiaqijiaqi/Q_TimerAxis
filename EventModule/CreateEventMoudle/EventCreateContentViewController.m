@@ -47,9 +47,17 @@
     [self.textView resignFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)updateViewFromModel{
+    [super updateViewFromModel];
+    if (self.model.content) {
+        self.textView.text = self.model.content;
+    }
+}
+-(void)storeModelFromView{
+    [super storeModelFromView];
+    if (self.textView.text) {
+        self.model.title = self.textView.text;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

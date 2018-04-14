@@ -41,6 +41,7 @@
     self.lastUpdateTitleLabel.textColor = [Q_UIConfig shareInstance].generalCellSubTitleFontColor;
     self.lastUpdateTitleLabel.font = [Q_UIConfig shareInstance].generalSubTitleFont;
     self.startDateLabel.textColor = [Q_UIConfig shareInstance].generalCellSubTitleFontColor;
+    self.startDateTitleLabel.text = @"距离截止";
     self.startDateLabel.font = [Q_UIConfig shareInstance].generalSubTitleFont;
     self.startDateTitleLabel.textColor = [Q_UIConfig shareInstance].generalCellSubTitleFontColor;
     self.startDateTitleLabel.font = [Q_UIConfig shareInstance].generalSubTitleFont;

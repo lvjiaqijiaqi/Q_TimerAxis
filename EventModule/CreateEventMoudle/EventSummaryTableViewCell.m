@@ -23,11 +23,11 @@
     [self.sperateLine enumerateObjectsUsingBlock:^(UIView *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     }];
-    self.title.font = [UIFont boldSystemFontOfSize:14];
+    self.title.font = [Q_UIConfig shareInstance].generalTitleFont;
     self.title.textColor = [Q_UIConfig shareInstance].generalCellTitleFontColor;
     
     self.content.textColor = [Q_UIConfig shareInstance].generalCellBodyFontColor;
-    self.content.font = [UIFont systemFontOfSize:14];
+    self.content.font = [Q_UIConfig shareInstance].generalBodyFont;
     // Initialization code
 }
 

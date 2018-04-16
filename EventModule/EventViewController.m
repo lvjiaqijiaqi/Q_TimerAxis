@@ -143,7 +143,6 @@
     [sheet addAction:cancel];
     [self presentViewController:sheet animated:YES completion:^{}];
 }
-
 -(void)setSortIndex:(NSInteger)index{
     if (self.sortIdx != index) {
         self.sortIdx = index;
@@ -152,7 +151,6 @@
         [self refreshAction];
     }
 }
-
 -(void)setMenuIndex:(UIButton *)sender{
     NSInteger index = sender.tag;
     if (index != self.menuIdx) {
@@ -243,12 +241,12 @@
         _eventSearchVC.hidesNavigationBarDuringPresentation = YES;
         _eventSearchVC.searchBar.delegate = self;
         /*UIButton *cancel = [_eventSearchVC.searchBar valueForKey:@"_cancelButton"];
-         [cancel setTitle:@"取消" forState:UIControlStateNormal];
-         [cancel setTitle:@"取消" forState:UIControlStateDisabled];
-         [cancel setTintColor:[UIColor whiteColor]];
-         [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-         [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
-         cancel.titleLabel.font = [UIFont systemFontOfSize:14];*/
+        [cancel setTitle:@"取消" forState:UIControlStateNormal];
+        [cancel setTitle:@"取消" forState:UIControlStateDisabled];
+        [cancel setTintColor:[UIColor whiteColor]];
+        [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+        cancel.titleLabel.font = [UIFont systemFontOfSize:14];*/
     }
     return _eventSearchVC;
 }

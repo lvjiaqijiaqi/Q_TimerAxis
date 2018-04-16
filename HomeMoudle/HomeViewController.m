@@ -23,6 +23,8 @@
 #import "TZLocationManager.h"
 #import "UIView+Layout.h"
 #import "TopicSettingViewController.h"
+#import "AboutAppViewController.h"
+
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,TZImagePickerControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *contentView;
@@ -62,6 +64,7 @@
 -(void)loadData{
     dispatch_async(dispatch_get_main_queue(), ^{
         NSFetchRequest *fetchRequest1 = [Q_Event fetchRequest];
+        fetchRequest1.predicate = [NSPredicate predicateWithFormat:@"progress < %f", 1.f];
         fetchRequest1.resultType = NSCountResultType;
         NSError *error1 = nil;
         NSArray *eventList = [[Q_coreDataHelper shareInstance].managedContext executeFetchRequest:fetchRequest1 error:&error1];
@@ -69,6 +72,7 @@
         if (!error1) {}
         
         NSFetchRequest *fetchRequest2 = [Q_Plan fetchRequest];
+        fetchRequest2.predicate = [NSPredicate predicateWithFormat:@"isEditing = NO"];
         fetchRequest2.resultType = NSCountResultType;
         NSError *error2 = nil;
         NSArray *planList = [[Q_coreDataHelper shareInstance].managedContext executeFetchRequest:fetchRequest2 error:&error2];
@@ -152,6 +156,10 @@
         [self showViewController:topicSettingViewController sender:nil];
     }else if(indexPath.row == 2){
         //[self pushTZImagePickerController];
+    }else if (indexPath.row == 4){
+        AboutAppViewController *aboutAppViewController = [[AboutAppViewController alloc] init];
+        aboutAppViewController.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
+        [self showViewController:aboutAppViewController sender:nil];
     }
 }
 

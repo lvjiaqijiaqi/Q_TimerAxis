@@ -24,6 +24,7 @@
 		ABB4DAE62083767500B8B29A /* TZGifPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAD62083767400B8B29A /* TZGifPhotoPreviewController.m */; };
 		ABB4DAEC2083923F00B8B29A /* TopicSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAEB2083923F00B8B29A /* TopicSettingViewController.m */; };
 		ABB4DAEF208392E100B8B29A /* TopicSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAEE208392E100B8B29A /* TopicSettingTableViewCell.m */; };
+		ABB4DAF22084E6B700B8B29A /* AboutAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAF12084E6B700B8B29A /* AboutAppViewController.m */; };
 		ABB5AABA20775A0900B5D66B /* WD_QTableBaseColAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8720775A0900B5D66B /* WD_QTableBaseColAdaptor.m */; };
 		ABB5AABB20775A0900B5D66B /* WD_QTableParse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8820775A0900B5D66B /* WD_QTableParse.m */; };
 		ABB5AABC20775A0900B5D66B /* WD_QTableAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8A20775A0900B5D66B /* WD_QTableAdaptor.m */; };
@@ -159,6 +160,8 @@
 		ABB4DAEB2083923F00B8B29A /* TopicSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicSettingViewController.m; sourceTree = "<group>"; };
 		ABB4DAED208392E100B8B29A /* TopicSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicSettingTableViewCell.h; sourceTree = "<group>"; };
 		ABB4DAEE208392E100B8B29A /* TopicSettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicSettingTableViewCell.m; sourceTree = "<group>"; };
+		ABB4DAF02084E6B700B8B29A /* AboutAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutAppViewController.h; sourceTree = "<group>"; };
+		ABB4DAF12084E6B700B8B29A /* AboutAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutAppViewController.m; sourceTree = "<group>"; };
 		ABB5AA8620775A0900B5D66B /* WD_QTableAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WD_QTableAdaptor.h; sourceTree = "<group>"; };
 		ABB5AA8720775A0900B5D66B /* WD_QTableBaseColAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WD_QTableBaseColAdaptor.m; sourceTree = "<group>"; };
 		ABB5AA8820775A0900B5D66B /* WD_QTableParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WD_QTableParse.m; sourceTree = "<group>"; };
@@ -401,6 +404,8 @@
 				ABB4DAEB2083923F00B8B29A /* TopicSettingViewController.m */,
 				ABB4DAED208392E100B8B29A /* TopicSettingTableViewCell.h */,
 				ABB4DAEE208392E100B8B29A /* TopicSettingTableViewCell.m */,
+				ABB4DAF02084E6B700B8B29A /* AboutAppViewController.h */,
+				ABB4DAF12084E6B700B8B29A /* AboutAppViewController.m */,
 			);
 			path = settingMoudle;
 			sourceTree = "<group>";
@@ -970,6 +975,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB4DAF22084E6B700B8B29A /* AboutAppViewController.m in Sources */,
 				ABB4DAE52083767500B8B29A /* TZLocationManager.m in Sources */,
 				ADECD085206A140100C2F3AB /* JTCalendarDayView.m in Sources */,
 				ADCDD6A62074DEFB003C8D65 /* EditTableStyleConstructor.m in Sources */,

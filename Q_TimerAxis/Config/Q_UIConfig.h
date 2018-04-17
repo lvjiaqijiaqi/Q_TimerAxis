@@ -34,5 +34,5 @@
 -(UIFont *)generalNavFont;
 
 -(NSDictionary *)generalEditAttributes;
-
+-(NSArray<NSDictionary *> *)topicColors;
 @end

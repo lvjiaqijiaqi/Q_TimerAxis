@@ -18,6 +18,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *contentView;
 
+@property (strong, nonatomic) IBOutlet UIButton *selectBtn1;
+@property (strong, nonatomic) IBOutlet UIButton *selectBrn2;
+@property (assign, nonatomic) NSInteger selectIdx;
+@property (strong, nonatomic) NSArray<UIButton *> *selectBtns;
 @end
 
 @implementation PlanViewController
@@ -26,8 +30,7 @@
     return self.contentView;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+-(void)configureViews{
     self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     self.contentView.backgroundColor = [UIColor clearColor];
     self.contentView.delegate = self;
@@ -43,29 +46,54 @@
     self.contentView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.contentView.separatorColor = [Q_UIConfig shareInstance].generalBackgroundColor;
     self.contentView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    //self.contentView.backgroundColor = [UIColor redColor];
     self.contentView.bounces = NO;
     
-    [self configureFetch];
-    
-    // Do any additional setup after loading the view.
+    NSArray *menuBtns = @[self.selectBtn1,self.selectBrn2];
+    [menuBtns enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj setTitleColor:[Q_UIConfig shareInstance].generalCellSubTitleFontColor forState:UIControlStateNormal];
+        obj.titleLabel.font = [Q_UIConfig shareInstance].generalBodyFont;
+        obj.adjustsImageWhenHighlighted = NO;
+        obj.tag = idx;
+        [obj addTarget:self action:@selector(setSelect:) forControlEvents:UIControlEventTouchDown];
+    }];
+    self.selectBtns = menuBtns;
+    _selectIdx = 0;
+    [self.selectBtns[_selectIdx] setTitleColor:[Q_UIConfig shareInstance].mainColor forState:UIControlStateNormal];
 }
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self configureViews];
+    [self configureFetch];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self performFetch];
 }
 
+-(void)setSelect:(UIButton *)sender{
+    NSInteger index = sender.tag;
+    if (index != self.selectIdx) {
+        [self.selectBtns[self.selectIdx] setTitleColor:[Q_UIConfig shareInstance].generalCellSubTitleFontColor forState:UIControlStateNormal];
+        self.selectIdx = index;
+        [self.selectBtns[self.selectIdx] setTitleColor:[Q_UIConfig shareInstance].mainColor forState:UIControlStateNormal];
+        [self configureFetch];
+        [self performFetch];
+    }
+}
+
+
 -(void)configureFetch{
     NSFetchRequest *request = [Q_Plan fetchRequest];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"editDate" ascending:NO]];
-    request.predicate = [NSPredicate predicateWithFormat:@"isEditing = NO "];
+    if (self.selectIdx == 0) {
+        request.predicate = [NSPredicate predicateWithFormat:@"isEditing = NO "];
+    }else{
+        request.predicate = [NSPredicate predicateWithFormat:@"isEditing = YES "];
+    }
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[Q_coreDataHelper shareInstance].managedContext sectionNameKeyPath:nil cacheName:nil];
     self.frc.delegate = self;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

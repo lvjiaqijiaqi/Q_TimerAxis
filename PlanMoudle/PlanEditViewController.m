@@ -8,6 +8,7 @@
 
 #import "PlanEditViewController.h"
 #import "Q_UIConfig.h"
+#import "AppDelegate.h"
 
 @interface PlanEditViewController ()
 
@@ -37,6 +38,12 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MainNavBar_ConfirmIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(editSuccess:)];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = YES;
+    [self.textView becomeFirstResponder];
 }
 
 -(void)editSuccess:(id)sender{

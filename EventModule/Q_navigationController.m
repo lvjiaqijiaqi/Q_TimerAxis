@@ -75,6 +75,9 @@
 }
 
 -(void)Navback{
+    if ([self.topViewController respondsToSelector:@selector(Navback)]) {
+        [self.topViewController performSelector:@selector(Navback)];
+    }
     [self popViewControllerAnimated:YES];
 }
 

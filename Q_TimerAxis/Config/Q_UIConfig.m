@@ -45,9 +45,25 @@ static Q_UIConfig *defaultConfig = nil;
     return self;
 }
 
+-(NSArray<NSDictionary *> *)topicColors{
+    static NSArray<NSDictionary *> *colors;
+    colors = @[@{@"name":@"天蓝色",@"color":[UIColor colorWithR:152 G:204 B:255]},
+               @{@"name":@"青绿色",@"color":[UIColor colorWithR:0 G:174 B:157]},
+               @{@"name":@"珊瑚粉",@"color":[UIColor colorWithR:248 G:171 B:166]},
+               @{@"name":@"蜜柑橙",@"color":[UIColor colorWithR:245 G:130 B:32]},
+               @{@"name":@"菖蒲紫",@"color":[UIColor colorWithR:105 G:77 B:159]},
+               @{@"name":@"黒橡",@"color":[UIColor colorWithR:62 G:65 B:69]}];
+    return colors;
+}
+
 -(UIColor *)defaultColor:(NSString *)colorStr{
+    static NSDictionary *colors;
+    NSUInteger topicIdx = 0;
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"topicIdx"]) {
+        topicIdx = [[NSUserDefaults standardUserDefaults] integerForKey:@"topicIdx"];
+    }
     colors = @{
-               @"Main": [UIColor colorWithR:152 G:204 B:255],
+               @"Main": self.topicColors[topicIdx][@"color"],
                @"Supplementary": [UIColor colorWithR:255 G:182 B:185],
                @"Grounding": [UIColor colorWithR:245 G:245 B:245],
                @"Black": [UIColor colorWithR:0 G:0 B:0],

@@ -20,7 +20,7 @@
 
 @property(nonatomic,strong) WD_QTable *table;
 @property(nonatomic,strong) UITextField *titleTextField;
-
+@property(nonatomic,assign) BOOL keepRoationState;
 @end
 
 @implementation PlanDetailViewController
@@ -79,6 +79,7 @@
         planEditViewController.editSuccess = ^(WD_QTableModel *editModel , NSIndexPath *indexPath) {
             [weakSelf.table updateItem:editModel AtCol:col InRow:row];
         };
+        weakSelf.keepRoationState = YES;
         [weakSelf showViewController:planEditViewController sender:nil];
     };
     self.table.didSelectHeadingBlock = ^(NSIndexPath *indexPath,WD_QTableModel *model,WD_QTableBaseReusableView *cell) {
@@ -88,6 +89,7 @@
         planEditViewController.editSuccess = ^(WD_QTableModel *editModel , NSIndexPath *indexPath) {
             [weakSelf.table updateHeading:editModel AtCol:indexPath.item InLevel:indexPath.section];
         };
+        weakSelf.keepRoationState = YES;
         [weakSelf showViewController:planEditViewController sender:nil];
     };
     
@@ -98,6 +100,7 @@
         planEditViewController.editSuccess = ^(WD_QTableModel *editModel , NSIndexPath *indexPath) {
             [weakSelf.table updateLeading:editModel AtRow:indexPath.item InLevel:indexPath.section];
         };
+        weakSelf.keepRoationState = YES;
         [weakSelf showViewController:planEditViewController sender:nil];
     };
     
@@ -115,34 +118,37 @@
    [WD_QTableParse parseIn:self.table ByJsonStr:self.plan.content];
     
 }
-
-
 - (void)viewDidLoad {
     /* 横屏设置 */
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    appDelegate.allowRotation = YES;
     [super viewDidLoad];
     [self configureVC];
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    _keepRoationState = NO;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = YES;
+}
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    appDelegate.allowRotation = NO;
-    [self.titleTextField resignFirstResponder];
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        SEL selector = NSSelectorFromString(@"setOrientation:");
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-        [invocation setSelector:selector];
-        [invocation setTarget:[UIDevice currentDevice]];
-        int val = UIInterfaceOrientationPortrait;
-        [invocation setArgument:&val atIndex:2];
-        [invocation invoke];
+    if (!self.keepRoationState) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        appDelegate.allowRotation = NO;
+        [self.titleTextField resignFirstResponder];
+        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+            SEL selector = NSSelectorFromString(@"setOrientation:");
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+            [invocation setSelector:selector];
+            [invocation setTarget:[UIDevice currentDevice]];
+            int val = UIInterfaceOrientationPortrait;
+            [invocation setArgument:&val atIndex:2];
+            [invocation invoke];
+        }
     }
 }
-
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+}
+-(void)Navback{
     
 }
 #pragma mark - 控制函数
@@ -222,7 +228,9 @@
         [weakSelf.table insertEmptyRowAtRow:rowId + 1];
     }];
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf.table deleteRowAtRow:rowId];
+        if (weakSelf.table.rowsNum > 1) {
+            [weakSelf.table deleteRowAtRow:rowId];
+        }
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
@@ -248,7 +256,9 @@
         [weakSelf.table insertEmptyColAtCol:colId + 1];
     }];
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf.table deleteColAtCol:colId];
+        if (weakSelf.table.colsNum > 1) {
+            [weakSelf.table deleteColAtCol:colId];
+        }
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         

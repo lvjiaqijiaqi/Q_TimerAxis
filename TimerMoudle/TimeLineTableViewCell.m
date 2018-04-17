@@ -21,7 +21,6 @@
     
     self.processLabel.textColor = [Q_UIConfig shareInstance].SupplementaryColor;
     self.processLabel.font = [Q_UIConfig shareInstance].generalHeadLineFont;
-    
     // Initialization code
 }
 

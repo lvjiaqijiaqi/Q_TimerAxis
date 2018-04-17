@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABB4DAD82083767500B8B29A /* TZImageCropManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DABD2083767400B8B29A /* TZImageCropManager.m */; };
+		ABB4DAD92083767500B8B29A /* TZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DABF2083767400B8B29A /* TZAssetCell.m */; };
+		ABB4DADA2083767500B8B29A /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAC02083767400B8B29A /* TZVideoPlayerController.m */; };
+		ABB4DADB2083767500B8B29A /* TZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAC12083767400B8B29A /* TZAssetModel.m */; };
+		ABB4DADC2083767500B8B29A /* NSBundle+TZImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAC22083767400B8B29A /* NSBundle+TZImagePicker.m */; };
+		ABB4DADD2083767500B8B29A /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAC52083767400B8B29A /* UIView+Layout.m */; };
+		ABB4DADE2083767500B8B29A /* TZPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAC62083767400B8B29A /* TZPhotoPreviewController.m */; };
+		ABB4DADF2083767500B8B29A /* TZImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABB4DAC72083767400B8B29A /* TZImagePickerController.bundle */; };
+		ABB4DAE02083767500B8B29A /* TZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAC82083767400B8B29A /* TZProgressView.m */; };
+		ABB4DAE12083767500B8B29A /* TZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DACB2083767400B8B29A /* TZImageManager.m */; };
+		ABB4DAE22083767500B8B29A /* TZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DACD2083767400B8B29A /* TZPhotoPickerController.m */; };
+		ABB4DAE32083767500B8B29A /* TZPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DACE2083767400B8B29A /* TZPhotoPreviewCell.m */; };
+		ABB4DAE42083767500B8B29A /* TZImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAD42083767400B8B29A /* TZImagePickerController.m */; };
+		ABB4DAE52083767500B8B29A /* TZLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAD52083767400B8B29A /* TZLocationManager.m */; };
+		ABB4DAE62083767500B8B29A /* TZGifPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAD62083767400B8B29A /* TZGifPhotoPreviewController.m */; };
+		ABB4DAEC2083923F00B8B29A /* TopicSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAEB2083923F00B8B29A /* TopicSettingViewController.m */; };
+		ABB4DAEF208392E100B8B29A /* TopicSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAEE208392E100B8B29A /* TopicSettingTableViewCell.m */; };
+		ABB4DAF22084E6B700B8B29A /* AboutAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAF12084E6B700B8B29A /* AboutAppViewController.m */; };
 		ABB5AABA20775A0900B5D66B /* WD_QTableBaseColAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8720775A0900B5D66B /* WD_QTableBaseColAdaptor.m */; };
 		ABB5AABB20775A0900B5D66B /* WD_QTableParse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8820775A0900B5D66B /* WD_QTableParse.m */; };
 		ABB5AABC20775A0900B5D66B /* WD_QTableAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8A20775A0900B5D66B /* WD_QTableAdaptor.m */; };
@@ -107,6 +125,43 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ABB4DABB2083767400B8B29A /* TZPhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewCell.h; sourceTree = "<group>"; };
+		ABB4DABC2083767400B8B29A /* TZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPickerController.h; sourceTree = "<group>"; };
+		ABB4DABD2083767400B8B29A /* TZImageCropManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageCropManager.m; sourceTree = "<group>"; };
+		ABB4DABE2083767400B8B29A /* TZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImageManager.h; sourceTree = "<group>"; };
+		ABB4DABF2083767400B8B29A /* TZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetCell.m; sourceTree = "<group>"; };
+		ABB4DAC02083767400B8B29A /* TZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZVideoPlayerController.m; sourceTree = "<group>"; };
+		ABB4DAC12083767400B8B29A /* TZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetModel.m; sourceTree = "<group>"; };
+		ABB4DAC22083767400B8B29A /* NSBundle+TZImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TZImagePicker.m"; sourceTree = "<group>"; };
+		ABB4DAC32083767400B8B29A /* TZLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZLocationManager.h; sourceTree = "<group>"; };
+		ABB4DAC42083767400B8B29A /* TZImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImagePickerController.h; sourceTree = "<group>"; };
+		ABB4DAC52083767400B8B29A /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		ABB4DAC62083767400B8B29A /* TZPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPreviewController.m; sourceTree = "<group>"; };
+		ABB4DAC72083767400B8B29A /* TZImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TZImagePickerController.bundle; sourceTree = "<group>"; };
+		ABB4DAC82083767400B8B29A /* TZProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZProgressView.m; sourceTree = "<group>"; };
+		ABB4DAC92083767400B8B29A /* TZGifPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZGifPhotoPreviewController.h; sourceTree = "<group>"; };
+		ABB4DACA2083767400B8B29A /* TZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetCell.h; sourceTree = "<group>"; };
+		ABB4DACB2083767400B8B29A /* TZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageManager.m; sourceTree = "<group>"; };
+		ABB4DACC2083767400B8B29A /* TZImageCropManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImageCropManager.h; sourceTree = "<group>"; };
+		ABB4DACD2083767400B8B29A /* TZPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPickerController.m; sourceTree = "<group>"; };
+		ABB4DACE2083767400B8B29A /* TZPhotoPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPreviewCell.m; sourceTree = "<group>"; };
+		ABB4DACF2083767400B8B29A /* NSBundle+TZImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TZImagePicker.h"; sourceTree = "<group>"; };
+		ABB4DAD02083767400B8B29A /* TZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetModel.h; sourceTree = "<group>"; };
+		ABB4DAD12083767400B8B29A /* TZVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZVideoPlayerController.h; sourceTree = "<group>"; };
+		ABB4DAD22083767400B8B29A /* TZPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewController.h; sourceTree = "<group>"; };
+		ABB4DAD32083767400B8B29A /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		ABB4DAD42083767400B8B29A /* TZImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImagePickerController.m; sourceTree = "<group>"; };
+		ABB4DAD52083767400B8B29A /* TZLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZLocationManager.m; sourceTree = "<group>"; };
+		ABB4DAD62083767400B8B29A /* TZGifPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZGifPhotoPreviewController.m; sourceTree = "<group>"; };
+		ABB4DAD72083767400B8B29A /* TZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZProgressView.h; sourceTree = "<group>"; };
+		ABB4DAE72083803A00B8B29A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		ABB4DAE82083803B00B8B29A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		ABB4DAEA2083923F00B8B29A /* TopicSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicSettingViewController.h; sourceTree = "<group>"; };
+		ABB4DAEB2083923F00B8B29A /* TopicSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicSettingViewController.m; sourceTree = "<group>"; };
+		ABB4DAED208392E100B8B29A /* TopicSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicSettingTableViewCell.h; sourceTree = "<group>"; };
+		ABB4DAEE208392E100B8B29A /* TopicSettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicSettingTableViewCell.m; sourceTree = "<group>"; };
+		ABB4DAF02084E6B700B8B29A /* AboutAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutAppViewController.h; sourceTree = "<group>"; };
+		ABB4DAF12084E6B700B8B29A /* AboutAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutAppViewController.m; sourceTree = "<group>"; };
 		ABB5AA8620775A0900B5D66B /* WD_QTableAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WD_QTableAdaptor.h; sourceTree = "<group>"; };
 		ABB5AA8720775A0900B5D66B /* WD_QTableBaseColAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WD_QTableBaseColAdaptor.m; sourceTree = "<group>"; };
 		ABB5AA8820775A0900B5D66B /* WD_QTableParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WD_QTableParse.m; sourceTree = "<group>"; };
@@ -306,6 +361,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ABB4DABA2083767400B8B29A /* TZImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				ABB4DABB2083767400B8B29A /* TZPhotoPreviewCell.h */,
+				ABB4DABC2083767400B8B29A /* TZPhotoPickerController.h */,
+				ABB4DABD2083767400B8B29A /* TZImageCropManager.m */,
+				ABB4DABE2083767400B8B29A /* TZImageManager.h */,
+				ABB4DABF2083767400B8B29A /* TZAssetCell.m */,
+				ABB4DAC02083767400B8B29A /* TZVideoPlayerController.m */,
+				ABB4DAC12083767400B8B29A /* TZAssetModel.m */,
+				ABB4DAC22083767400B8B29A /* NSBundle+TZImagePicker.m */,
+				ABB4DAC32083767400B8B29A /* TZLocationManager.h */,
+				ABB4DAC42083767400B8B29A /* TZImagePickerController.h */,
+				ABB4DAC52083767400B8B29A /* UIView+Layout.m */,
+				ABB4DAC62083767400B8B29A /* TZPhotoPreviewController.m */,
+				ABB4DAC72083767400B8B29A /* TZImagePickerController.bundle */,
+				ABB4DAC82083767400B8B29A /* TZProgressView.m */,
+				ABB4DAC92083767400B8B29A /* TZGifPhotoPreviewController.h */,
+				ABB4DACA2083767400B8B29A /* TZAssetCell.h */,
+				ABB4DACB2083767400B8B29A /* TZImageManager.m */,
+				ABB4DACC2083767400B8B29A /* TZImageCropManager.h */,
+				ABB4DACD2083767400B8B29A /* TZPhotoPickerController.m */,
+				ABB4DACE2083767400B8B29A /* TZPhotoPreviewCell.m */,
+				ABB4DACF2083767400B8B29A /* NSBundle+TZImagePicker.h */,
+				ABB4DAD02083767400B8B29A /* TZAssetModel.h */,
+				ABB4DAD12083767400B8B29A /* TZVideoPlayerController.h */,
+				ABB4DAD22083767400B8B29A /* TZPhotoPreviewController.h */,
+				ABB4DAD32083767400B8B29A /* UIView+Layout.h */,
+				ABB4DAD42083767400B8B29A /* TZImagePickerController.m */,
+				ABB4DAD52083767400B8B29A /* TZLocationManager.m */,
+				ABB4DAD62083767400B8B29A /* TZGifPhotoPreviewController.m */,
+				ABB4DAD72083767400B8B29A /* TZProgressView.h */,
+			);
+			path = TZImagePickerController;
+			sourceTree = "<group>";
+		};
+		ABB4DAE92083921100B8B29A /* settingMoudle */ = {
+			isa = PBXGroup;
+			children = (
+				ABB4DAEA2083923F00B8B29A /* TopicSettingViewController.h */,
+				ABB4DAEB2083923F00B8B29A /* TopicSettingViewController.m */,
+				ABB4DAED208392E100B8B29A /* TopicSettingTableViewCell.h */,
+				ABB4DAEE208392E100B8B29A /* TopicSettingTableViewCell.m */,
+				ABB4DAF02084E6B700B8B29A /* AboutAppViewController.h */,
+				ABB4DAF12084E6B700B8B29A /* AboutAppViewController.m */,
+			);
+			path = settingMoudle;
+			sourceTree = "<group>";
+		};
 		ABB5AA8320775A0900B5D66B /* WD_QTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +576,7 @@
 		AD135D41206E345E0069BEEB /* PlugIn */ = {
 			isa = PBXGroup;
 			children = (
+				ABB4DABA2083767400B8B29A /* TZImagePickerController */,
 				ABB5AA8320775A0900B5D66B /* WD_QTable */,
 				ADECD05A206A140000C2F3AB /* JTCalendar */,
 				ADC30DD1207387E8002AE183 /* UIAlertController+Q_Alert.h */,
@@ -483,6 +588,7 @@
 		AD22D6FC207DF19100BBCC71 /* HomeMoudle */ = {
 			isa = PBXGroup;
 			children = (
+				ABB4DAE92083921100B8B29A /* settingMoudle */,
 				AD22D6FD207DF72100BBCC71 /* HomeTitleTableViewCell.h */,
 				AD22D6FE207DF72100BBCC71 /* HomeTitleTableViewCell.m */,
 				AD22D700207DF7C800BBCC71 /* HomeViewController.h */,
@@ -842,6 +948,7 @@
 				ADECD07F206A140100C2F3AB /* Info.plist in Resources */,
 				AD6AF0932068B8B700547D83 /* LaunchScreen.storyboard in Resources */,
 				AD6AF0902068B8B700547D83 /* Assets.xcassets in Resources */,
+				ABB4DADF2083767500B8B29A /* TZImagePickerController.bundle in Resources */,
 				AD6AF08B2068B8B700547D83 /* Main.storyboard in Resources */,
 				AD52364B207C9A7D002F4037 /* PlanTemplate.json in Resources */,
 			);
@@ -868,9 +975,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB4DAF22084E6B700B8B29A /* AboutAppViewController.m in Sources */,
+				ABB4DAE52083767500B8B29A /* TZLocationManager.m in Sources */,
 				ADECD085206A140100C2F3AB /* JTCalendarDayView.m in Sources */,
 				ADCDD6A62074DEFB003C8D65 /* EditTableStyleConstructor.m in Sources */,
 				ADECD092206A66C500C2F3AB /* TimeLineTableViewCell.m in Sources */,
+				ABB4DAE22083767500B8B29A /* TZPhotoPickerController.m in Sources */,
+				ABB4DADE2083767500B8B29A /* TZPhotoPreviewController.m in Sources */,
 				ABF3E7B1207A60FC00587957 /* PlanEditViewController.m in Sources */,
 				ABB5AACB20775A0900B5D66B /* WD_QTableBaseReusableView.m in Sources */,
 				ADECD04C2069E22000C2F3AB /* Q_Event+CoreDataClass.m in Sources */,
@@ -879,6 +990,7 @@
 				ABB5AABF20775A0900B5D66B /* WD_QTableDefaultStyleConstructor.m in Sources */,
 				ADECD083206A140100C2F3AB /* JTCalendarDelegateManager.m in Sources */,
 				ABB5AAC720775A0900B5D66B /* WD_QTable.m in Sources */,
+				ABB4DAD82083767500B8B29A /* TZImageCropManager.m in Sources */,
 				ABB5AABA20775A0900B5D66B /* WD_QTableBaseColAdaptor.m in Sources */,
 				AD6AF0852068B8B700547D83 /* AppDelegate.m in Sources */,
 				AD135D27206E0A0C0069BEEB /* EventCreateStepViewController.m in Sources */,
@@ -886,6 +998,7 @@
 				ADAB7895207B3FA500F219A5 /* Q_TabBarController.m in Sources */,
 				ABB5AABC20775A0900B5D66B /* WD_QTableAdaptor.m in Sources */,
 				ABB5AAC320775A0900B5D66B /* WD_QTableOtherViewCell.m in Sources */,
+				ABB4DAE32083767500B8B29A /* TZPhotoPreviewCell.m in Sources */,
 				AD135D24206E08A50069BEEB /* EventCreateFlowViewController.m in Sources */,
 				ADECD087206A140100C2F3AB /* JTCalendarPageView.m in Sources */,
 				ADECD08A206A140100C2F3AB /* JTHorizontalCalendarView.m in Sources */,
@@ -906,13 +1019,17 @@
 				ADECD056206A0A3200C2F3AB /* EventTableViewCell.m in Sources */,
 				ADECD082206A140100C2F3AB /* JTDateHelper.m in Sources */,
 				AD135D3A206E1D870069BEEB /* EventCreateContentViewController.m in Sources */,
+				ABB4DADD2083767500B8B29A /* UIView+Layout.m in Sources */,
 				AD135D34206E17390069BEEB /* EventCreateEndDateViewController.m in Sources */,
 				ABB5AAC220775A0900B5D66B /* WD_QTableDefaultReusableView.m in Sources */,
 				AD6AF0BB2068B99400547D83 /* Q_coreDataHelper.m in Sources */,
 				ADCDD6A82074DEFB003C8D65 /* EditTableReusableView.m in Sources */,
 				ABB5AACA20775A0900B5D66B /* WD_QTableBaseViewCell.m in Sources */,
 				ABB5AAC520775A0900B5D66B /* JQ_CollectionViewLayoutInvalidationContext.m in Sources */,
+				ABB4DAE42083767500B8B29A /* TZImagePickerController.m in Sources */,
+				ABB4DADB2083767500B8B29A /* TZAssetModel.m in Sources */,
 				AD22D6FF207DF72100BBCC71 /* HomeTitleTableViewCell.m in Sources */,
+				ABB4DAE12083767500B8B29A /* TZImageManager.m in Sources */,
 				ABB5AABE20775A0900B5D66B /* WD_QTableAutoLayoutConstructor.m in Sources */,
 				AD3A8E9820706E4F000CD3A4 /* Q_UIConfig.m in Sources */,
 				ADECD089206A140100C2F3AB /* JTCalendarWeekView.m in Sources */,
@@ -929,15 +1046,22 @@
 				ADECD081206A140100C2F3AB /* JTCalendarSettings.m in Sources */,
 				AD6AF0962068B8B800547D83 /* main.m in Sources */,
 				AD6AF08E2068B8B700547D83 /* Q_TimerAxis.xcdatamodeld in Sources */,
+				ABB4DAE02083767500B8B29A /* TZProgressView.m in Sources */,
 				AD135D37206E1BF90069BEEB /* EventTitleViewController.m in Sources */,
 				ADECD08B206A140100C2F3AB /* JTVerticalCalendarView.m in Sources */,
 				ABB5AAC820775A0900B5D66B /* WD_QTableModel.m in Sources */,
+				ABB4DAE62083767500B8B29A /* TZGifPhotoPreviewController.m in Sources */,
 				ADECD04D2069E22000C2F3AB /* Q_Event+CoreDataProperties.m in Sources */,
 				ABB5AAC020775A0900B5D66B /* WD_QViewModel.m in Sources */,
 				ADC30DD3207387E8002AE183 /* UIAlertController+Q_Alert.m in Sources */,
+				ABB4DAEF208392E100B8B29A /* TopicSettingTableViewCell.m in Sources */,
 				AD70BB8D207CD5F60058EB61 /* Q_Plan+CoreDataProperties.m in Sources */,
 				AD135D31206E16BD0069BEEB /* EventCreateStartDateViewController.m in Sources */,
+				ABB4DADA2083767500B8B29A /* TZVideoPlayerController.m in Sources */,
+				ABB4DADC2083767500B8B29A /* NSBundle+TZImagePicker.m in Sources */,
 				AD135D2E206E0D860069BEEB /* CalendarManagerController.m in Sources */,
+				ABB4DAEC2083923F00B8B29A /* TopicSettingViewController.m in Sources */,
+				ABB4DAD92083767500B8B29A /* TZAssetCell.m in Sources */,
 				AD1E62EF206B88DF004C792B /* Q_navigationController.m in Sources */,
 				AD135D3D206E1F590069BEEB /* EventSummaryViewController.m in Sources */,
 				ADECD086206A140100C2F3AB /* JTCalendarMenuView.m in Sources */,
@@ -980,6 +1104,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AD6AF08A2068B8B700547D83 /* Base */,
+				ABB4DAE72083803A00B8B29A /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -988,6 +1113,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AD6AF0922068B8B700547D83 /* Base */,
+				ABB4DAE82083803B00B8B29A /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -999,6 +1125,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1054,6 +1181,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -117,10 +117,10 @@
     [super viewDidLoad];
     [self configureViews];
     [self configureFetch];
+    [self refreshAction];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self performFetch];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -136,25 +136,21 @@
     UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"选择排序方式" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     __weak typeof(self) weakSelf = self;
     [self.sortTitles enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIAlertAction *action = [UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [weakSelf setSortIndex:idx];
-        }];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {[weakSelf setSortIndex:idx];}];
         [sheet addAction:action];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
     [sheet addAction:cancel];
     [self presentViewController:sheet animated:YES completion:^{}];
 }
-
 -(void)setSortIndex:(NSInteger)index{
     if (self.sortIdx != index) {
         self.sortIdx = index;
         [self.sortBtn setTitle:self.sortTitles[self.sortIdx] forState:UIControlStateNormal];
         [self configureFetch];
-        [self performFetch];
+        [self refreshAction];
     }
 }
-
 -(void)setMenuIndex:(UIButton *)sender{
     NSInteger index = sender.tag;
     if (index != self.menuIdx) {
@@ -162,7 +158,7 @@
         self.menuIdx = index;
         [self.MenuBtns[self.menuIdx] setTitleColor:[Q_UIConfig shareInstance].mainColor forState:UIControlStateNormal];
         [self configureFetch];
-        [self performFetch];
+        [self refreshAction];
     }
 }
 
@@ -170,8 +166,8 @@
     [self.tabelRefreashContoller beginRefreshing];
     [self performFetch];
     [self.tabelRefreashContoller setAttributedTitle:[[NSAttributedString alloc] initWithString:@"正在加载" attributes:@{NSForegroundColorAttributeName:[Q_UIConfig shareInstance].mainColor}]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tabelRefreashContoller setAttributedTitle:[[NSAttributedString alloc] initWithString:@"完成" attributes:@{NSForegroundColorAttributeName:[Q_UIConfig shareInstance].mainColor}]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tabelRefreashContoller setAttributedTitle:[[NSAttributedString alloc] initWithString:@"" attributes:@{NSForegroundColorAttributeName:[Q_UIConfig shareInstance].mainColor}]];
         [self.tabelRefreashContoller endRefreshing];
     });
 }
@@ -179,9 +175,7 @@
 #pragma mark - SEGUE
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Add Event Segue"])
-    {
-        
-    }else if([segue.identifier isEqualToString:@"Event Detail Segue"]){//Event Detail Segue
+    {}else if([segue.identifier isEqualToString:@"Event Detail Segue"]){//Event
         TimerViewController *timerVC = segue.destinationViewController;
         timerVC.event = [self.frc objectAtIndexPath:self.selectIndexPath];
     }
@@ -247,12 +241,12 @@
         _eventSearchVC.hidesNavigationBarDuringPresentation = YES;
         _eventSearchVC.searchBar.delegate = self;
         /*UIButton *cancel = [_eventSearchVC.searchBar valueForKey:@"_cancelButton"];
-         [cancel setTitle:@"取消" forState:UIControlStateNormal];
-         [cancel setTitle:@"取消" forState:UIControlStateDisabled];
-         [cancel setTintColor:[UIColor whiteColor]];
-         [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-         [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
-         cancel.titleLabel.font = [UIFont systemFontOfSize:14];*/
+        [cancel setTitle:@"取消" forState:UIControlStateNormal];
+        [cancel setTitle:@"取消" forState:UIControlStateDisabled];
+        [cancel setTintColor:[UIColor whiteColor]];
+        [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+        cancel.titleLabel.font = [UIFont systemFontOfSize:14];*/
     }
     return _eventSearchVC;
 }

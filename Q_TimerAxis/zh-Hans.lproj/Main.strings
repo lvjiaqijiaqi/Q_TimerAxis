@@ -1,0 +1,102 @@
+
+/* Class = "UILabel"; text = "process"; ObjectID = "4cq-9j-lSx"; */
+"4cq-9j-lSx.text" = "process";
+
+/* Class = "UINavigationItem"; title = "个人中心"; ObjectID = "6bf-oA-heJ"; */
+"6bf-oA-heJ.title" = "个人中心";
+
+/* Class = "UITextView"; text = "body"; ObjectID = "8JJ-aZ-vjp"; */
+"8JJ-aZ-vjp.text" = "body";
+
+/* Class = "UITextField"; placeholder = "输入昵称"; ObjectID = "8g1-8w-9l1"; */
+"8g1-8w-9l1.placeholder" = "输入昵称";
+
+/* Class = "UILabel"; text = "title"; ObjectID = "92U-ah-Ilz"; */
+"92U-ah-Ilz.text" = "title";
+
+/* Class = "UIBarButtonItem"; title = "下一步"; ObjectID = "COP-5A-Av3"; */
+"COP-5A-Av3.title" = "下一步";
+
+/* Class = "UIButton"; normalTitle = "未完成"; ObjectID = "E7x-U4-eZl"; */
+"E7x-U4-eZl.normalTitle" = "未完成";
+
+/* Class = "UITabBarItem"; title = "个人"; ObjectID = "EJl-XD-fYE"; */
+"EJl-XD-fYE.title" = "个人";
+
+/* Class = "UILabel"; text = "计划表"; ObjectID = "It3-vH-bXF"; */
+"It3-vH-bXF.text" = "计划表";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "Jpu-mJ-6n9"; */
+"Jpu-mJ-6n9.title" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "下一步"; ObjectID = "KJF-zt-6ff"; */
+"KJF-zt-6ff.title" = "下一步";
+
+/* Class = "UILabel"; text = "开始时间"; ObjectID = "Lou-Za-xtf"; */
+"Lou-Za-xtf.text" = "开始时间";
+
+/* Class = "UITabBarItem"; title = "计划"; ObjectID = "ODG-kk-u2Q"; */
+"ODG-kk-u2Q.title" = "计划";
+
+/* Class = "UILabel"; text = "update"; ObjectID = "PcI-jf-73P"; */
+"PcI-jf-73P.text" = "update";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Q2i-qV-HW3"; */
+"Q2i-qV-HW3.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "下一步"; ObjectID = "QeQ-3V-auc"; */
+"QeQ-3V-auc.title" = "下一步";
+
+/* Class = "UIButton"; normalTitle = "已完成"; ObjectID = "XbK-AT-ZXV"; */
+"XbK-AT-ZXV.normalTitle" = "已完成";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "ZTu-5m-pKY"; */
+"ZTu-5m-pKY.text" = "content";
+
+/* Class = "UILabel"; text = "title"; ObjectID = "ask-A9-0VN"; */
+"ask-A9-0VN.text" = "title";
+
+/* Class = "UIBarButtonItem"; title = "下一步"; ObjectID = "f1o-te-Rlj"; */
+"f1o-te-Rlj.title" = "下一步";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "fca-0G-ib2"; */
+"fca-0G-ib2.text" = "Title";
+
+/* Class = "UILabel"; text = "最近更新"; ObjectID = "fdf-pW-6bV"; */
+"fdf-pW-6bV.text" = "最近更新";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "h5O-L7-v8K"; */
+"h5O-L7-v8K.title" = "Title";
+
+/* Class = "UINavigationItem"; title = "选择表模板"; ObjectID = "k1z-Fw-hTn"; */
+"k1z-Fw-hTn.title" = "选择表模板";
+
+/* Class = "UIButton"; normalTitle = "全部"; ObjectID = "nWZ-Fv-sAk"; */
+"nWZ-Fv-sAk.normalTitle" = "全部";
+
+/* Class = "UITabBarItem"; title = "任务"; ObjectID = "olW-ds-6rV"; */
+"olW-ds-6rV.title" = "任务";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "p9Z-6Y-mDF"; */
+"p9Z-6Y-mDF.title" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "pCz-cg-8Sg"; */
+"pCz-cg-8Sg.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rUE-km-eC4"; */
+"rUE-km-eC4.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "任务"; ObjectID = "tgB-X0-CL3"; */
+"tgB-X0-CL3.text" = "任务";
+
+/* Class = "UINavigationItem"; title = "我的计划表"; ObjectID = "uYC-QO-Alq"; */
+"uYC-QO-Alq.title" = "我的计划表";
+
+/* Class = "UILabel"; text = "start"; ObjectID = "udB-yu-U1n"; */
+"udB-yu-U1n.text" = "start";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "uva-Tz-zQU"; */
+"uva-Tz-zQU.title" = "Title";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "x0f-GP-cVa"; */
+"x0f-GP-cVa.text" = "Subtitle";

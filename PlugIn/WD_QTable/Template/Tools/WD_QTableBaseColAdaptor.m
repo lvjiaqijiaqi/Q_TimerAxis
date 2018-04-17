@@ -29,7 +29,8 @@
         [fitWidths addObject:[NSNumber numberWithFloat:self.MinRowW]]; //预设
     }
     [models enumerateObjectsUsingBlock:^(NSArray<WD_QTableModel *> * _Nonnull cols, NSUInteger colIdx, BOOL * _Nonnull stop) {
-        CGFloat fitWidth = [self fitColWidthToRowHeights:fitHeights ByRowModel:cols ForType:WD_QTableCellIdxItem AtCol:colIdx + index FromRow:0];
+        //CGFloat fitWidth = [self fitColWidthToRowHeights:fitHeights ByRowModel:cols ForType:WD_QTableCellIdxItem AtCol:colIdx + index FromRow:0];
+        CGFloat fitWidth = 0;
         if ([fitWidths[colIdx + index] floatValue] < fitWidth) {
             fitWidths[colIdx + index] = [NSNumber numberWithFloat:fitWidth];
         }

@@ -60,7 +60,9 @@
 -(void)addHeadingChange:(NSArray<NSArray<WD_QTableModel *> *> *)Headings AtRange:(NSRange)range{
     NSInteger index = range.location;
     if (Headings.count == 0) {
-        [self.layoutConstructor.HeadingsH removeObjectAtIndex:index];
+        if (self.layoutConstructor.HeadingsH.count > index) {
+            [self.layoutConstructor.HeadingsH removeObjectsInRange:range];
+        }
         return;
     }
     NSMutableArray<NSNumber *> *fitWidths = [NSMutableArray array];
@@ -82,7 +84,9 @@
     }
     [Headings enumerateObjectsUsingBlock:^(NSArray<WD_QTableModel *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat height = [self fitRowHeightToColsWidth:fitWidths ByRowModel:obj ForType:WD_QTableCellIdxHeading AtRowId:idx FromCol:index];
-        fitHeights[idx] = [NSNumber numberWithFloat:height];
+        if (height > [fitHeights[idx] floatValue]) {
+            fitHeights[idx] = [NSNumber numberWithFloat:height];
+        }
     }];
     self.layoutConstructor.HeadingsW = fitWidths;
     self.layoutConstructor.HeadingsH = fitHeights;
@@ -90,7 +94,9 @@
 -(void)addLeadingChange:(NSArray<NSArray<WD_QTableModel *> *> *)leadings AtRange:(NSRange)range{
     NSInteger index = range.location;
     if (leadings.count == 0) {
-        [self.layoutConstructor.LeadingsW removeObjectsInRange:range];
+        if (self.layoutConstructor.LeadingsW.count > index) {
+            [self.layoutConstructor.LeadingsW removeObjectsInRange:range];
+        }
         return;
     }
     NSMutableArray<NSNumber *> *fitWidths = [NSMutableArray array];
@@ -112,7 +118,9 @@
     }
     [leadings enumerateObjectsUsingBlock:^(NSArray<WD_QTableModel *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat width = [self fitColWidthToRowHeights:fitHeights ByRowModel:obj ForType:WD_QTableCellIdxLeading AtCol:idx FromRow:index];
-        fitWidths[idx] = [NSNumber numberWithFloat:width];
+        if (width > [fitWidths[idx] floatValue]) {
+            fitWidths[idx] = [NSNumber numberWithFloat:width];
+        }
     }];
     self.layoutConstructor.LeadingsH = fitHeights;
     self.layoutConstructor.LeadingsW = fitWidths;
@@ -122,7 +130,7 @@
     NSInteger index = range.location;
     if (models.count == 0) {
         if (index < self.layoutConstructor.RowsH.count) {
-            [self.layoutConstructor.RowsH removeObjectAtIndex:index];
+            [self.layoutConstructor.RowsH removeObjectsInRange:range];
         }
         return;
     }
@@ -159,7 +167,9 @@
 -(void)addDataChange:(NSArray<NSArray<WD_QTableModel *> *> *)models AtColRange:(NSRange)range{
     NSInteger index = range.location;
     if (models.count == 0){
-        [self.layoutConstructor.colsW removeObjectAtIndex:index];
+        if (self.layoutConstructor.colsW.count > index) {
+            [self.layoutConstructor.colsW removeObjectAtIndex:index];
+        }
         return;
     }
     const NSInteger colsNum = models.count;
@@ -267,12 +277,14 @@
             CGFloat width = [self fitWidthOf:type ForHeight:self.defaultRowH * obj.collapseRow ByModel:obj AtIndex:[NSIndexPath indexPathForRow:rowId inSection:idx + colId]];
             CGFloat finalWidth = width - (obj.collapseCol - 1) * self.MinRowW;
             if(finalWidth > self.MaxRowW) {
+                finalWidth = self.MaxRowW;
                 [overMaxWCellIndexs addIndex:idx];
-                adjustFitWidths[idx + colId] = [NSNumber numberWithFloat:self.MaxRowW];
             }else{
                 if (finalWidth < self.MinRowW) {
                     finalWidth = self.MinRowW;
                 }
+            }
+            if (finalWidth > [adjustFitWidths[idx + colId] floatValue]) {
                 adjustFitWidths[idx + colId] = [NSNumber numberWithFloat:finalWidth];
             }
         }
@@ -298,7 +310,7 @@
     [overMaxWCellIndexs enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat allWidth = self.MinRowW * (models[idx].collapseCol - 1) + adjustFitWidths[idx + colId].floatValue;
         CGFloat height = [self fitHeightOf:type ForWidth:allWidth ByModel:models[idx] AtIndex:[NSIndexPath indexPathForRow:rowId inSection:idx + colId]];
-        height = height - models[idx].collapseRow * self.defaultRowH;
+        height = height - (models[idx].collapseRow - 1) * self.defaultRowH;
         if (fitHeight < height) {
             fitHeight = height;
         }

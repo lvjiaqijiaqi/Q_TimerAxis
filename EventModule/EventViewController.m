@@ -20,6 +20,7 @@
 
 #import "EventTableViewCell.h"
 
+ #import <Photos/Photos.h>
 
 @interface EventViewController ()<UISearchBarDelegate,UISearchControllerDelegate,EventSearchResultDelegate>
 
@@ -127,7 +128,6 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.eventSearchVC.active = NO;
 }
 
 #pragma mark - 交互

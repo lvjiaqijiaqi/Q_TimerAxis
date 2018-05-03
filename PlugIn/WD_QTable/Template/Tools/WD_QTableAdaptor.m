@@ -44,17 +44,17 @@
 }
 -(void)commitChange{
     // 表头和数据布局合并
-     self.layoutConstructor.colsW = [self mergeMaxValueToArr:self.layoutConstructor.colsW FromArr:self.layoutConstructor.HeadingsW];
-     self.layoutConstructor.RowsH = [self mergeMaxValueToArr:self.layoutConstructor.RowsH FromArr:self.layoutConstructor.LeadingsH];
-     
-     // 贴边处理
-     __block CGFloat leadingsW = 0.f;
-     [self.layoutConstructor.LeadingsW enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-     leadingsW += obj.floatValue;
-     }];
+    self.layoutConstructor.colsW = [self mergeMaxValueToArr:self.layoutConstructor.colsW FromArr:self.layoutConstructor.HeadingsW];
+    self.layoutConstructor.RowsH = [self mergeMaxValueToArr:self.layoutConstructor.RowsH FromArr:self.layoutConstructor.LeadingsH];
+    
+    // 贴边处理
+    __block CGFloat leadingsW = 0.f;
+    [self.layoutConstructor.LeadingsW enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        leadingsW += obj.floatValue;
+    }];
     self.layoutConstructor.optmizeColsW = self.layoutConstructor.colsW;
-     //self.layoutConstructor.optmizeColsW = [self optimizeWidth:self.layoutConstructor.colsW ByContainerWidth:CGRectGetWidth(models.frame) - leadingsW];
-     //[self.reuseDic removeAllObjects];
+    //self.layoutConstructor.optmizeColsW = [self optimizeWidth:self.layoutConstructor.colsW ByContainerWidth:CGRectGetWidth(models.frame) - leadingsW];
+    //[self.reuseDic removeAllObjects];
 }
 
 -(void)addHeadingChange:(NSArray<NSArray<WD_QTableModel *> *> *)Headings AtRange:(NSRange)range{
@@ -255,14 +255,14 @@
 #pragma mark - 适配行高
 /*  取最大宽度 并且用min max去限制 */
 /*-(CGFloat)adjustWidthForOriginWidth:(CGFloat)originWidth ByExtraWidth:(CGFloat)extraWidth{
-    CGFloat resWidth = extraWidth;
-    if (resWidth > self.MaxRowW) { //大于max，需要fit高度
-        resWidth = self.MaxRowW;
-    }else if(resWidth < originWidth){
-        resWidth = originWidth;
-    }
-    return resWidth;
-}*/
+ CGFloat resWidth = extraWidth;
+ if (resWidth > self.MaxRowW) { //大于max，需要fit高度
+ resWidth = self.MaxRowW;
+ }else if(resWidth < originWidth){
+ resWidth = originWidth;
+ }
+ return resWidth;
+ }*/
 
 -(CGFloat)fitRowHeightToColsWidth:(NSMutableArray<NSNumber *> *)adjustFitWidths ByRowModel:(NSArray<WD_QTableModel *> *)models ForType:(NSInteger)type AtRowId:(NSInteger)rowId FromCol:(NSInteger)colId{
     NSMutableIndexSet *overMaxWCellIndexs =  [[NSMutableIndexSet alloc] init];
@@ -284,21 +284,21 @@
         }
     }];
     /*NSInteger idx = 0;
-    while (idx < models.count) {
-        WD_QTableModel * _Nonnull obj = models[idx];
-        if (!obj.isPlace) {
-            //计算宽度
-            CGFloat width = [self fitWidthOf:type ForHeight:self.defaultRowH ByModel:obj AtIndex:[NSIndexPath indexPathForRow:rowId inSection:idx + colId]] / obj.collapseCol;
-            if(width > self.MaxRowW) [overMaxWCellIndexs addIndex:idx];
-            for (NSInteger collpsCol = 0; collpsCol < obj.collapseCol; collpsCol++) {
-                CGFloat resWidth = [self adjustWidthForOriginWidth:adjustFitWidths[idx + collpsCol].floatValue ByExtraWidth:width];
-                adjustFitWidths[idx + collpsCol] = [NSNumber numberWithFloat:ceil(resWidth)];
-            }
-            idx = idx + obj.collapseCol;
-        }else{
-            idx++;
-        }
-    }*/
+     while (idx < models.count) {
+     WD_QTableModel * _Nonnull obj = models[idx];
+     if (!obj.isPlace) {
+     //计算宽度
+     CGFloat width = [self fitWidthOf:type ForHeight:self.defaultRowH ByModel:obj AtIndex:[NSIndexPath indexPathForRow:rowId inSection:idx + colId]] / obj.collapseCol;
+     if(width > self.MaxRowW) [overMaxWCellIndexs addIndex:idx];
+     for (NSInteger collpsCol = 0; collpsCol < obj.collapseCol; collpsCol++) {
+     CGFloat resWidth = [self adjustWidthForOriginWidth:adjustFitWidths[idx + collpsCol].floatValue ByExtraWidth:width];
+     adjustFitWidths[idx + collpsCol] = [NSNumber numberWithFloat:ceil(resWidth)];
+     }
+     idx = idx + obj.collapseCol;
+     }else{
+     idx++;
+     }
+     }*/
     //宽度溢出的，计算行高
     __block CGFloat fitHeight = self.defaultRowH;
     [overMaxWCellIndexs enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
@@ -333,79 +333,79 @@
         if (height > self.defaultRowH) {
             adjustFitHeigths[idx + rowId] = [NSNumber numberWithFloat:height];
             /*for (NSInteger i = 0; i < obj.collapseRow; i++) {
-                 adjustFitHeigths[idx + i + rowId] = [NSNumber numberWithFloat:height];
-            }*/
+             adjustFitHeigths[idx + i + rowId] = [NSNumber numberWithFloat:height];
+             }*/
         }
     }];
     return optmizeWidth;
-
+    
 }
 #pragma mark - 计算宽度
 -(CGFloat)fitWidthOf:(NSInteger)type ForHeight:(CGFloat)height ByModel:(WD_QTableModel *)model AtIndex:(NSIndexPath *)indexPath{
     __block CGFloat resValue = 0.f;
-        if (type == WD_QTableCellIdxItem) {
-            NSString *className = [self.styleConstructor itemCollectionViewCellIdentifier:indexPath];
-            WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
-            if (!reuseCell) {
-                Class qTableCellClass = NSClassFromString(className);
-                reuseCell = [[qTableCellClass alloc] init];
-            }
-            [self.styleConstructor constructItemCollectionView:reuseCell By:model];
-            resValue = [reuseCell sizeThatFitWidthByHeight:height];
-        }if (type == WD_QTableCellIdxLeading){
-            NSString *className = [self.styleConstructor leadingSupplementaryIdentifier:indexPath];
-            WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
-            if (!reuseCell) {
-                Class qTableCellClass = NSClassFromString(className);
-                reuseCell = [[qTableCellClass alloc] init];
-            }
-            [self.styleConstructor constructLeadingSupplementary:reuseCell By:model];
-            resValue = [reuseCell sizeThatFitWidthByHeight:height];
-        }else if (type == WD_QTableCellIdxHeading){
-            NSIndexPath *modifyIndex = [NSIndexPath indexPathForRow:indexPath.section inSection:indexPath.row];
-            NSString *className = [self.styleConstructor headingSupplementaryCellIdentifier:modifyIndex];
-            WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
-            if (!reuseCell) {
-                Class qTableCellClass = NSClassFromString(className);
-                reuseCell = [[qTableCellClass alloc] init];
-            }
-            [self.styleConstructor constructHeadingSupplementary:reuseCell By:model];
-            resValue = [reuseCell sizeThatFitWidthByHeight:height];
+    if (type == WD_QTableCellIdxItem) {
+        NSString *className = [self.styleConstructor itemCollectionViewCellIdentifier:indexPath];
+        WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
+        if (!reuseCell) {
+            Class qTableCellClass = NSClassFromString(className);
+            reuseCell = [[qTableCellClass alloc] init];
         }
+        [self.styleConstructor constructItemCollectionView:reuseCell By:model];
+        resValue = [reuseCell sizeThatFitWidthByHeight:height];
+    }if (type == WD_QTableCellIdxLeading){
+        NSString *className = [self.styleConstructor leadingSupplementaryIdentifier:indexPath];
+        WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
+        if (!reuseCell) {
+            Class qTableCellClass = NSClassFromString(className);
+            reuseCell = [[qTableCellClass alloc] init];
+        }
+        [self.styleConstructor constructLeadingSupplementary:reuseCell By:model];
+        resValue = [reuseCell sizeThatFitWidthByHeight:height];
+    }else if (type == WD_QTableCellIdxHeading){
+        NSIndexPath *modifyIndex = [NSIndexPath indexPathForRow:indexPath.section inSection:indexPath.row];
+        NSString *className = [self.styleConstructor headingSupplementaryCellIdentifier:modifyIndex];
+        WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
+        if (!reuseCell) {
+            Class qTableCellClass = NSClassFromString(className);
+            reuseCell = [[qTableCellClass alloc] init];
+        }
+        [self.styleConstructor constructHeadingSupplementary:reuseCell By:model];
+        resValue = [reuseCell sizeThatFitWidthByHeight:height];
+    }
     return resValue;
 }
 #pragma mark - 计算高度
 -(CGFloat)fitHeightOf:(NSInteger)type ForWidth:(CGFloat)width ByModel:(WD_QTableModel *)model AtIndex:(NSIndexPath *)indexPath{
     __block CGFloat resValue = 0.f;
-        if (type == WD_QTableCellIdxItem) {
-            NSString *className = [self.styleConstructor itemCollectionViewCellIdentifier:indexPath];
-            WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
-            if (!reuseCell) {
-                Class qTableCellClass = NSClassFromString(className);
-                reuseCell = [[qTableCellClass alloc] init];
-            }
-            [self.styleConstructor constructItemCollectionView:reuseCell By:model];
-            resValue = [reuseCell sizeThatFitHeighByWidth:width];
-        }if (type == WD_QTableCellIdxLeading){
-            NSString *className = [self.styleConstructor leadingSupplementaryIdentifier:indexPath];
-            WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
-            if (!reuseCell) {
-                Class qTableCellClass = NSClassFromString(className);
-                reuseCell = [[qTableCellClass alloc] init];
-            }
-            [self.styleConstructor constructLeadingSupplementary:reuseCell By:model];
-            resValue = [reuseCell sizeThatFitHeighByWidth:width];
-        }else if (type == WD_QTableCellIdxHeading){
-            NSIndexPath *modifyIndex = [NSIndexPath indexPathForRow:indexPath.section inSection:indexPath.row];
-            NSString *className = [self.styleConstructor headingSupplementaryCellIdentifier:modifyIndex];
-            WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
-            if (!reuseCell) {
-                Class qTableCellClass = NSClassFromString(className);
-                reuseCell = [[qTableCellClass alloc] init];
-            }
-            [self.styleConstructor constructHeadingSupplementary:reuseCell By:model];
-            resValue = [reuseCell sizeThatFitHeighByWidth:width];
+    if (type == WD_QTableCellIdxItem) {
+        NSString *className = [self.styleConstructor itemCollectionViewCellIdentifier:indexPath];
+        WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
+        if (!reuseCell) {
+            Class qTableCellClass = NSClassFromString(className);
+            reuseCell = [[qTableCellClass alloc] init];
         }
+        [self.styleConstructor constructItemCollectionView:reuseCell By:model];
+        resValue = [reuseCell sizeThatFitHeighByWidth:width];
+    }if (type == WD_QTableCellIdxLeading){
+        NSString *className = [self.styleConstructor leadingSupplementaryIdentifier:indexPath];
+        WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
+        if (!reuseCell) {
+            Class qTableCellClass = NSClassFromString(className);
+            reuseCell = [[qTableCellClass alloc] init];
+        }
+        [self.styleConstructor constructLeadingSupplementary:reuseCell By:model];
+        resValue = [reuseCell sizeThatFitHeighByWidth:width];
+    }else if (type == WD_QTableCellIdxHeading){
+        NSIndexPath *modifyIndex = [NSIndexPath indexPathForRow:indexPath.section inSection:indexPath.row];
+        NSString *className = [self.styleConstructor headingSupplementaryCellIdentifier:modifyIndex];
+        WD_QTableBaseViewCell *reuseCell = self.reuseDic[className];
+        if (!reuseCell) {
+            Class qTableCellClass = NSClassFromString(className);
+            reuseCell = [[qTableCellClass alloc] init];
+        }
+        [self.styleConstructor constructHeadingSupplementary:reuseCell By:model];
+        resValue = [reuseCell sizeThatFitHeighByWidth:width];
+    }
     return resValue;
 }
 

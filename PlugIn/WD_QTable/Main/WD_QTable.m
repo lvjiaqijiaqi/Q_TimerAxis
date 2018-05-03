@@ -130,6 +130,11 @@
     self.headView.frame = rect;
     [self.collectionView addSubview:self.headView];
 }
+-(void)setBottomView:(UIView *)bottomView{
+    [super setBottomView:bottomView];
+    CGRect rect = bottomView.frame;
+    [self.collectionView addSubview:self.headView];
+}
 
 -(void)updateHeadH:(CGFloat)newH{
     
@@ -745,6 +750,12 @@
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView layout:(JQ_CollectionViewLayout *)collectionViewLayout HeadingCollapseRowNumberInCol:(NSInteger)col AtLevel:(NSInteger)level{
     return [self modelForHeading:col level:level].collapseRow;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView layout:(JQ_CollectionViewLayout *)collectionViewLayout BoundsChange:(CGSize)boundSize{
+    if (self.boundChangeHandle) {
+        self.boundChangeHandle(self, boundSize);
+    }
 }
 
 @end

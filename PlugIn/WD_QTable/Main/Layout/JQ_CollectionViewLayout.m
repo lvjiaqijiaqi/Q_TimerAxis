@@ -272,6 +272,7 @@ typedef NS_ENUM(NSInteger, CellzIndexLevel) {
 -(void)prepareLayout{
     [super prepareLayout];
     self.boundSize = CGSizeMake([self ContentSizeWidth], [self ContentSizeHeight]);
+    [self.layoutDelegate collectionView:self.collectionView layout:self BoundsChange:self.boundSize];
     self.invalidContext = [[JQ_CollectionViewLayoutInvalidationContext alloc] init];
 }
 -(CGSize)collectionViewContentSize{

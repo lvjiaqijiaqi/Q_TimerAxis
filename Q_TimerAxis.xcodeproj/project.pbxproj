@@ -25,7 +25,6 @@
 		ABB4DAEC2083923F00B8B29A /* TopicSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAEB2083923F00B8B29A /* TopicSettingViewController.m */; };
 		ABB4DAEF208392E100B8B29A /* TopicSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAEE208392E100B8B29A /* TopicSettingTableViewCell.m */; };
 		ABB4DAF22084E6B700B8B29A /* AboutAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4DAF12084E6B700B8B29A /* AboutAppViewController.m */; };
-		ABB5AABA20775A0900B5D66B /* WD_QTableBaseColAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8720775A0900B5D66B /* WD_QTableBaseColAdaptor.m */; };
 		ABB5AABB20775A0900B5D66B /* WD_QTableParse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8820775A0900B5D66B /* WD_QTableParse.m */; };
 		ABB5AABC20775A0900B5D66B /* WD_QTableAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8A20775A0900B5D66B /* WD_QTableAdaptor.m */; };
 		ABB5AABD20775A0900B5D66B /* WD_QTableDefaultLayoutConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5AA8E20775A0900B5D66B /* WD_QTableDefaultLayoutConstructor.m */; };
@@ -125,6 +124,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB67AC842088D06000DCD118 /* Q_TimerAxis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Q_TimerAxis.entitlements; sourceTree = "<group>"; };
 		ABB4DABB2083767400B8B29A /* TZPhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewCell.h; sourceTree = "<group>"; };
 		ABB4DABC2083767400B8B29A /* TZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPickerController.h; sourceTree = "<group>"; };
 		ABB4DABD2083767400B8B29A /* TZImageCropManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageCropManager.m; sourceTree = "<group>"; };
@@ -163,9 +163,7 @@
 		ABB4DAF02084E6B700B8B29A /* AboutAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutAppViewController.h; sourceTree = "<group>"; };
 		ABB4DAF12084E6B700B8B29A /* AboutAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutAppViewController.m; sourceTree = "<group>"; };
 		ABB5AA8620775A0900B5D66B /* WD_QTableAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WD_QTableAdaptor.h; sourceTree = "<group>"; };
-		ABB5AA8720775A0900B5D66B /* WD_QTableBaseColAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WD_QTableBaseColAdaptor.m; sourceTree = "<group>"; };
 		ABB5AA8820775A0900B5D66B /* WD_QTableParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WD_QTableParse.m; sourceTree = "<group>"; };
-		ABB5AA8920775A0900B5D66B /* WD_QTableBaseColAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WD_QTableBaseColAdaptor.h; sourceTree = "<group>"; };
 		ABB5AA8A20775A0900B5D66B /* WD_QTableAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WD_QTableAdaptor.m; sourceTree = "<group>"; };
 		ABB5AA8B20775A0900B5D66B /* WD_QTableParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WD_QTableParse.h; sourceTree = "<group>"; };
 		ABB5AA8D20775A0900B5D66B /* WD_QTableAutoLayoutConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WD_QTableAutoLayoutConstructor.h; sourceTree = "<group>"; };
@@ -439,8 +437,6 @@
 				ABB5AA8A20775A0900B5D66B /* WD_QTableAdaptor.m */,
 				ABB5AA8B20775A0900B5D66B /* WD_QTableParse.h */,
 				ABB5AA8820775A0900B5D66B /* WD_QTableParse.m */,
-				ABB5AA8920775A0900B5D66B /* WD_QTableBaseColAdaptor.h */,
-				ABB5AA8720775A0900B5D66B /* WD_QTableBaseColAdaptor.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -637,6 +633,7 @@
 		AD6AF0822068B8B600547D83 /* Q_TimerAxis */ = {
 			isa = PBXGroup;
 			children = (
+				AB67AC842088D06000DCD118 /* Q_TimerAxis.entitlements */,
 				AD3A8E9520706E0F000CD3A4 /* Config */,
 				AD6AF0832068B8B600547D83 /* AppDelegate.h */,
 				AD6AF0842068B8B700547D83 /* AppDelegate.m */,
@@ -907,6 +904,11 @@
 					AD6AF07F2068B8B600547D83 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					AD6AF09A2068B8B800547D83 = {
 						CreatedOnToolsVersion = 9.2;
@@ -991,7 +993,6 @@
 				ADECD083206A140100C2F3AB /* JTCalendarDelegateManager.m in Sources */,
 				ABB5AAC720775A0900B5D66B /* WD_QTable.m in Sources */,
 				ABB4DAD82083767500B8B29A /* TZImageCropManager.m in Sources */,
-				ABB5AABA20775A0900B5D66B /* WD_QTableBaseColAdaptor.m in Sources */,
 				AD6AF0852068B8B700547D83 /* AppDelegate.m in Sources */,
 				AD135D27206E0A0C0069BEEB /* EventCreateStepViewController.m in Sources */,
 				ADCDD69D2074DEC6003C8D65 /* PlanDetailViewController.m in Sources */,
@@ -1170,7 +1171,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1220,7 +1221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1234,11 +1235,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 547ZEB69CW;
 				INFOPLIST_FILE = Q_TimerAxis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jqlv.Q-TimerAxis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1249,11 +1250,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 547ZEB69CW;
 				INFOPLIST_FILE = Q_TimerAxis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jqlv.Q-TimerAxis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

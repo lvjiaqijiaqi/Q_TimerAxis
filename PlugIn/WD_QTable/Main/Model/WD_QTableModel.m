@@ -51,8 +51,8 @@
 
 +(WD_QTableModel *)placeModel{
     WD_QTableModel * placeModel = [[WD_QTableModel alloc] init];
-    placeModel.collapseRow = 0;
-    placeModel.collapseCol = 0;
+    placeModel.collapseRow = 1;
+    placeModel.collapseCol = 1;
     placeModel.isPlace = YES;
     return placeModel;
 }

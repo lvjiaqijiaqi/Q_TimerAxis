@@ -243,6 +243,8 @@
             [self.leadings removeObjectAtIndex:[self indexLeadingAtIdx:rowId InLevel:i]];
         }
         _LeadingRowNum--;
+        [self.autoLayoutHandle addDataChange:@[] AtRowRange:NSMakeRange(rowId, 1)];
+        [self.autoLayoutHandle addLeadingChange:@[] AtRange:NSMakeRange(rowId, 1)];
         [self.layout invalidLayoutAtRowIndex:rowId];
         [self.collectionView reloadData];
     }
@@ -259,6 +261,8 @@
             [self.headings removeObjectAtIndex:[self indexHeadingAtIdx:colId InLevel:i]];
         }
         _HeadingColNum--;
+        [self.autoLayoutHandle addDataChange:@[] AtColRange:NSMakeRange(colId, 1)];
+        [self.autoLayoutHandle addHeadingChange:@[] AtRange:NSMakeRange(colId, 1)];
         [self.layout invalidLayoutAtColIndex:colId];
         [self.collectionView reloadData];
     }

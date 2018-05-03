@@ -23,6 +23,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 60.f;
+    self.navigationItem.title = @"主题设置";
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

@@ -86,12 +86,25 @@
 {
   return UITableViewCellEditingStyleDelete;//删除模式
 }
--(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewRowAction *rowAction =  [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+
+- (void)createCancelNotive:(NSIndexPath *)indexPath{
+    UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"确认删除" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    __weak typeof(self) weakSelf = self;
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         Q_TimeLine *timeLine = [self.frc objectAtIndexPath:indexPath];
         [[Q_coreDataHelper shareInstance].managedContext deleteObject:timeLine];
         [[Q_coreDataHelper shareInstance] saveContext];
-        [self updateEventProcess];
+        [weakSelf updateEventProcess];
+    }];
+    [sheet addAction:action];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    [sheet addAction:cancel];
+    [self presentViewController:sheet animated:YES completion:^{}];
+}
+
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewRowAction *rowAction =  [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self createCancelNotive:indexPath];
     }];
     rowAction.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
     return @[rowAction];

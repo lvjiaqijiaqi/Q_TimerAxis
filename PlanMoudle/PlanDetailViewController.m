@@ -130,7 +130,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if (!self.keepRoationState) {
+    /*if (!self.keepRoationState) {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         appDelegate.allowRotation = NO;
         [self.titleTextField resignFirstResponder];
@@ -143,7 +143,7 @@
             [invocation setArgument:&val atIndex:2];
             [invocation invoke];
         }
-    }
+    }*/
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];

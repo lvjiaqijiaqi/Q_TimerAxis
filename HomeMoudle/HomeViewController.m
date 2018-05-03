@@ -80,8 +80,8 @@
         if (!error2) {}
         dispatch_async(dispatch_get_main_queue(), ^{
             HomeTitleTableViewCell *cell = [self.contentView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-            cell.subLeftLabel.text = [NSString stringWithFormat:@"任务：%ld",count1];
-            cell.subRightLabel.text = [NSString stringWithFormat:@"计划：%ld",count2];
+            cell.subLeftLabel.text = [NSString stringWithFormat:@"待办任务：%ld",count1];
+            cell.subRightLabel.text = [NSString stringWithFormat:@"计划表：%ld",count2];
         });
     });
     
@@ -96,8 +96,12 @@
     self.contentView.rowHeight = UITableViewAutomaticDimension;
     self.contentView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
-    self.HomeList = @[@"",@"主题设置",@"数据同步",@"数据统计",@"关于APP"];
+    self.HomeList = @[@"",@"主题设置",@"关于APP"];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self.contentView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,9 +158,7 @@
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         TopicSettingViewController *topicSettingViewController =  [storyBoard instantiateViewControllerWithIdentifier:@"TopicSettingViewController"];
         [self showViewController:topicSettingViewController sender:nil];
-    }else if(indexPath.row == 2){
-        //[self pushTZImagePickerController];
-    }else if (indexPath.row == 4){
+    }else if (indexPath.row == 2){
         AboutAppViewController *aboutAppViewController = [[AboutAppViewController alloc] init];
         aboutAppViewController.view.backgroundColor = [Q_UIConfig shareInstance].generalBackgroundColor;
         [self showViewController:aboutAppViewController sender:nil];

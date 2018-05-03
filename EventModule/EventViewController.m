@@ -82,7 +82,11 @@
     self.myTableView.dataSource = self;
     self.tabelRefreashContoller =  [[UIRefreshControl alloc] init];
     [self.tabelRefreashContoller setAttributedTitle:[[NSAttributedString alloc] initWithString:@"松开刷新" attributes:@{NSForegroundColorAttributeName:[Q_UIConfig shareInstance].mainColor}]];
-    self.myTableView.refreshControl = self.tabelRefreashContoller;
+    if (@available(iOS 10.0, *)) {
+        self.myTableView.refreshControl = self.tabelRefreashContoller;
+    } else {
+        [self.myTableView addSubview:self.tabelRefreashContoller];
+    }
     [self.tabelRefreashContoller addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
     /* controllView */
     self.controllView.backgroundColor = [UIColor whiteColor];
@@ -97,7 +101,7 @@
     _menuIdx = 0;
     [self.MenuBtns[self.menuIdx] setTitleColor:[Q_UIConfig shareInstance].mainColor forState:UIControlStateNormal];
     /* sortView */
-    self.sortTitles = @[@"按更新日期",@"按创建日期",@"按完成度"];
+    self.sortTitles = @[@"按更新日期",@"按开始日期",@"按完成度"];
     [self.sortBtn setTitleColor:[Q_UIConfig shareInstance].generalCellSubTitleFontColor forState:UIControlStateNormal];
     self.sortBtn.titleLabel.font = [Q_UIConfig shareInstance].generalBodyFont;
     [self.sortBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
@@ -209,12 +213,25 @@
     self.selectIndexPath = indexPath;
     return indexPath;
 }
+
+#pragma mark -- 删除操作
 /* 删除操作 */
--(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewRowAction *rowAction =  [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        Q_Event *event = [self.frc objectAtIndexPath:indexPath];
+- (void)createCancelNotive:(NSIndexPath *)indexPath{
+    UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"确认删除" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    __weak typeof(self) weakSelf = self;
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        Q_Event *event = [weakSelf.frc objectAtIndexPath:indexPath];
         [[Q_coreDataHelper shareInstance].managedContext deleteObject:event];
         [[Q_coreDataHelper shareInstance] saveContext];
+    }];
+    [sheet addAction:action];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    [sheet addAction:cancel];
+    [self presentViewController:sheet animated:YES completion:^{}];
+}
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewRowAction *rowAction =  [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self createCancelNotive:indexPath];
     }];
     rowAction.backgroundColor = [Q_UIConfig shareInstance].generalNavgroundColor;
     return @[rowAction];

@@ -27,7 +27,7 @@
  对象管理模型：NSManagedObjectModel *managedObjectModel
  存储调度器：NSPersistentStoreCoordinator *persistentStoreCoordinator;
  */
-@property(nonatomic,strong)NSPersistentContainer *persistentContainer;
+@property(nonatomic,strong) NSPersistentContainer *persistentContainer;
 
 @end
 

@@ -39,7 +39,7 @@
     self.calendarManagerController.calendarContentView = self.calendarContentView;
     [self.calendarManagerController startWork];
     
-    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 350, self.view.frame.size.width, self.view.frame.size.height - 350)];
+    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 340, self.view.frame.size.width, 150)];
     [self.datePicker setTimeZone:[NSTimeZone defaultTimeZone]];
     self.datePicker.datePickerMode =  UIDatePickerModeTime;
     [self.view addSubview:self.datePicker];
